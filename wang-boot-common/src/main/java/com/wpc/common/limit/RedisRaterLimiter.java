@@ -13,6 +13,13 @@ import redis.clients.jedis.ZParams;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * 功能描述: 分布式应用限流
+ * @Author: 王鹏程
+ * @E-mail: wpcfree@qq.com @QQ: 376205421
+ * @Blog: http://www.wpcfree.com
+ * @Date: 2018-09-17 15:16:09
+ */
 @Component
 public class RedisRaterLimiter {
 

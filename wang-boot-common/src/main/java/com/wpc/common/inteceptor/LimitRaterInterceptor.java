@@ -5,7 +5,6 @@ import com.wpc.common.Global;
 import com.wpc.common.annotation.RateLimiter;
 import com.wpc.common.bean.ResponseResult;
 import com.wpc.common.limit.RedisRaterLimiter;
-import com.wpc.common.utils.exception.Exceptions;
 import com.wpc.common.utils.net.IpUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
