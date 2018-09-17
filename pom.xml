@@ -18,7 +18,6 @@
     <modules>
         <module>wang-boot-common</module>
         <module>wang-boot-admin</module>
-        <module>wang-boot-mybatis</module>
         <module>wang-boot-redis</module>
         <module>wang-boot-mongo</module>
     </modules>
