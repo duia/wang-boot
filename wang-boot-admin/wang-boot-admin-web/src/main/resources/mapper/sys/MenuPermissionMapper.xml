@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpc.sys.dao.MenuPermissionDao">
+
+	<resultMap id="BaseResultMap" type="com.wpc.sys.model.MenuPermission">
+		<id property="id" column="id"/>
+		<result property="menuId" column="menu_id"/>
+		<result property="permissionId" column="permission_id"/>
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="table_columns">
+		id,
+		menu_id,
+		permission_id
+	</sql>
+	<sql id="entity_properties">
+		#{id},
+		#{menuId},
+		#{permissionId}
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.wpc.sys.model.MenuPermission">
+		INSERT INTO
+			sys_menu_permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="menuId != null">menu_id,</if>
+			<if test="permissionId != null">permission_id,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id, jdbcType=BIGINT},</if>
+			<if test="menuId != null">#{menuId, jdbcType=BIGINT},</if>
+			<if test="permissionId != null">#{permissionId, jdbcType=BIGINT},</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.wpc.sys.model.MenuPermission">
+		UPDATE
+			sys_menu_permission
+		<trim prefix="set" suffixOverrides=",">
+			<if test="menuId != null">menu_id = #{menuId, jdbcType=BIGINT },</if>
+			<if test="permissionId != null">permission_id = #{permissionId, jdbcType=BIGINT },</if>
+		</trim>
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM
+			sys_menu_permission
+		WHERE
+			id = #{id}
+	</delete>
+
+	<delete id="deleteByIds">
+		DELETE FROM
+			sys_menu_permission
+		WHERE id IN
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<select id="findById" parameterType="long" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns" />
+		FROM
+			sys_menu_permission
+		WHERE
+			id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_menu_permission
+	</select>
+
+	<sql id="sel_where">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="menuId != null and menuId != ''">and menu_id = #{menuId}</if>
+			<if test="permissionId != null and permissionId != ''">and permission_id = #{permissionId}</if>
+		</trim>
+	</sql>
+
+	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.sys.model.MenuPermission">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_menu_permission
+		<include refid="sel_where" />
+	</select>
+
+	<select id="count" resultType="int" parameterType="com.wpc.sys.model.MenuPermission">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_menu_permission
+		<include refid="sel_where" />
+	</select>
+
+		<!-- 分页查询条件，供datatables插件查询使用 -->
+	<sql id="page_where">
+		<if test="condition != null">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="condition.menuId != null and condition.menuId != ''">and menu_id = #{condition.menuId}</if>
+			<if test="condition.permissionId != null and condition.permissionId != ''">and permission_id = #{condition.permissionId}</if>
+		</trim>
+		</if>
+	</sql>
+
+	<!-- 查询条数，供datatables插件查询使用 -->
+	<select id="countPage" resultType="int">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_menu_permission
+		<include refid="page_where" />
+	</select>
+
+	<!-- 分页查询，供datatables插件查询使用 -->
+	<select id="searchPage" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_menu_permission
+		<include refid="page_where" />
+		<include refid="order"/>
+		<include refid="limit"/>
+	</select>
+
+	<!-- 排序，供datatables插件查询使用 -->
+	<sql id="order">
+		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
+	</sql>
+
+	<!-- 分页，供datatables插件查询使用  -->
+	<sql id="limit">
+		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
+	</sql>
+
+
+	<!-- 自定义sql语句 -->
+
+</mapper>

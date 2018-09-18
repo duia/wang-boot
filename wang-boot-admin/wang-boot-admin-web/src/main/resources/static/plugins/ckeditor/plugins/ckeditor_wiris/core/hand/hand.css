@@ -1,0 +1,202 @@
+.wrs_hand{color:#000;background:transparent;line-height: normal;}.wrs_hand div,.wrs_hand dl,.wrs_hand dt,.wrs_hand dd,.wrs_hand ul,.wrs_hand ol,.wrs_hand li,.wrs_hand h1,.wrs_hand h2,.wrs_hand h3,.wrs_hand h4,.wrs_hand h5,.wrs_hand h6,.wrs_hand pre,.wrs_hand code,.wrs_hand form,.wrs_hand fieldset,.wrs_hand legend,.wrs_hand input,.wrs_hand button,.wrs_hand textarea,.wrs_hand p,.wrs_hand blockquote,.wrs_hand th,.wrs_hand td{margin:0;padding:0;}.wrs_hand table{border-collapse:collapse;border-spacing:0;margin:0}.wrs_hand fieldset,.wrs_hand img{border:0;vertical-align:baseline}.wrs_hand address,.wrs_hand caption,.wrs_hand cite,.wrs_hand code,.wrs_hand dfn,.wrs_hand em,.wrs_hand strong,.wrs_hand th,.wrs_hand var,.wrs_hand optgroup{font-style:inherit;font-weight:inherit;}.wrs_hand del,.wrs_hand ins{text-decoration:none;}.wrs_hand li{list-style:none;}.wrs_hand caption,.wrs_hand th{text-align:left;}.wrs_hand h1,.wrs_hand h2,.wrs_hand h3,.wrs_hand h4,.wrs_hand h5,.wrs_hand h6{font-size:100%;font-weight:normal;}.wrs_hand q:before,.wrs_hand q:after{content:'';}.wrs_hand abbr,.wrs_hand acronym{border:0;font-variant:normal;}.wrs_hand sup{vertical-align:baseline;}.wrs_hand sub{vertical-align:baseline;}.wrs_hand legend{color:#000;}.wrs_hand input,.wrs_hand button,.wrs_hand textarea,.wrs_hand select,.wrs_hand optgroup,.wrs_hand option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}.wrs_hand input,.wrs_hand button,.wrs_hand textarea,.wrs_hand select{*font-size:100%;}
+
+.wrs_hand {
+	position: relative;
+	width: 100%;
+	min-height: 200px;
+
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.wrs_hand,
+.wrs_hand * {
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+}
+
+.wrs_hand .wrs_toolbar {
+	border: 1px solid #778e9a;
+	background: #e6edf0;
+	float: left;
+	width: 33px;
+	padding: 2px;
+	text-align: center;
+}
+
+.wrs_hand.wrs_readOnly .wrs_toolbar,
+.wrs_hand.wrs_toolbarHidden .wrs_toolbar {
+	display: none;
+}
+
+.wrs_hand .wrs_toolbar .wrs_button {
+	background: transparent;
+	border: 2px solid transparent;
+	width: 29px;
+	height: 29px;
+}
+
+.wrs_hand .wrs_toolbar .wrs_button.wrs_disabled {
+	opacity: 0.3;
+	pointer-events: none;
+}
+
+.wrs_hand .wrs_toolbar .wrs_button:hover:not([disabled]) {
+	border: 2px solid #778e9a;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.wrs_hand .wrs_toolbar .wrs_button:active:not([disabled]),
+.wrs_hand .wrs_toolbar .wrs_button.wrs_pressed:not([disabled]) {
+	background: url('decoration/button_active.png?v=4.8.1.2090') no-repeat center center;
+}
+
+.wrs_hand .wrs_toolbar .wrs_button:hover:active:not([disabled]),
+.wrs_hand .wrs_toolbar .wrs_button:hover.wrs_pressed:not([disabled]) {
+	background: url('decoration/button_active.png?v=4.8.1.2090') -2px -2px;
+}
+
+.wrs_hand .wrs_toolbar img {
+	vertical-align: middle;
+}
+
+.wrs_hand .wrs_toolbar .wrs_line {
+	width: 33px;
+	border-top: 1px solid #d0d6d9;
+	border-bottom: 1px solid #f4fcff;
+	vertical-align: middle;
+}
+
+.wrs_hand .wrs_canvasContainer {
+	background: #fff;
+	margin-left: 41px;
+	position: relative;
+	overflow: hidden;
+
+	/* This prevents the zoom/scroll in windows phone when we draw on the canvas element. */
+	-ms-content-zooming: none;
+	-ms-touch-action:none;
+}
+
+.wrs_hand:not(.wrs_readOnly):not(.wrs_withHelp) .wrs_canvasContainer.wrs_empty {
+	background: #fff url('decoration/empty.svg?v=4.8.1.2090') center center no-repeat;
+}
+
+.wrs_hand:not(.wrs_readOnly).wrs_withHelp .wrs_canvasContainer::before {
+	content: '';
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	bottom: 10px;
+	right: 10px;
+	display: block;
+	background: url('decoration/powered_by.svg?v=4.8.1.2090') bottom left no-repeat;
+	pointer-events: none;
+}
+
+.wrs_hand:not(.wrs_readOnly) .wrs_canvasContainer .wrs_canvas {
+	background: url('decoration/background.png?v=4.8.1.2090');
+	box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.wrs_hand .wrs_canvasContainer .wrs_canvas {
+	border: 1px solid #969696;
+	vertical-align: middle;
+}
+
+.wrs_hand .wrs_canvasContainer .wrs_previewImage,
+.wrs_hand .wrs_canvasContainer .wrs_previewMathML {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	pointer-events: none;
+}
+
+.wrs_hand .wrs_canvasContainer .wrs_previewImage {
+	display: none;
+}
+
+.wrs_hand .wrs_canvasContainer.wrs_withPreview .wrs_previewImage {
+	display: block;
+}
+
+.wrs_hand .wrs_tickContainer {
+	margin-top: 2px;
+	margin-left: 41px;
+	border: 1px solid #ccc;
+	background: #eee;
+	padding: 2px;
+	white-space: normal;
+	font-size: 12px;
+}
+
+.wrs_hand.wrs_readOnly .wrs_canvasContainer,
+.wrs_hand.wrs_readOnly .wrs_tickContainer,
+.wrs_hand.wrs_toolbarHidden .wrs_canvasContainer,
+.wrs_hand.wrs_toolbarHidden .wrs_tickContainer {
+	margin-left: 0;
+}
+
+.wrs_hand .wrs_editionContainer,
+.wrs_hand .wrs_subEditionContainer {
+	display: none;
+}
+
+.wrs_hand.wrs_editionMode .wrs_editionContainer {
+	display: block;
+}
+
+.wrs_hand.wrs_editing .wrs_subEditionContainer {
+	display: block;
+}
+
+.wrs_hand .wrs_snackbar {
+	background: #323232;
+	color: #fff;
+	font-size: 14px;
+	padding: 14px 24px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.wrs_hand .wrs_snackbar.wrs_hidden {
+	display: none;
+}
+
+.wrs_hand .wrs_snackbar .wrs_snackbarMessage {
+	display: block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.wrs_hand .wrs_snackbar .wrs_snackbarActionButton {
+	float: right;
+    cursor: pointer;
+    color: #90CAF9;
+    margin-left: 24px;
+    text-transform: uppercase;
+}
+
+.wrs_hand.wrs_withHelp .wrs_snackbar {
+	color: #2F4B59;
+	background: none;
+    bottom: auto;
+    top: 0;
+    padding: 15px;
+}
+
+.wrs_hand.wrs_withHelp .wrs_canvasContainer .wrs_canvas {
+	background: none;
+}
+
+.wrs_hand:not(.wrs_withHelp) .wrs_snackbar:not(.wrs_hidden) + .wrs_previewImage,
+.wrs_hand:not(.wrs_withHelp) .wrs_snackbar:not(.wrs_hidden) + .wrs_previewMathML {
+    bottom: 55px;
+}

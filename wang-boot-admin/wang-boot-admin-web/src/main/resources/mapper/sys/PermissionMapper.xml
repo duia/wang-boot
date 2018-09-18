@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpc.sys.dao.PermissionDao">
+
+	<resultMap id="BaseResultMap" type="com.wpc.sys.model.Permission">
+		<id property="id" column="id" jdbcType="BIGINT"/>
+		<result property="parentId" column="parent_id" jdbcType="BIGINT"/>
+		<result property="parentIds" column="parent_ids" jdbcType="VARCHAR"/>
+		<result property="resourceId" column="resource_id" jdbcType="BIGINT"/>
+		<result property="permissionName" column="permission_name" jdbcType="VARCHAR"/>
+		<result property="permissionCode" column="permission_code" jdbcType="VARCHAR"/>
+		<result property="permissionType" column="permission_type" jdbcType="VARCHAR"/>
+		<result property="sort" column="sort" jdbcType="INTEGER"/>
+		<result property="createBy" column="create_by" jdbcType="BIGINT"/>
+		<result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+		<result property="updateBy" column="update_by" jdbcType="BIGINT"/>
+		<result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
+		<result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+		<result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+	</resultMap>
+
+	<resultMap id="DtoResultMap" type="com.wpc.sys.dto.PermissionDto" extends="BaseResultMap">
+		<result column="role_id" property="roleId" />
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="table_columns">
+		id,
+		parent_id,
+		parent_ids,
+		resource_id,
+		permission_name,
+		permission_code,
+		permission_type,
+		sort,
+		create_by,
+		create_date,
+		update_by,
+		update_date,
+		remarks,
+		del_flag
+	</sql>
+	<sql id="entity_properties">
+		#{id},
+		#{parentId},
+		#{parentIds},
+		#{resourceId},
+		#{permissionName},
+		#{permissionCode},
+		#{permissionType},
+		#{sort},
+		#{createBy},
+		#{createDate},
+		#{updateBy},
+		#{updateDate},
+		#{remarks},
+		#{delFlag}
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.wpc.sys.model.Permission">
+		INSERT INTO
+			sys_permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="parentId != null">parent_id,</if>
+			<if test="parentIds != null">parent_ids,</if>
+			<if test="resourceId != null">resource_id,</if>
+			<if test="permissionName != null">permission_name,</if>
+			<if test="permissionCode != null">permission_code,</if>
+			<if test="permissionType != null">permission_type,</if>
+			<if test="sort != null">sort,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateBy != null">update_by,</if>
+			<if test="updateDate != null">update_date,</if>
+			<if test="remarks != null">remarks,</if>
+			<if test="delFlag != null">del_flag,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id, jdbcType=BIGINT},</if>
+			<if test="parentId != null">#{parentId, jdbcType=BIGINT},</if>
+			<if test="parentIds != null">#{parentIds, jdbcType=VARCHAR},</if>
+			<if test="resourceId != null">#{resourceId, jdbcType=BIGINT},</if>
+			<if test="permissionName != null">#{permissionName, jdbcType=VARCHAR},</if>
+			<if test="permissionCode != null">#{permissionCode, jdbcType=VARCHAR},</if>
+			<if test="permissionType != null">#{permissionType, jdbcType=VARCHAR},</if>
+			<if test="sort != null">#{sort, jdbcType=INTEGER},</if>
+			<if test="createBy != null">#{createBy, jdbcType=BIGINT},</if>
+			<if test="createDate != null">#{createDate, jdbcType=TIMESTAMP},</if>
+			<if test="updateBy != null">#{updateBy, jdbcType=BIGINT},</if>
+			<if test="updateDate != null">#{updateDate, jdbcType=TIMESTAMP},</if>
+			<if test="remarks != null">#{remarks, jdbcType=VARCHAR},</if>
+			<if test="delFlag != null">#{delFlag, jdbcType=CHAR},</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.wpc.sys.model.Permission">
+		UPDATE
+			sys_permission
+		<trim prefix="set" suffixOverrides=",">
+			<if test="parentId != null">parent_id = #{parentId, jdbcType=BIGINT },</if>
+			<if test="parentIds != null">parent_ids = #{parentIds, jdbcType=VARCHAR },</if>
+			<if test="resourceId != null">resource_id = #{resourceId, jdbcType=BIGINT },</if>
+			<if test="permissionName != null">permission_name = #{permissionName, jdbcType=VARCHAR },</if>
+			<if test="permissionCode != null">permission_code = #{permissionCode, jdbcType=VARCHAR },</if>
+			<if test="permissionType != null">permission_type = #{permissionType, jdbcType=VARCHAR },</if>
+			<if test="sort != null">sort = #{sort, jdbcType=INTEGER },</if>
+			<if test="createBy != null">create_by = #{createBy, jdbcType=BIGINT },</if>
+			<if test="createDate != null">create_date = #{createDate, jdbcType=TIMESTAMP },</if>
+			<if test="updateBy != null">update_by = #{updateBy, jdbcType=BIGINT },</if>
+			<if test="updateDate != null">update_date = #{updateDate, jdbcType=TIMESTAMP },</if>
+			<if test="remarks != null">remarks = #{remarks, jdbcType=VARCHAR },</if>
+			<if test="delFlag != null">del_flag = #{delFlag, jdbcType=CHAR },</if>
+		</trim>
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM
+			sys_permission
+		WHERE
+			id = #{id}
+	</delete>
+
+	<delete id="deleteByIds">
+		DELETE FROM
+			sys_permission
+		WHERE id IN
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<select id="findById" parameterType="long" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns" />
+		FROM
+			sys_permission
+		WHERE
+			id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_permission
+	</select>
+
+	<sql id="sel_where">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="parentId != null and parentId != ''">and parent_id = #{parentId}</if>
+			<if test="parentIds != null and parentIds != ''">and parent_ids = #{parentIds}</if>
+			<if test="resourceId != null and resourceId != ''">and resource_id = #{resourceId}</if>
+			<if test="permissionName != null and permissionName != ''">and permission_name = #{permissionName}</if>
+			<if test="permissionCode != null and permissionCode != ''">and permission_code = #{permissionCode}</if>
+			<if test="permissionType != null and permissionType != ''">and permission_type = #{permissionType}</if>
+			<if test="sort != null and sort != ''">and sort = #{sort}</if>
+			<if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
+			<if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+			<if test="updateBy != null and updateBy != ''">and update_by = #{updateBy}</if>
+			<if test="updateDate != null and updateDate != ''">and update_date = #{updateDate}</if>
+			<if test="remarks != null and remarks != ''">and remarks = #{remarks}</if>
+			<if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag}</if>
+		</trim>
+	</sql>
+
+	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.sys.model.Permission">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_permission
+		<include refid="sel_where" />
+	</select>
+
+	<select id="count" resultType="int" parameterType="com.wpc.sys.model.Permission">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_permission
+		<include refid="sel_where" />
+	</select>
+
+		<!-- 分页查询条件，供datatables插件查询使用 -->
+	<sql id="page_where">
+		<if test="condition != null">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="condition.parentId != null and condition.parentId != ''">and parent_id = #{condition.parentId}</if>
+			<if test="condition.parentIds != null and condition.parentIds != ''">and parent_ids = #{condition.parentIds}</if>
+			<if test="condition.resourceId != null and condition.resourceId != ''">and resource_id = #{condition.resourceId}</if>
+			<if test="condition.permissionName != null and condition.permissionName != ''">and permission_name = #{condition.permissionName}</if>
+			<if test="condition.permissionCode != null and condition.permissionCode != ''">and permission_code = #{condition.permissionCode}</if>
+			<if test="condition.permissionType != null and condition.permissionType != ''">and permission_type = #{condition.permissionType}</if>
+			<if test="condition.sort != null and condition.sort != ''">and sort = #{condition.sort}</if>
+			<if test="condition.createBy != null and condition.createBy != ''">and create_by = #{condition.createBy}</if>
+			<if test="condition.createDate != null and condition.createDate != ''">and create_date = #{condition.createDate}</if>
+			<if test="condition.updateBy != null and condition.updateBy != ''">and update_by = #{condition.updateBy}</if>
+			<if test="condition.updateDate != null and condition.updateDate != ''">and update_date = #{condition.updateDate}</if>
+			<if test="condition.remarks != null and condition.remarks != ''">and remarks = #{condition.remarks}</if>
+			<if test="condition.delFlag != null and condition.delFlag != ''">and del_flag = #{condition.delFlag}</if>
+		</trim>
+		</if>
+	</sql>
+
+	<!-- 查询条数，供datatables插件查询使用 -->
+	<select id="countPage" resultType="int">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_permission
+		<include refid="page_where" />
+	</select>
+
+	<!-- 分页查询，供datatables插件查询使用 -->
+	<select id="searchPage" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_permission
+		<include refid="page_where" />
+		<include refid="order"/>
+		<include refid="limit"/>
+	</select>
+
+	<!-- 排序，供datatables插件查询使用 -->
+	<sql id="order">
+		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
+	</sql>
+
+			<!-- 分页，供datatables插件查询使用  -->
+	<sql id="limit">
+		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
+	</sql>
+
+	<!-- 通过资源id和资源类型获取权限 -->
+	<select id="findByResourceId" resultMap="BaseResultMap">
+		SELECT <include refid="table_columns"/>
+		FROM sys_permission
+		WHERE resource_id = #{resourceId} AND permission_type = #{permissionType}
+	</select>
+	<!-- 通过资源id和类型删除权限 -->
+	<delete id="deleteByResourceId">
+		DELETE FROM sys_permission
+		WHERE resource_id = #{resourceId} AND permission_type = #{permissionType}
+	</delete>
+	<!-- 通过资源父id和类型删除权限 -->
+	<delete id="deleteByParentId">
+		DELETE FROM sys_permission
+		WHERE parent_id = #{parentId} AND permission_type = #{permissionType}
+	</delete>
+
+	<!-- 获取所有权限，区分角色是否具有该角色 -->
+	<select id="getAllPermissionsByRole" resultMap="DtoResultMap">
+		SELECT
+			p.*,rp.role_id
+		FROM
+			sys_permission p
+		LEFT JOIN sys_role_permission rp ON (p.id=rp.permission_id AND rp.role_id=#{roleId})
+	</select>
+
+</mapper>

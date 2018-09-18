@@ -1,0 +1,1348 @@
+{
+  "version": "2.0",
+  "refs": {
+    "2": {
+      "_classPath": "Q.Position.RIGHT_TOP"
+    },
+    "6": {
+      "_classPath": "Q.Position.RIGHT_BOTTOM"
+    }
+  },
+  "datas": [
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "64LV",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 20,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 2
+          },
+          "label.anchor.position": {
+            "$ref": 2
+          }
+        },
+        "location": {
+          "x": 36.7466253704313,
+          "y": 296.0660739722896
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 1035.5780547615377,
+          "height": 313.2291443157841
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "64Y值班室",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 20,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 6
+          },
+          "label.anchor.position": {
+            "$ref": 6
+          }
+        },
+        "location": {
+          "x": 36.12379630031864,
+          "y": 612.5640753481762
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 1035.8548828115681,
+          "height": 288.9433014273386
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false
+        },
+        "location": {
+          "x": -308.6849974982409,
+          "y": 831.8225545241645
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 347.0009845256408,
+          "height": 120.92330794843745
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "机动LV车",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 20,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 2
+          },
+          "label.anchor.position": {
+            "$ref": 2
+          }
+        },
+        "location": {
+          "x": 907.2498835023622,
+          "y": 521.6574343445175
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 681.1313598700267,
+          "height": 764.4256317764044
+        }
+      }
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -118.39721252472322,
+          "y": 481.82856275506686
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                477.4191494086924,
+                3.556151799325222
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -332.4692199447831,
+                5.84002542272055
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 977.7186030309616,
+          "y": 403.7643322324295
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                124.87376139069733,
+                24.853067637922038
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -366.55034966627665,
+                24.60623252195694
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "348"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 1464.3518058169384,
+          "y": 355.7699145054605
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                -712.0148379036796,
+                6.082982026892747
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -2007.4109343974208,
+                6.022567208251548
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "351"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -274.5051064320453,
+          "y": 742.1135250272224
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                83.30153978303284,
+                54.66761354180319
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -244.52061181753442,
+                54.12466701605757
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "354"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 608.7251090061606,
+          "y": 546.7867164247955
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                31.613727194584115,
+                -117.14520871604948
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                33.84669634229156,
+                284.4765522193628
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "357"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 935.5612168760373,
+          "y": 545.8525268461653
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                9.13222888841654,
+                -118.12129476317897
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                9.777264674046034,
+                286.84688896979446
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "360"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -518.9095079628713,
+          "y": 454.23089077908935
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                0.2500560247580247,
+                -93.69794145759084
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                0.3167296905165987,
+                341.743197538859
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 197.43909101187893,
+          "y": 560.8641429849883
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                3.5109967730300022,
+                -73.57149096079247
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                3.7589886476868903,
+                178.66171668100571
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "366"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -146.82137530777405,
+          "y": 557.6543586180245
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                18.976314205644517,
+                -72.08772821244442
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                20.31666625896596,
+                175.05853294359258
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "369"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -450.18487962775635,
+          "y": 470.4181041465581
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                0.46421667903923325,
+                -107.50635772481657
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                0.4970056480768186,
+                261.0694737105981
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "372"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -225.36031499730575,
+            "y": 237.56421412576427,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "375"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 106.1362481728232,
+          "y": 235.38788744075921
+        },
+        "image": "../static/images/fx/8060D.png"
+      },
+      "_refId": "376"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 354.4620101924002,
+          "y": 296.9577528552394
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "377"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": -159.7442075555783,
+          "y": 409.68213786183645
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "378"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 266.6152806390353,
+          "y": 407.7545053966421
+        },
+        "image": "../static/images/fx/7062-1.png"
+      },
+      "_refId": "379"
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "name": "R",
+        "styles": {
+          "label.border": 2,
+          "label.padding": 5,
+          "label.border.style": "#5b9bd5",
+          "label.font.size": 20,
+          "label.color": "#548235",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 43.13846333955236,
+              "height": 56.85167931417968
+            }
+          },
+          "label.radius": 0
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -571.7829510339676,
+            "y": 362.9272211381574,
+            "rotate": 0
+          }
+        }
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -909.1161167015525,
+            "y": -47.28263491119183,
+            "rotate": 0
+          }
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": -286.76834632146733,
+          "y": 542.230091152788
+        },
+        "image": "../static/images/fx/8010A-1.png"
+      },
+      "_refId": "382"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": -288.6635482776721,
+          "y": 618.0608046183609
+        },
+        "image": "../static/images/fx/8010A-4.png"
+      },
+      "_refId": "383"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": -291.2276290182053,
+          "y": 690.229817371232
+        },
+        "image": "../static/images/fx/8010A-7.png"
+      },
+      "_refId": "384"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 46.25020080581402,
+          "y": 540.0870076994515
+        },
+        "image": "../static/images/fx/8010A-2.png"
+      },
+      "_refId": "385"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 44.26489591638533,
+          "y": 617.827453358505
+        },
+        "image": "../static/images/fx/8010A-5.png"
+      },
+      "_refId": "386"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 45.27134744810491,
+          "y": 689.7931712306782
+        },
+        "image": "../static/images/fx/8010A-8.png"
+      },
+      "_refId": "387"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 379.3740959250621,
+          "y": 538.679939968362
+        },
+        "image": "../static/images/fx/8010A-3.png"
+      },
+      "_refId": "388"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 379.1853483598213,
+          "y": 616.6389836789217
+        },
+        "image": "../static/images/fx/8010A-6.png"
+      },
+      "_refId": "389"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 381.9040389214419,
+          "y": 687.9484947669927
+        },
+        "image": "../static/images/fx/8010A-9.png"
+      },
+      "_refId": "390"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 643.4435656986888,
+            "y": 283.8172381402269,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4G.png"
+      },
+      "_refId": "391"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 963.5133895843705,
+            "y": 232.36112546026882,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/8142.png"
+      },
+      "_refId": "392"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1032.8169546943589,
+            "y": 367.4439250891754,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4G.png"
+      },
+      "_refId": "393"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 796.8358074217424,
+          "y": 496.72355555277494
+        },
+        "image": "../static/images/fx/8122-1.png"
+      },
+      "_refId": "394"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 799.8975753525547,
+          "y": 598.198351398894
+        },
+        "image": "../static/images/fx/8122-3.png"
+      },
+      "_refId": "395"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 800.6650343056008,
+          "y": 705.6655910760184
+        },
+        "image": "../static/images/fx/8122-5.png"
+      },
+      "_refId": "396"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 800.0453624759912,
+          "y": 809.4417197654338
+        },
+        "image": "../static/images/fx/8122-7.png"
+      },
+      "_refId": "397"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 1101.822139181623,
+          "y": 495.88822637037055
+        },
+        "image": "../static/images/fx/8122-2.png"
+      },
+      "_refId": "398"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 1100.8600286412482,
+          "y": 598.5740406021531
+        },
+        "image": "../static/images/fx/8122-4.png"
+      },
+      "_refId": "399"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "x": 1100.4751525712072,
+          "y": 705.6821942669884
+        },
+        "image": "../static/images/fx/8122-6.png"
+      },
+      "_refId": "400"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 392
+        },
+        "to": {
+          "_ref": 393
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 375
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 351
+        },
+        "to": {
+          "_ref": 376
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 351
+        },
+        "to": {
+          "_ref": 377
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 351
+        },
+        "to": {
+          "_ref": 378
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 351
+        },
+        "to": {
+          "_ref": 379
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 382
+        },
+        "to": {
+          "_ref": 372
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 383
+        },
+        "to": {
+          "_ref": 372
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 384
+        },
+        "to": {
+          "_ref": 372
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 385
+        },
+        "to": {
+          "_ref": 369
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 386
+        },
+        "to": {
+          "_ref": 369
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 369
+        },
+        "to": {
+          "_ref": 387
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 388
+        },
+        "to": {
+          "_ref": 366
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 389
+        },
+        "to": {
+          "_ref": 366
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 390
+        },
+        "to": {
+          "_ref": 366
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 391
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 393
+        },
+        "to": {
+          "_ref": 348
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 394
+        },
+        "to": {
+          "_ref": 357
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 395
+        },
+        "to": {
+          "_ref": 357
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 396
+        },
+        "to": {
+          "_ref": 357
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 397
+        },
+        "to": {
+          "_ref": 357
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 398
+        },
+        "to": {
+          "_ref": 360
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 399
+        },
+        "to": {
+          "_ref": 360
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 400
+        },
+        "to": {
+          "_ref": 360
+        },
+        "angle": 0
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "name": "DVS",
+        "styles": {
+          "label.border": 1,
+          "label.padding": 5,
+          "label.border.style": "#0988b5",
+          "label.font.size": 16,
+          "label.color": "#47586f",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 11.420997481880306,
+              "height": 40.64240824199494
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -363.9505597342147,
+            "y": 852.9021847639021,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "425"
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "name": "DVS",
+        "styles": {
+          "label.border": 1,
+          "label.padding": 5,
+          "label.border.style": "#0988b5",
+          "label.font.size": 16,
+          "label.color": "#47586f",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 1,
+              "height": 40.64240824199494
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -233.16477848590193,
+            "y": 855.0743030039893,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "426"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 425
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 426
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 392
+        },
+        "to": {
+          "_ref": 391
+        }
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "name": "ZD监控系统",
+        "styles": {
+          "label.border": 0,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.font.size": 20,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -299.26941122497635,
+            "y": 809.9764340192868,
+            "rotate": 0
+          }
+        }
+      }
+    }
+  ],
+  "scale": 0.6763018942554039,
+  "tx": 289.2350174477274,
+  "ty": 99.28048332494885
+}

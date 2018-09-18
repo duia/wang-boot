@@ -1,0 +1,913 @@
+{
+  "version": "2.0",
+  "datas": [
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "name": "",
+        "parent": {
+          "_ref": 342
+        },
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.stroke.style": "#00cc00",
+          "shape.fill.color": false,
+          "border.width": 0,
+          "border.color": ""
+        },
+        "location": {
+          "x": 31.318485004856726,
+          "y": 3.8944545000017783
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                42.74033729260618,
+                118.81154549999795
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                1149.5676926976819,
+                118.81154549999795
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "341"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.stroke.style": "#00cc00",
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 89.82876450200868,
+          "y": -1123.1665000000023
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                44.37761638922591,
+                1065.284000000002
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                1193.6048546067623,
+                1065.284000000002
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "345"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "路由器",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -144.88500000000002,
+            "y": 102.28500000000021,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 55.02999999999996,
+            "height": 31.169999999999973
+          }
+        },
+        "image": "../static/images/qunee/luyouqi.png"
+      },
+      "_refId": "348"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "防火墙",
+        "styles": {
+          "label.color": "#b2b2b2",
+          "label.font.size": 16
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -57.20999999999994,
+            "y": -60.780000000000115,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 25,
+            "height": 45.85999999999997
+          }
+        },
+        "image": "../static/images/qunee/fanghuoqiang.png"
+      },
+      "_refId": "349"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 348
+        },
+        "to": {
+          "_ref": 349
+        },
+        "edgeType": "orthogonal.V.H"
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "加密机",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "x": 17.480000000000015,
+          "y": -60.0900000000001
+        },
+        "image": "../static/images/qunee/jiamiji.png"
+      },
+      "_refId": "342"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "交换机",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 110.7599999999998,
+            "y": -59.790000000000084,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 40.47999999999996,
+            "height": 50.47999999999997
+          }
+        },
+        "image": "../static/images/qunee/jiaohuanji.png"
+      },
+      "_refId": "351"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 349
+        },
+        "to": {
+          "_ref": 342
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 342
+        },
+        "to": {
+          "_ref": 351
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "机箱",
+        "styles": {
+          "alpha": 1,
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 577.3320000000015,
+            "y": -187.06200000000007,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 256.2899999999998,
+            "height": 152.16000000000014
+          }
+        },
+        "image": "../static/images/qunee/shuzijiemajuzhen.png"
+      },
+      "_refId": "354"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "zIndex": 1,
+        "name": "路由器",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -147.48500000000018,
+            "y": 397.7350000000001,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 55.02999999999997,
+            "height": 31.169999999999966
+          }
+        },
+        "image": "../static/images/qunee/luyouqi.png"
+      },
+      "_refId": "355"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 348
+        },
+        "to": {
+          "_ref": 355
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "zIndex": -1,
+        "name": "地库",
+        "styles": {
+          "group.background.color": "#121212",
+          "group.stroke": 2,
+          "group.stroke.color": "#565656",
+          "group.stroke.line.dash": [
+            3,
+            2
+          ],
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "x": 398.04699999999997,
+          "y": 396.9940000000003
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 1259.5159999999953,
+          "height": 131.99999999999997
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "防火墙",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 55.50999999999999,
+            "y": 398.51500000000027,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 21.619999999999994,
+            "height": 44.169999999999966
+          }
+        },
+        "image": "../static/images/qunee/fanghuoqiang.png"
+      },
+      "_refId": "358"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 355
+        },
+        "to": {
+          "_ref": 358
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "加密机",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "x": 122.19999999999999,
+          "y": 397.6700000000003
+        },
+        "image": "../static/images/qunee/jiamiji.png"
+      },
+      "_refId": "360"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 358
+        },
+        "to": {
+          "_ref": 360
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "交换机",
+        "styles": {
+          "label.color": "#b2b2b2",
+          "label.font.size": 16
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 232.2450000000001,
+            "y": 396.8250000000001,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 42.169999999999966,
+            "height": 52.16999999999996
+          }
+        },
+        "image": "../static/images/qunee/jiaohuanji.png"
+      },
+      "_refId": "362"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 360
+        },
+        "to": {
+          "_ref": 362
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "中心服务器",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "x": 506.0770000000004,
+          "y": 394.7970000000003
+        },
+        "image": "../static/images/qunee/fuwuqi.png"
+      },
+      "_refId": "364"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "网闸",
+        "styles": {
+          "label.color": "#b2b2b2",
+          "label.font.size": 16
+        },
+        "location": {
+          "x": 757.6659999999993,
+          "y": 394.7970000000002
+        },
+        "image": "../static/images/qunee/wangzha.png"
+      },
+      "_refId": "365"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "阵地网",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "x": 942.1489999999993,
+          "y": 394.79700000000014
+        },
+        "image": "../static/images/qunee/zhendiwang.png"
+      },
+      "_refId": "366"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 364
+        },
+        "to": {
+          "_ref": 362
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 365
+        },
+        "to": {
+          "_ref": 364
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 365
+        },
+        "to": {
+          "_ref": 366
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "FXH8142车载视频指挥调度集成平台",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 467.48173759050303,
+            "y": 215.07863340805707,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 255.27000000000027,
+            "height": 71.62000000000005
+          }
+        },
+        "image": "../static/images/fx/8142.png"
+      },
+      "_refId": "370"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 370
+        },
+        "to": {
+          "_ref": 341
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "FXH4052A高清图像指挥调度终端",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2",
+          "render.color": ""
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 161.460000000001,
+            "y": 211.7050000000001,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 280.36000000000047,
+            "height": 59.53000000000003
+          }
+        },
+        "image": "../static/images/fx/4052.png"
+      },
+      "_refId": "372"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 372
+        },
+        "to": {
+          "_ref": 341
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "FXH8122车载高清图像传输终端",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 751.6600000000003,
+            "y": 214.56500000000003,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 226.8000000000001,
+            "height": 69.93000000000008
+          }
+        },
+        "image": "../static/images/fx/8122.png"
+      },
+      "_refId": "374"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 374
+        },
+        "to": {
+          "_ref": 341
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 351
+        },
+        "to": {
+          "_ref": 341
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "四营FXH8010A",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1045.910600504302,
+            "y": 218.70070287514963,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 229.59999999999988,
+            "height": 41.7
+          }
+        },
+        "image": "../static/images/qunee/fuwuqi.png"
+      },
+      "_refId": "377"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#0c0"
+        },
+        "from": {
+          "_ref": 377
+        },
+        "to": {
+          "_ref": 341
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 351
+        },
+        "to": {
+          "_ref": 354
+        },
+        "edgeType": "orthogonal.V.H"
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "FXH7040-4四路视频编码器",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 343.7117411486099,
+            "y": 1.357077953114795,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 281.00352999999456,
+            "height": 58.67572999999928
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "380"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 380
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "FXH6040-8八路视音频解码器",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 666.0839249999976,
+            "y": -1.106105000000138,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 272.33044999999214,
+            "height": 60.480989999998336
+          }
+        },
+        "image": "../static/images/fx/6040-8.png"
+      },
+      "_refId": "382"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 382
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "FXH7062-1一路计算机信号编码器",
+        "styles": {
+          "label.font.size": 13,
+          "label.color": "#b2b2b2"
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1017.2274332900669,
+            "y": -3.6722412596089926,
+            "rotate": 0
+          }
+        },
+        "size": {
+          "_className": "Q.Size",
+          "json": {
+            "width": 281.19819999999726,
+            "height": 52.45409999999984
+          }
+        },
+        "image": "../static/images/fx/7062-1.png"
+      },
+      "_refId": "384"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        },
+        "from": {
+          "_ref": 384
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "已用插槽：5个\n未用插槽：5个\n共有插槽：10个\n...",
+        "styles": {
+          "label.border": 0.5,
+          "label.padding": 5,
+          "label.border.style": "#777358",
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 150,
+              "height": 100
+            }
+          },
+          "label.font.size": 16,
+          "label.color": "#b2b2b2",
+          "label.background.color": "#464438"
+        },
+        "location": {
+          "x": 801.0600000000015,
+          "y": -187.5900000000005
+        }
+      }
+    }
+  ],
+  "scale": 0.5917159763313596,
+  "tx": 235,
+  "ty": 222
+}

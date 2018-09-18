@@ -1,0 +1,1119 @@
+{
+  "version": "2.0",
+  "refs": {
+    "2": {
+      "_classPath": "Q.Position.LEFT_TOP"
+    },
+    "6": {
+      "_classPath": "Q.Position.RIGHT_TOP"
+    }
+  },
+  "datas": [
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "65基地地面",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#2A3C1E",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#ccc",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 2
+          },
+          "label.anchor.position": {
+            "$ref": 2
+          }
+        },
+        "location": {
+          "x": -215.82385905063,
+          "y": -21.345568096814706
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 795.7167420814521,
+          "height": 356.7548725840954
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "914旅机动",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#2A3C1E",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#ccc",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 6
+          },
+          "label.anchor.position": {
+            "$ref": 6
+          }
+        },
+        "location": {
+          "x": 970.8948353824625,
+          "y": 356.3816685387794
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 799.7167420814521,
+          "height": 366.672336306282
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "914旅地面",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#2A3C1E",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#ccc",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 2
+          },
+          "label.anchor.position": {
+            "$ref": 2
+          }
+        },
+        "location": {
+          "x": -215.34697458860367,
+          "y": 358.49850576562017
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 795.7167420814521,
+          "height": 370.02948367182216
+        }
+      }
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "65基地地下",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#2A3C1E",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#ccc",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 6
+          },
+          "label.anchor.position": {
+            "$ref": 6
+          }
+        },
+        "location": {
+          "x": 969.6691481147956,
+          "y": -24.61969185373513
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 795.7167420814521,
+          "height": 361.1771589673428
+        }
+      }
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 821.2283310735424,
+          "y": 23.348589768430784
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                453.7341476809133,
+                0.8050578619315834
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -315.97525639393143,
+                1.3220915882538022
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "345"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": 820.0668492473978,
+          "y": 433.74798417488324
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                451.6748471177852,
+                0.24493908634515726
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -314.54118310067764,
+                0.40224674648171366
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "348"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -203.3862087549595,
+          "y": 431.11945773994506
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                456.8234957323624,
+                0.8050578619315846
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -318.1266429440425,
+                1.3220915882538034
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "351"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 2,
+          "shape.fill.color": false
+        },
+        "location": {
+          "x": -199.25379894421772,
+          "y": 21.910153222077
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                452.7043649970963,
+                0.805057861931584
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -315.2581275438944,
+                1.322091588253803
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "354"
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 0.5,
+          "label.padding": 5,
+          "label.border.style": "#1D4876",
+          "label.font.size": 18,
+          "label.color": "#fff",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 288.85803167420744,
+            "y": 22.954880476341827,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "357"
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 0.5,
+          "label.padding": 5,
+          "label.border.style": "#1D4876",
+          "label.font.size": 18,
+          "label.color": "#fff",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 469.2390229992636,
+            "y": 429.32835996507123,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "358"
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 0.5,
+          "label.padding": 5,
+          "label.border.style": "#1D4876",
+          "label.font.size": 18,
+          "label.color": "#fff",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 288.85803167420744,
+            "y": 432.1566803465581,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "359"
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 0.5,
+          "label.padding": 5,
+          "label.border.style": "#1D4876",
+          "label.font.size": 18,
+          "label.color": "#fff",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 470.7160633484149,
+            "y": 24.430526325021184,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "360"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#48759E"
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#00cc00"
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        }
+      }
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+      	"ip":"1",
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -421.57236381187573,
+            "y": -85.52711475955735,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "366"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -139.62331941585893,
+            "y": -109.79752446595776,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/8060D.png"
+      },
+      "_refId": "367"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -21.680103427151543,
+            "y": 96.08935076193772,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7062-1.png"
+      },
+      "_refId": "368"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -371.3253831613347,
+            "y": 100.06403986460398,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "369"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 20.942126313437353,
+            "y": -39.93170536925489,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/6040-8.png"
+      },
+      "_refId": "370"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -51.986679619533156,
+            "y": 496.7821364040869,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7062-1.png"
+      },
+      "_refId": "371"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -216.15418130912622,
+            "y": 259.65774586075133,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "372"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -395.2124231933678,
+            "y": 376.9913769070878,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/8060D.png"
+      },
+      "_refId": "373"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -23.381945695239086,
+            "y": 374.0992679943166,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "374"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -379.22990857844076,
+            "y": 490.50077570872907,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "375"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1135.1022663640667,
+            "y": 96.35240802679978,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7062-1.png"
+      },
+      "_refId": "376"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 779.3082120792981,
+            "y": 89.65806111207594,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "377"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1178.3743025560302,
+            "y": -91.96353081483008,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/6040-8.png"
+      },
+      "_refId": "378"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 800.1007942208392,
+            "y": -107.94812033042138,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "379"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 850.5732961826802,
+            "y": 268.515535037078,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "380"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1180.527780863979,
+            "y": 308.1766893991853,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "381"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 828.5043662364453,
+            "y": 490.58835920439697,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "382"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1157.9669526330683,
+            "y": 498.47513946024463,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7062-1.png"
+      },
+      "_refId": "383"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 357
+        },
+        "to": {
+          "_ref": 360
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 357
+        },
+        "to": {
+          "_ref": 359
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 360
+        },
+        "to": {
+          "_ref": 358
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 359
+        },
+        "to": {
+          "_ref": 358
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 357
+        },
+        "to": {
+          "_ref": 358
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 366
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 367
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 370
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 369
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 368
+        },
+        "to": {
+          "_ref": 354
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 372
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 373
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 374
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 375
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 371
+        },
+        "to": {
+          "_ref": 351
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 379
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 378
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 376
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 377
+        },
+        "to": {
+          "_ref": 345
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 380
+        },
+        "to": {
+          "_ref": 348
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 381
+        },
+        "to": {
+          "_ref": 348
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 382
+        },
+        "to": {
+          "_ref": 348
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f62"
+        },
+        "from": {
+          "_ref": 383
+        },
+        "to": {
+          "_ref": 348
+        },
+        "angle": 1.5707963267948966
+      }
+    }
+  ],
+  "scale": 0.6770295751057948,
+  "tx": 310.88009700612895,
+  "ty": 315.6553969073784
+}

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpc.sys.dao.DictDao">
+
+	<resultMap id="BaseResultMap" type="com.wpc.sys.model.Dict">
+		<id property="id" column="id"/>
+		<result property="value" column="value"/>
+		<result property="label" column="label"/>
+		<result property="type" column="type"/>
+		<result property="description" column="description"/>
+		<result property="sort" column="sort"/>
+		<result property="parentId" column="parent_id"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createDate" column="create_date"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="remarks" column="remarks"/>
+		<result property="delFlag" column="del_flag"/>
+		<association property="parent" javaType="com.wpc.sys.model.Dict">
+			<id property="id" column="parent.id"/>
+			<result property="value" column="value"/>
+			<result property="label" column="label"/>
+			<result property="type" column="type"/>
+			<result property="description" column="description"/>
+			<result property="sort" column="sort"/>
+			<result property="parentId" column="parent_id"/>
+			<result property="createBy" column="create_by"/>
+			<result property="createDate" column="create_date"/>
+			<result property="updateBy" column="update_by"/>
+			<result property="updateDate" column="update_date"/>
+			<result property="remarks" column="remarks"/>
+			<result property="delFlag" column="del_flag"/>
+		</association>
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="table_columns">
+		id,
+		value,
+		label,
+		type,
+		description,
+		sort,
+		parent_id,
+		create_by,
+		create_date,
+		update_by,
+		update_date,
+		remarks,
+		del_flag
+	</sql>
+	<sql id="entity_properties">
+		#{id},
+		#{value},
+		#{label},
+		#{type},
+		#{description},
+		#{sort},
+		#{parentId},
+		#{createBy},
+		#{createDate},
+		#{updateBy},
+		#{updateDate},
+		#{remarks},
+		#{delFlag}
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.wpc.sys.model.Dict">
+		INSERT INTO
+			sys_dict
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="value != null">value,</if>
+			<if test="label != null">label,</if>
+			<if test="type != null">type,</if>
+			<if test="description != null">description,</if>
+			<if test="sort != null">sort,</if>
+			<if test="parentId != null">parent_id,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateBy != null">update_by,</if>
+			<if test="updateDate != null">update_date,</if>
+			<if test="remarks != null">remarks,</if>
+			<if test="delFlag != null">del_flag,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id, jdbcType=BIGINT},</if>
+			<if test="value != null">#{value, jdbcType=VARCHAR},</if>
+			<if test="label != null">#{label, jdbcType=VARCHAR},</if>
+			<if test="type != null">#{type, jdbcType=VARCHAR},</if>
+			<if test="description != null">#{description, jdbcType=VARCHAR},</if>
+			<if test="sort != null">#{sort, jdbcType=INTEGER},</if>
+			<if test="parentId != null">#{parentId, jdbcType=BIGINT},</if>
+			<if test="createBy != null">#{createBy, jdbcType=BIGINT},</if>
+			<if test="createDate != null">#{createDate, jdbcType=TIMESTAMP},</if>
+			<if test="updateBy != null">#{updateBy, jdbcType=BIGINT},</if>
+			<if test="updateDate != null">#{updateDate, jdbcType=TIMESTAMP},</if>
+			<if test="remarks != null">#{remarks, jdbcType=VARCHAR},</if>
+			<if test="delFlag != null">#{delFlag, jdbcType=CHAR},</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.wpc.sys.model.Dict">
+		UPDATE
+			sys_dict
+		<trim prefix="set" suffixOverrides=",">
+			<if test="value != null">value = #{value, jdbcType=VARCHAR },</if>
+			<if test="label != null">label = #{label, jdbcType=VARCHAR },</if>
+			<if test="type != null">type = #{type, jdbcType=VARCHAR },</if>
+			<if test="description != null">description = #{description, jdbcType=VARCHAR },</if>
+			<if test="sort != null">sort = #{sort, jdbcType=INTEGER },</if>
+			<if test="parentId != null">parent_id = #{parentId, jdbcType=BIGINT },</if>
+			<if test="createBy != null">create_by = #{createBy, jdbcType=BIGINT },</if>
+			<if test="createDate != null">create_date = #{createDate, jdbcType=TIMESTAMP },</if>
+			<if test="updateBy != null">update_by = #{updateBy, jdbcType=BIGINT },</if>
+			<if test="updateDate != null">update_date = #{updateDate, jdbcType=TIMESTAMP },</if>
+			<if test="remarks != null">remarks = #{remarks, jdbcType=VARCHAR },</if>
+			<if test="delFlag != null">del_flag = #{delFlag, jdbcType=CHAR },</if>
+		</trim>
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM
+			sys_dict
+		WHERE
+			id = #{id}
+	</delete>
+
+	<delete id="deleteByIds">
+		DELETE FROM
+			sys_dict
+		WHERE id IN
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<select id="findById" parameterType="long" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns" />
+		FROM
+			sys_dict
+		WHERE
+			id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_dict
+	</select>
+
+	<sql id="sel_where">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="value != null and value != ''">and value = #{value}</if>
+			<if test="label != null and label != ''">and label = #{label}</if>
+			<if test="type != null and type != ''">and type = #{type}</if>
+			<if test="description != null and description != ''">and description = #{description}</if>
+			<if test="sort != null and sort != ''">and sort = #{sort}</if>
+			<if test="parentId != null and parentId != ''">and parent_id = #{parentId}</if>
+			<if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
+			<if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+			<if test="updateBy != null and updateBy != ''">and update_by = #{updateBy}</if>
+			<if test="updateDate != null and updateDate != ''">and update_date = #{updateDate}</if>
+			<if test="remarks != null and remarks != ''">and remarks = #{remarks}</if>
+			<if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag}</if>
+		</trim>
+	</sql>
+
+	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.sys.model.Dict">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_dict
+		<include refid="sel_where" />
+	</select>
+
+	<select id="count" resultType="int" parameterType="com.wpc.sys.model.Dict">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_dict
+		<include refid="sel_where" />
+	</select>
+
+		<!-- 分页查询条件，供datatables插件查询使用 -->
+	<sql id="page_where">
+		<if test="condition != null">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="condition.value != null and condition.value != ''">and value = #{condition.value}</if>
+			<if test="condition.label != null and condition.label != ''">and label = #{condition.label}</if>
+			<if test="condition.type != null and condition.type != ''">and type = #{condition.type}</if>
+			<if test="condition.description != null and condition.description != ''">and description = #{condition.description}</if>
+			<if test="condition.sort != null and condition.sort != ''">and sort = #{condition.sort}</if>
+			<if test="condition.parentId != null and condition.parentId != ''">and parent_id = #{condition.parentId}</if>
+			<if test="condition.createBy != null and condition.createBy != ''">and create_by = #{condition.createBy}</if>
+			<if test="condition.createDate != null and condition.createDate != ''">and create_date = #{condition.createDate}</if>
+			<if test="condition.updateBy != null and condition.updateBy != ''">and update_by = #{condition.updateBy}</if>
+			<if test="condition.updateDate != null and condition.updateDate != ''">and update_date = #{condition.updateDate}</if>
+			<if test="condition.remarks != null and condition.remarks != ''">and remarks = #{condition.remarks}</if>
+			<if test="condition.delFlag != null and condition.delFlag != ''">and del_flag = #{condition.delFlag}</if>
+		</trim>
+		</if>
+	</sql>
+
+	<!-- 查询条数，供datatables插件查询使用 -->
+	<select id="countPage" resultType="int">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_dict
+		<include refid="page_where" />
+	</select>
+
+	<!-- 分页查询，供datatables插件查询使用 -->
+	<select id="searchPage" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_dict
+		<include refid="page_where" />
+		<include refid="order"/>
+		<include refid="limit"/>
+	</select>
+
+	<!-- 排序，供datatables插件查询使用 -->
+	<sql id="order">
+		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
+	</sql>
+
+	<!-- 分页，供datatables插件查询使用  -->
+	<sql id="limit">
+		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
+	</sql>
+
+	<select id="findByParentIdsLike" resultMap="BaseResultMap">
+		SELECT
+			id,
+			parent_id AS "parent.id",
+			parent_ids
+		FROM sys_dict
+		WHERE del_flag != #{DEL_FLAG_DELETE} AND parent_ids LIKE #{parentIds}
+		ORDER BY sort
+	</select>
+
+	<update id="updateParentIds">
+		UPDATE sys_dict SET
+			parent_id = #{parent.id},
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+
+	<!-- 自定义sql语句 -->
+
+</mapper>

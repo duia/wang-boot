@@ -1,0 +1,1576 @@
+{
+  "version": "2.0",
+  "refs": {
+    "2": {
+      "_classPath": "Q.Position.LEFT_TOP"
+    },
+    "6": {
+      "_classPath": "Q.Position.CENTER_TOP"
+    },
+    "7": {
+      "_classPath": "Q.Position.CENTER_BOTTOM"
+    },
+    "13": {
+      "_classPath": "Q.Position.RIGHT_TOP"
+    },
+    "37": {
+      "_classPath": "Q.Position.RIGHT_BOTTOM"
+    },
+    "38": {
+      "_classPath": "Q.Position.LEFT_BOTTOM"
+    }
+  },
+  "datas": [
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "65基地地面",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 2
+          },
+          "label.anchor.position": {
+            "$ref": 2
+          }
+        },
+        "location": {
+          "x": -215.82385905063,
+          "y": -21.345568096814706
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 795.7167420814521,
+          "height": 356.7548725840954
+        }
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 1,
+          "label.padding": 5,
+          "label.radius": "0",
+          "label.border.style": "#5b9bd5",
+          "label.font.size": 18,
+          "label.color": "#548235",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 6
+                },
+                "$anchorPosition": {
+                  "$ref": 7
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 288.85803167420744,
+            "y": 22.954880476341827,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "342"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 1,
+          "shape.fill.color": false,
+          "shape.stroke.style": "#424f63"
+        },
+        "location": {
+          "x": -199.25379894421772,
+          "y": 21.910153222077
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                452.7043649970963,
+                0.805057861931584
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -315.2581275438944,
+                1.322091588253803
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "344"
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "65基地地下",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 13
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "location": {
+          "x": 969.6691481147956,
+          "y": -24.61969185373513
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 795.7167420814521,
+          "height": 361.1771589673428
+        }
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 1,
+          "label.padding": 5,
+          "label.radius": "0",
+          "label.border.style": "#5b9bd5",
+          "label.font.size": 18,
+          "label.color": "#548235",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 6
+                },
+                "$anchorPosition": {
+                  "$ref": 7
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 470.7160633484149,
+            "y": 24.430526325021184,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "348"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 1,
+          "shape.fill.color": "#424f63",
+          "shape.stroke.style": "#424f63"
+        },
+        "location": {
+          "x": 821.2283310735424,
+          "y": 23.348589768430784
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                453.7341476809133,
+                0.8050578619315834
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -315.97525639393143,
+                1.3220915882538022
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "350"
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "614旅地面",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 2
+          },
+          "label.anchor.position": {
+            "$ref": 2
+          }
+        },
+        "location": {
+          "x": -215.34697458860367,
+          "y": 358.49850576562017
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 795.7167420814521,
+          "height": 370.02948367182216
+        }
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 1,
+          "label.padding": 5,
+          "label.radius": "0",
+          "label.border.style": "#5b9bd5",
+          "label.font.size": 18,
+          "label.color": "#548235",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 7
+                },
+                "$anchorPosition": {
+                  "$ref": 6
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 288.85803167420744,
+            "y": 432.1566803465581,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "354"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 1,
+          "shape.fill.color": false,
+          "shape.stroke.style": "#424f63"
+        },
+        "location": {
+          "x": -203.3862087549595,
+          "y": 431.11945773994506
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                456.8234957323624,
+                0.8050578619315846
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -318.1266429440425,
+                1.3220915882538034
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "356"
+    },
+    {
+      "_className": "Q.Group",
+      "json": {
+        "name": "603",
+        "styles": {
+          "group.stroke.line.dash": [
+            6,
+            2
+          ],
+          "group.stroke": 2,
+          "group.stroke.color": "#385723",
+          "group.background.color": false,
+          "label.font.size": 22,
+          "label.background.color": false,
+          "label.color": "#8497b0",
+          "label.radius": 0,
+          "label.position": {
+            "$ref": 13
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "location": {
+          "x": 970.8948353824625,
+          "y": 356.3816685387794
+        },
+        "image": "Q-group",
+        "minSize": {
+          "width": 799.7167420814521,
+          "height": 366.672336306282
+        }
+      }
+    },
+    {
+      "_className": "Q.Text",
+      "json": {
+        "tooltipType": "text",
+        "name": "R",
+        "styles": {
+          "label.border": 1,
+          "label.padding": 5,
+          "label.radius": "0",
+          "label.border.style": "#5b9bd5",
+          "label.font.size": 18,
+          "label.color": "#548235",
+          "label.background.color": false,
+          "label.size": {
+            "_className": "Q.Size",
+            "json": {
+              "width": 58.49547511312204,
+              "height": 77.41934389140255
+            }
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 7
+                },
+                "$anchorPosition": {
+                  "$ref": 6
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 469.2390229992636,
+            "y": 429.32835996507123,
+            "rotate": 0
+          }
+        }
+      },
+      "_refId": "360"
+    },
+    {
+      "_className": "Q.Bus",
+      "json": {
+        "styles": {
+          "arrow.to": false,
+          "shape.stroke": 1,
+          "shape.fill.color": false,
+          "shape.stroke.style": "#424f63"
+        },
+        "location": {
+          "x": 820.0668492473978,
+          "y": 433.74798417488324
+        },
+        "path": {
+          "_className": "Q.Path",
+          "json": [
+            {
+              "type": "m",
+              "points": [
+                451.6748471177852,
+                0.24493908634515726
+              ]
+            },
+            {
+              "type": "l",
+              "points": [
+                -314.54118310067764,
+                0.40224674648171366
+              ]
+            }
+          ]
+        }
+      },
+      "_refId": "362"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "服务器 FXH3300A-1",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 13
+          },
+          "label.anchor.position": {
+            "$ref": 37
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 2
+                },
+                "$anchorPosition": {
+                  "$ref": 38
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -197.66739015556416,
+            "y": -97.22364323414081,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "365"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "指挥终端 FXH4052A",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -370.0400503619299,
+            "y": 93.63737586758012,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "367"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "编码器 FXH7040-4",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -21.680103427151543,
+            "y": 96.08935076193772,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "369"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "服务器 FXH3300A-1",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 13
+          },
+          "label.anchor.position": {
+            "$ref": 37
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 2
+                },
+                "$anchorPosition": {
+                  "$ref": 38
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 960.7673941464362,
+            "y": -95.09479233637367,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "371"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "指挥终端 FXH4052A",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 779.3082120792981,
+            "y": 89.65806111207594,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "373"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "编码器 FXH7040-4",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1135.1022663640667,
+            "y": 96.35240802679978,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "375"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "服务器 FXH3300A-1",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 13
+          },
+          "label.anchor.position": {
+            "$ref": 37
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 2
+                },
+                "$anchorPosition": {
+                  "$ref": 38
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -226.43684370436443,
+            "y": 294.3617314446805,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "377"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "指挥终端 FXH4052A",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -379.22990857844076,
+            "y": 490.50077570872907,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "379"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "编码器 FXH7040-4",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": -51.986679619533156,
+            "y": 496.7821364040869,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "381"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "服务器 FXH3300A-1",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 13
+          },
+          "label.anchor.position": {
+            "$ref": 37
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 2
+                },
+                "$anchorPosition": {
+                  "$ref": 38
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 980.3919089225615,
+            "y": 286.510194228745,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/3300A-1.png"
+      },
+      "_refId": "383"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "指挥终端 FXH4052A",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 828.5043662364453,
+            "y": 490.58835920439697,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/4052A.png"
+      },
+      "_refId": "385"
+    },
+    {
+      "_className": "Q.Node",
+      "json": {
+        "name": "编码器 FXH7040-4",
+        "styles": {
+          "label.font.size": 12,
+          "label.color": "#778488",
+          "label.position": {
+            "$ref": 37
+          },
+          "label.anchor.position": {
+            "$ref": 13
+          }
+        },
+        "bindingUIs": [
+          {
+            "ui": {
+              "_className": "Q.LabelUI",
+              "json": {
+                "color": "#778488",
+                "$position": {
+                  "$ref": 38
+                },
+                "$anchorPosition": {
+                  "$ref": 2
+                },
+                "$fontSize": 12,
+                "$font": "normal 12px Verdana,helvetica,arial,sans-serif",
+                "fontSize": 12,
+                "data": "0M/0M/1000Mbps"
+              }
+            },
+            "bindingProperties": [
+              {
+                "property": "data",
+                "propertyType": 2,
+                "bindingProperty": "data",
+                "target": {}
+              }
+            ]
+          }
+        ],
+        "location": {
+          "_className": "Q.Point",
+          "json": {
+            "x": 1157.9669526330683,
+            "y": 498.47513946024463,
+            "rotate": 0
+          }
+        },
+        "image": "../static/images/fx/7040-4.png"
+      },
+      "_refId": "387"
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 342
+        },
+        "to": {
+          "_ref": 348
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 342
+        },
+        "to": {
+          "_ref": 354
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 348
+        },
+        "to": {
+          "_ref": 360
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 354
+        },
+        "to": {
+          "_ref": 360
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 342
+        },
+        "to": {
+          "_ref": 360
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#3f6588"
+        },
+        "from": {
+          "_ref": 354
+        },
+        "to": {
+          "_ref": 348
+        }
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 365
+        },
+        "to": {
+          "_ref": 344
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "to": {
+          "_ref": 344
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "to": {
+          "_ref": 344
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 367
+        },
+        "to": {
+          "_ref": 344
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 369
+        },
+        "to": {
+          "_ref": 344
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 377
+        },
+        "to": {
+          "_ref": 356
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "to": {
+          "_ref": 356
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "to": {
+          "_ref": 356
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 379
+        },
+        "to": {
+          "_ref": 356
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 381
+        },
+        "to": {
+          "_ref": 356
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 371
+        },
+        "to": {
+          "_ref": 350
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "to": {
+          "_ref": 350
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 375
+        },
+        "to": {
+          "_ref": 350
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 373
+        },
+        "to": {
+          "_ref": 350
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 383
+        },
+        "to": {
+          "_ref": 362
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "to": {
+          "_ref": 362
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 385
+        },
+        "to": {
+          "_ref": 362
+        },
+        "angle": 1.5707963267948966
+      }
+    },
+    {
+      "_className": "Q.Edge",
+      "json": {
+        "name": "",
+        "styles": {
+          "arrow.to": false,
+          "edge.color": "#424f63"
+        },
+        "from": {
+          "_ref": 387
+        },
+        "to": {
+          "_ref": 362
+        },
+        "angle": 1.5707963267948966
+      }
+    }
+  ],
+  "scale": 0.7780086219406288,
+  "tx": -52.727233521072776,
+  "ty": 186.79532243146457
+}

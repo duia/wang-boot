@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpc.sys.dao.FileDao">
+
+	<resultMap id="BaseResultMap" type="com.wpc.sys.model.File">
+		<id property="id" column="id"/>
+		<result property="fileName" column="file_name"/>
+		<result property="fileCode" column="file_code"/>
+		<result property="filePath" column="file_path"/>
+		<result property="sort" column="sort"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createDate" column="create_date"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="remarks" column="remarks"/>
+		<result property="delFlag" column="del_flag"/>
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="table_columns">
+		id,
+		file_name,
+		file_code,
+		file_path,
+		sort,
+		create_by,
+		create_date,
+		update_by,
+		update_date,
+		remarks,
+		del_flag
+	</sql>
+	<sql id="entity_properties">
+		#{id},
+		#{fileName},
+		#{fileCode},
+		#{filePath},
+		#{sort},
+		#{createBy},
+		#{createDate},
+		#{updateBy},
+		#{updateDate},
+		#{remarks},
+		#{delFlag}
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.wpc.sys.model.File">
+		INSERT INTO
+			sys_file
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="fileName != null">file_name,</if>
+			<if test="fileCode != null">file_code,</if>
+			<if test="filePath != null">file_path,</if>
+			<if test="sort != null">sort,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateBy != null">update_by,</if>
+			<if test="updateDate != null">update_date,</if>
+			<if test="remarks != null">remarks,</if>
+			<if test="delFlag != null">del_flag,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id, jdbcType=BIGINT},</if>
+			<if test="fileName != null">#{fileName, jdbcType=VARCHAR},</if>
+			<if test="fileCode != null">#{fileCode, jdbcType=VARCHAR},</if>
+			<if test="filePath != null">#{filePath, jdbcType=VARCHAR},</if>
+			<if test="sort != null">#{sort, jdbcType=INTEGER},</if>
+			<if test="createBy != null">#{createBy, jdbcType=BIGINT},</if>
+			<if test="createDate != null">#{createDate, jdbcType=TIMESTAMP},</if>
+			<if test="updateBy != null">#{updateBy, jdbcType=BIGINT},</if>
+			<if test="updateDate != null">#{updateDate, jdbcType=TIMESTAMP},</if>
+			<if test="remarks != null">#{remarks, jdbcType=VARCHAR},</if>
+			<if test="delFlag != null">#{delFlag, jdbcType=CHAR},</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.wpc.sys.model.File">
+		UPDATE
+			sys_file
+		<trim prefix="set" suffixOverrides=",">
+			<if test="fileName != null">file_name = #{fileName, jdbcType=VARCHAR },</if>
+			<if test="fileCode != null">file_code = #{fileCode, jdbcType=VARCHAR },</if>
+			<if test="filePath != null">file_path = #{filePath, jdbcType=VARCHAR },</if>
+			<if test="sort != null">sort = #{sort, jdbcType=INTEGER },</if>
+			<if test="createBy != null">create_by = #{createBy, jdbcType=BIGINT },</if>
+			<if test="createDate != null">create_date = #{createDate, jdbcType=TIMESTAMP },</if>
+			<if test="updateBy != null">update_by = #{updateBy, jdbcType=BIGINT },</if>
+			<if test="updateDate != null">update_date = #{updateDate, jdbcType=TIMESTAMP },</if>
+			<if test="remarks != null">remarks = #{remarks, jdbcType=VARCHAR },</if>
+			<if test="delFlag != null">del_flag = #{delFlag, jdbcType=CHAR },</if>
+		</trim>
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM
+			sys_file
+		WHERE
+			id = #{id}
+	</delete>
+
+	<delete id="deleteByIds">
+		DELETE FROM
+			sys_file
+		WHERE id IN
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<select id="findById" parameterType="long" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns" />
+		FROM
+			sys_file
+		WHERE
+			id = #{id}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_file
+	</select>
+
+	<sql id="sel_where">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="fileName != null and fileName != ''">and file_name = #{fileName}</if>
+			<if test="fileCode != null and fileCode != ''">and file_code = #{fileCode}</if>
+			<if test="filePath != null and filePath != ''">and file_path = #{filePath}</if>
+			<if test="sort != null and sort != ''">and sort = #{sort}</if>
+			<if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
+			<if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+			<if test="updateBy != null and updateBy != ''">and update_by = #{updateBy}</if>
+			<if test="updateDate != null and updateDate != ''">and update_date = #{updateDate}</if>
+			<if test="remarks != null and remarks != ''">and remarks = #{remarks}</if>
+			<if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag}</if>
+		</trim>
+	</sql>
+
+	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.sys.model.File">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_file
+		<include refid="sel_where" />
+	</select>
+
+	<select id="count" resultType="int" parameterType="com.wpc.sys.model.File">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_file
+		<include refid="sel_where" />
+	</select>
+
+		<!-- 分页查询条件，供datatables插件查询使用 -->
+	<sql id="page_where">
+		<if test="condition != null">
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="condition.fileName != null and condition.fileName != ''">and file_name = #{condition.fileName}</if>
+			<if test="condition.fileCode != null and condition.fileCode != ''">and file_code = #{condition.fileCode}</if>
+			<if test="condition.filePath != null and condition.filePath != ''">and file_path = #{condition.filePath}</if>
+			<if test="condition.sort != null and condition.sort != ''">and sort = #{condition.sort}</if>
+			<if test="condition.createBy != null and condition.createBy != ''">and create_by = #{condition.createBy}</if>
+			<if test="condition.createDate != null and condition.createDate != ''">and create_date = #{condition.createDate}</if>
+			<if test="condition.updateBy != null and condition.updateBy != ''">and update_by = #{condition.updateBy}</if>
+			<if test="condition.updateDate != null and condition.updateDate != ''">and update_date = #{condition.updateDate}</if>
+			<if test="condition.remarks != null and condition.remarks != ''">and remarks = #{condition.remarks}</if>
+			<if test="condition.delFlag != null and condition.delFlag != ''">and del_flag = #{condition.delFlag}</if>
+		</trim>
+		</if>
+	</sql>
+
+	<!-- 查询条数，供datatables插件查询使用 -->
+	<select id="countPage" resultType="int">
+		SELECT
+			COUNT(id)
+		FROM
+			sys_file
+		<include refid="page_where" />
+	</select>
+
+	<!-- 分页查询，供datatables插件查询使用 -->
+	<select id="searchPage" resultMap="BaseResultMap">
+		SELECT
+			<include refid="table_columns"/>
+		FROM
+			sys_file
+		<include refid="page_where" />
+		<include refid="order"/>
+		<include refid="limit"/>
+	</select>
+
+	<!-- 排序，供datatables插件查询使用 -->
+	<sql id="order">
+		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
+	</sql>
+
+	<!-- 分页，供datatables插件查询使用  -->
+	<sql id="limit">
+		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
+	</sql>
+
+
+	<!-- 自定义sql语句 -->
+
+</mapper>
