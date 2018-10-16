@@ -1,9 +1,8 @@
 package com.wpc.test.controller;
 
 import com.wpc.common.bean.ResponseResult;
-import com.wpc.common.lock.Callback;
-import com.wpc.common.lock.RedisDistributedLockTemplate;
-import com.wpc.redis.utils.JedisUtils;
+import com.wpc.common.limit.lock.Callback;
+import com.wpc.common.limit.lock.RedisDistributedLockTemplate;
 import com.wpc.test.dao.DemoDao;
 import com.wpc.test.entity.Demo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import redis.clients.jedis.Jedis;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Controller

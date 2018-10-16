@@ -1,4 +1,4 @@
-package com.wpc.common.lock;
+package com.wpc.common.limit.lock;
 
 import java.util.concurrent.TimeUnit;
 

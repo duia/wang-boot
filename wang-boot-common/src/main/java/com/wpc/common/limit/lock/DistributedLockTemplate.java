@@ -1,4 +1,4 @@
-package com.wpc.common.lock;
+package com.wpc.common.limit.lock;
 
 /**
  * 功能描述: 分布式锁模板类

@@ -1,4 +1,4 @@
-package com.wpc.common.lock;
+package com.wpc.common.limit.lock;
 
 import com.wpc.redis.utils.JedisUtils;
 import redis.clients.jedis.Jedis;

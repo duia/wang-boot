@@ -1,4 +1,4 @@
-package com.wpc.common.lock;
+package com.wpc.common.limit.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

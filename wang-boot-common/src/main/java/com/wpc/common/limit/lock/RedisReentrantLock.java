@@ -1,4 +1,4 @@
-package com.wpc.common.lock;
+package com.wpc.common.limit.lock;
 
 import com.google.common.collect.Maps;
 
