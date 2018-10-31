@@ -3,6 +3,7 @@ package com.wpc.shiro;
 import com.wpc.common.Global;
 import com.wpc.SessionUtil;
 import com.wpc.shiro.session.SessionDAO;
+import com.wpc.sys.model.Role;
 import com.wpc.sys.model.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -10,7 +11,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +30,8 @@ public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private SessionDAO sessionDAO;
+    @Autowired
+    private ShiroFactory shiroFactory;
 
     /*
      * 认证回调函数,登录时调用. 获取认证信息
@@ -42,19 +44,10 @@ public class ShiroRealm extends AuthorizingRealm {
         if (logger.isDebugEnabled()){
             logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
         }
-
-        User user = SessionUtil.getByLoginName(token.getUsername());
-        if (user == null) {
-            throw new UnknownAccountException();//没找到帐号
-        }
-//        if(Global.NO.equals(user.getLoginFlag())) {
-//            throw new LockedAccountException(); //帐号锁定
-//        }
-        return new SimpleAuthenticationInfo(
-                new Principal(user),
-                user.getPassword().substring(SessionUtil.SALT_SIZE * 2),
-                ByteSource.Util.bytes(user.getPassword().substring(0, SessionUtil.SALT_SIZE * 2)),
-                getName());
+        User user = shiroFactory.user(token.getUsername());
+        Principal principal = shiroFactory.shiroUser(user);
+        SimpleAuthenticationInfo info = shiroFactory.buildAuthenticationInfo(principal, user, super.getName());
+        return info;
     }
 
     /*
@@ -81,34 +74,12 @@ public class ShiroRealm extends AuthorizingRealm {
                 }
             }
         }
-        List<String> roles = new ArrayList<String>();
-        List<String> permissions = new ArrayList<String>();
+
         // 添加用户权限
-        permissions.add("user");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        // 从数据库中获取用户
-        User user = SessionUtil.getByLoginName(principal.getLoginName());
-        if (null == user) {
-            return null;
-        }
-        if (user.isAdmin()) {//可以修改为别的验证是否是超级管理员
-//            for (Role role : roleDao.queryAll()) {
-//                roles.add(role.getRoleCode());
-//            }
-//            for (Permission permission : permissionDao.queryAll()) {
-//                permissions.add(permission.getPermissionCode());
-//            }
-        } else {
-            // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权
-            /*for (Role role : roleDao.queryRoleByUserId(user.getId())) {
-                roles.add(role.getRoleCode());
-                for (Permission permission : permissionDao.queryPermissionByRoleId(role.getId())) {
-                    permissions.add(permission.getPermissionCode());
-                }
-            }*/
-        }
-//        info.addRoles(roles);
-        info.addStringPermissions(permissions);
+
+        info.addRoles(principal.getRoleValues());
+        info.addStringPermissions(principal.getPermissionValues());
 
         // 更新登录IP和时间
 //        SessionUtil.updateUserLoginInfo(user.getId());
@@ -188,6 +159,12 @@ public class ShiroRealm extends AuthorizingRealm {
         private Long id; // 编号
         private String loginName; // 登录名
         private String name; // 姓名
+        //角色集
+        private List<Role> roleList;
+        //菜单权限值
+        List<String> permissionValues = new ArrayList<>();
+        //角色值
+        List<String> roleValues = new ArrayList<>();
 
         Principal(User user) {
             this.id = user.getId();
@@ -205,6 +182,22 @@ public class ShiroRealm extends AuthorizingRealm {
 
         public String getName() {
             return name;
+        }
+
+        public List<String> getPermissionValues() {
+            return permissionValues;
+        }
+
+        public void setPermissionValues(List<String> permissionValues) {
+            this.permissionValues = permissionValues;
+        }
+
+        public List<String> getRoleValues() {
+            return roleValues;
+        }
+
+        public void setRoleValues(List<String> roleValues) {
+            this.roleValues = roleValues;
         }
 
         @Override

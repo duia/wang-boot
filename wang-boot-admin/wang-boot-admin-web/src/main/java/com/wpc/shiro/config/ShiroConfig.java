@@ -13,6 +13,11 @@ import org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.filter.authc.AnonymousFilter;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.apache.shiro.web.filter.authc.LogoutFilter;
+import org.apache.shiro.web.filter.authc.UserFilter;
+import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
@@ -29,7 +34,7 @@ import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class ShiroConfig {
 
     @Bean
@@ -74,40 +79,43 @@ public class ShiroConfig {
      */
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilter() {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         // 必须设置SecuritManager
-        shiroFilterFactoryBean.setSecurityManager(securityManager());
-
-        Map<String, Filter> filtersMap = shiroFilterFactoryBean.getFilters();
-//        filtersMap.put("cas", casFilter());
-        filtersMap.put("authc", formAuthenticationFilter());// 自定义拦截器
-        shiroFilterFactoryBean.setFilters(filtersMap);
-
+        shiroFilter.setSecurityManager(securityManager());
         // 如果不设置默认会自动寻找工程根目录下的"/login"页面
-        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilter.setLoginUrl("/login");
         // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/");
+        shiroFilter.setSuccessUrl("/");
         // 未授权界面;
-        shiroFilterFactoryBean.setUnauthorizedUrl("/WEB-INF/405.jsp");
+        shiroFilter.setUnauthorizedUrl("/WEB-INF/405.jsp");
+
+        Map<String, Filter> filters = shiroFilter.getFilters();
+//        filtersMap.put("cas", casFilter());
+        filters.put("anon", new AnonymousFilter());
+        filters.put("authc", formAuthenticationFilter());// 自定义拦截器
+        filters.put("logout", new LogoutFilter());
+        filters.put("roles", new RolesAuthorizationFilter());
+        filters.put("user", new UserFilter());
+        shiroFilter.setFilters(filters);
 
         // 拦截器
-        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
+        Map<String, String> chains = new LinkedHashMap<String, String>();
         // 配置退出过滤器,其中的具体代码Shiro已经替我们实现了
-        filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/register", "anon");
-        filterChainDefinitionMap.put("/getJPGCode", "anon");
-        filterChainDefinitionMap.put("/getGifCode", "anon");
+        chains.put("/static/**", "anon");
+        chains.put("/favicon.ico", "anon");
+        chains.put("/register", "anon");
+        chains.put("/getJPGCode", "anon");
+        chains.put("/getGifCode", "anon");
 
-        filterChainDefinitionMap.put("/test/**", "anon");
-        filterChainDefinitionMap.put("/locks/**", "anon");
+        chains.put("/test/**", "anon");
+        chains.put("/locks/**", "anon");
         // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-        filterChainDefinitionMap.put("/logout", "logout");
-        filterChainDefinitionMap.put("/**", "authc");
+        chains.put("/logout", "logout");
+        chains.put("/**", "authc");
         // 加载shiroFilter权限控制规则
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        return shiroFilterFactoryBean;
+        shiroFilter.setFilterChainDefinitionMap(chains);
+        return shiroFilter;
 
     }
 
@@ -173,7 +181,6 @@ public class ShiroConfig {
         return new JavaUuidSessionIdGenerator();
     }
 
-    @Bean(name = "sessionDAO")
     public JedisSessionDAO sessionDAO() {
         JedisSessionDAO sessionDAO = new JedisSessionDAO();
         sessionDAO.setSessionIdGenerator(sessionIdGenerator());
