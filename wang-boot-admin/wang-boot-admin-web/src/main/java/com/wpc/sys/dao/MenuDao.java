@@ -1,35 +1,22 @@
-/*
- * Copyright(c) 2016 cncounter.com All rights reserved.
- * distributed with this file and available online at
- * http://www.cncounter.com/
+/**
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.wpc.sys.dao;
 
 import com.wpc.base.dao.TreeBaseDao;
-import com.wpc.sys.model.Menu;
+import com.wpc.sys.entity.Menu;
 
 import java.util.List;
 
+/**
+ * 菜单DAO接口
+ * @author ThinkGem
+ * @version 2014-05-16
+ */
 public interface MenuDao extends TreeBaseDao<Menu> {
 
-    List<Menu> getLeftMenu();
-
-    /**
-     * 功能描述: 获取用户的授权菜单
-     * @Author: 王鹏程
-     * @E-mail: wpcfree@qq.com @QQ: 376205421
-     * @Blog: http://www.wpcfree.com
-     * @Date: 2017-11-27 16:12:40
-     */
-    List<Menu> findMenusByUserId(Menu menu);
-
-    /**
-     * 功能描述: 根据父节点id获取子节点
-     * @Author: 王鹏程 
-     * @E-mail: wpcfree@qq.com @QQ: 376205421
-     * @Blog: http://www.wpcfree.com
-     * @Date: 2017-11-28 16:11:35
-     */
-    List<Menu> findByParentIdsLike(Menu menu);
-    
+	public List<Menu> findByUserId(Menu menu);
+	
+	public int updateSort(Menu menu);
+	
 }

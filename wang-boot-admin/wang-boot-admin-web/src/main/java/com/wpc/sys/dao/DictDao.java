@@ -1,13 +1,20 @@
-/*
- * Copyright(c) 2016 cncounter.com All rights reserved.
- * distributed with this file and available online at
- * http://www.cncounter.com/
+/**
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.wpc.sys.dao;
 
-import com.wpc.base.dao.TreeBaseDao;
-import com.wpc.sys.model.Dict;
+import com.wpc.base.dao.BaseDao;
+import com.wpc.sys.entity.Dict;
 
-public interface DictDao extends TreeBaseDao<Dict> {
-    
+import java.util.List;
+
+/**
+ * 字典DAO接口
+ * @author ThinkGem
+ * @version 2014-05-16
+ */
+public interface DictDao extends BaseDao<Dict> {
+
+	public List<String> findTypeList(Dict dict);
+	
 }

@@ -6,7 +6,7 @@ import com.wpc.common.utils.net.IpUtils;
 import com.wpc.redis.utils.JedisUtils;
 import com.wpc.shiro.ShiroRealm.Principal;
 import com.wpc.sys.dao.UserDao;
-import com.wpc.sys.model.User;
+import com.wpc.sys.entity.User;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
@@ -138,14 +138,14 @@ public class SessionUtil {
      * @return 取不到返回null
      */
     public static User get(Long id){
-        User user = (User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_ID_ + id);
+        User user = null;//(User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_ID_ + id);
         if (user ==  null){
             user = userDao.findById(id);
             if (user == null){
                 return null;
             }
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -156,14 +156,14 @@ public class SessionUtil {
      * @return 取不到返回null
      */
     public static User getByLoginName(String loginName){
-        User user = (User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
+        User user = null;//(User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
         if (user == null){
-            user = userDao.getUserByLoginName(loginName);
+            user = userDao.getByLoginName(new User(null, loginName));
             if (user == null){
                 return null;
             }
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }

@@ -20,8 +20,6 @@ import java.util.Date;
  */
 public class DataEntity<T> extends BaseEntity<T> {
 
-	private static final long serialVersionUID = 1L;
-
 	protected Integer sort;		// 排序
 	protected String remarks;	// 备注
 	protected Long createBy;	// 创建者

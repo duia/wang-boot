@@ -13,11 +13,7 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.wpc</groupId>
-            <artifactId>wang-boot-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
 
     <profiles>

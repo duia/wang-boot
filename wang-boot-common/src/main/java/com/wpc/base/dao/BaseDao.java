@@ -14,9 +14,35 @@ import java.util.List;
  */
 public interface BaseDao<T extends DataEntity<T>> {
 
-    void save(T t);
+    /**
+     * 查询数据列表，如果需要分页，请设置分页对象，如：entity.setPage(new Page<T>());
+     * @param entity
+     * @return
+     */
+    List<T> findList(T entity);
 
-    void delete(Long id);
+    /**
+     * 查询所有数据列表
+     * @param entity
+     * @return
+     */
+    List<T> findAllList(T entity);
+
+    /**
+     * 插入数据
+     * @param entity
+     * @return
+     */
+    int insert(T entity);
+
+    /**
+     * 删除数据（一般为逻辑删除，更新del_flag字段为1）
+     * @param entity
+     * @return
+     */
+    int delete(Long di);
+
+    void save(T t);
 
     void deleteByIds(Long[] ids);
 

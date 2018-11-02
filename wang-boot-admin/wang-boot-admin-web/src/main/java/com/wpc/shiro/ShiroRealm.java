@@ -3,8 +3,9 @@ package com.wpc.shiro;
 import com.wpc.common.Global;
 import com.wpc.SessionUtil;
 import com.wpc.shiro.session.SessionDAO;
-import com.wpc.sys.model.Role;
-import com.wpc.sys.model.User;
+import com.wpc.sys.entity.Role;
+import com.wpc.sys.entity.User;
+import com.wpc.sys.utils.UserUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -169,7 +170,7 @@ public class ShiroRealm extends AuthorizingRealm {
         Principal(User user) {
             this.id = user.getId();
             this.loginName = user.getLoginName();
-            this.name = user.getUsername();
+            this.name = user.getName();
         }
 
         public Long getId() {
@@ -198,6 +199,17 @@ public class ShiroRealm extends AuthorizingRealm {
 
         public void setRoleValues(List<String> roleValues) {
             this.roleValues = roleValues;
+        }
+
+        /**
+         * 获取SESSIONID
+         */
+        public String getSessionid() {
+            try{
+                return (String) UserUtils.getSession().getId();
+            }catch (Exception e) {
+                return "";
+            }
         }
 
         @Override

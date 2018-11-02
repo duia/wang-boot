@@ -1,14 +1,19 @@
 package com.wpc.shiro;
 
 import com.wpc.SessionUtil;
-import com.wpc.sys.model.User;
 import com.wpc.shiro.ShiroRealm.Principal;
+import com.wpc.sys.entity.Menu;
+import com.wpc.sys.entity.Role;
+import com.wpc.sys.entity.User;
+import com.wpc.sys.utils.UserUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -51,22 +56,18 @@ public class ShiroFactory {
         ShiroRealm.Principal principal = new ShiroRealm.Principal(user);
         List<String> roles = new ArrayList<String>();
         List<String> permissions = new ArrayList<String>();
+        List<Menu> list = UserUtils.getMenuList();
+        for (Menu menu : list){
+            if (StringUtils.isNotBlank(menu.getPermission())){
+                // 添加基于Permission的权限信息
+                permissions.addAll(Arrays.asList(StringUtils.split(menu.getPermission(), ",")));
+            }
+        }
+        // 添加用户权限
         permissions.add("user");
-        if (user.isAdmin()) {//可以修改为别的验证是否是超级管理员
-//            for (Role role : roleDao.queryAll()) {
-//                roles.add(role.getRoleCode());
-//            }
-//            for (Permission permission : permissionDao.queryAll()) {
-//                permissions.add(permission.getPermissionCode());
-//            }
-        } else {
-            // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权
-            /*for (Role role : roleDao.queryRoleByUserId(user.getId())) {
-                roles.add(role.getRoleCode());
-                for (Permission permission : permissionDao.queryPermissionByRoleId(role.getId())) {
-                    permissions.add(permission.getPermissionCode());
-                }
-            }*/
+        // 添加用户角色信息
+        for (Role role : user.getRoleList()){
+            roles.add(role.getEnname());
         }
         principal.setRoleValues(roles);
         principal.setPermissionValues(permissions);

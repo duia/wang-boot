@@ -53,7 +53,7 @@ public class IndexController {
 	@RequiresPermissions("user")
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(ModelMap model) {
-		return "index";
+		return "modules/sys/sysIndex";
 	}
 
 	@RequestMapping(value = "/main")

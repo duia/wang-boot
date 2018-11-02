@@ -1,235 +1,204 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wpc.sys.dao.RoleDao">
-
-	<resultMap id="BaseResultMap" type="com.wpc.sys.model.Role">
-		<id property="id" column="id"/>
-		<result property="roleName" column="role_name"/>
-		<result property="roleCode" column="role_code"/>
-		<result property="roleType" column="role_type"/>
-		<result property="dataScope" column="data_scope"/>
-		<result property="isSys" column="is_sys"/>
-		<result property="useable" column="useable"/>
-		<result property="sort" column="sort"/>
-		<result property="createBy" column="create_by"/>
-		<result property="createDate" column="create_date"/>
-		<result property="updateBy" column="update_by"/>
-		<result property="updateDate" column="update_date"/>
-		<result property="remarks" column="remarks"/>
-		<result property="delFlag" column="del_flag"/>
+    
+    <resultMap id="roleResult" type="Role">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="enname" column="enname" />
+		<result property="roleType" column="roleType" />
+		<result property="dataScope" column="dataScope" />
+		<result property="remarks" column="remarks" />
+		<result property="useable" column="useable" />
+		<result property="sysData" column="sysData" /><!-- 
+		<collection property="userList" ofType="User">
+			<id property="id" column="userList.id" />
+			<id property="loginName" column="userList.loginName" />
+			<id property="name" column="userList.name" />
+			<id property="email" column="userList.email" />
+			<id property="phone" column="userList.phone" />
+			<id property="mobile" column="userList.mobile" />
+			<id property="office.name" column="userList.office.name" />
+			<id property="company.name" column="userList.company.name" />
+		</collection> -->
+		<collection property="menuList" ofType="Menu">
+			<id property="id" column="menuList.id" />
+		</collection>
+		<collection property="officeList" ofType="Office">
+			<id property="id" column="officeList.id" />
+		</collection>
 	</resultMap>
-
-	<!-- 用于select查询公用抽取的列 -->
-	<sql id="table_columns">
-		id,
-		role_name,
-		role_code,
-		role_type,
-		data_scope,
-		is_sys,
-		useable,
-		sort,
-		create_by,
-		create_date,
-		update_by,
-		update_date,
-		remarks,
-		del_flag
-	</sql>
-	<sql id="entity_properties">
-		#{id},
-		#{roleName},
-		#{roleCode},
-		#{roleType},
-		#{dataScope},
-		#{isSys},
-		#{useable},
-		#{sort},
-		#{createBy},
-		#{createDate},
-		#{updateBy},
-		#{updateDate},
-		#{remarks},
-		#{delFlag}
-	</sql>
-
-	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.wpc.sys.model.Role">
-		INSERT INTO
-			sys_role
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">id,</if>
-			<if test="roleName != null">role_name,</if>
-			<if test="roleCode != null">role_code,</if>
-			<if test="roleType != null">role_type,</if>
-			<if test="dataScope != null">data_scope,</if>
-			<if test="isSys != null">is_sys,</if>
-			<if test="useable != null">useable,</if>
-			<if test="sort != null">sort,</if>
-			<if test="createBy != null">create_by,</if>
-			<if test="createDate != null">create_date,</if>
-			<if test="updateBy != null">update_by,</if>
-			<if test="updateDate != null">update_date,</if>
-			<if test="remarks != null">remarks,</if>
-			<if test="delFlag != null">del_flag,</if>
-		</trim>
-		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
-			<if test="id != null">#{id, jdbcType=BIGINT},</if>
-			<if test="roleName != null">#{roleName, jdbcType=VARCHAR},</if>
-			<if test="roleCode != null">#{roleCode, jdbcType=VARCHAR},</if>
-			<if test="roleType != null">#{roleType, jdbcType=VARCHAR},</if>
-			<if test="dataScope != null">#{dataScope, jdbcType=CHAR},</if>
-			<if test="isSys != null">#{isSys, jdbcType=VARCHAR},</if>
-			<if test="useable != null">#{useable, jdbcType=VARCHAR},</if>
-			<if test="sort != null">#{sort, jdbcType=INTEGER},</if>
-			<if test="createBy != null">#{createBy, jdbcType=BIGINT},</if>
-			<if test="createDate != null">#{createDate, jdbcType=TIMESTAMP},</if>
-			<if test="updateBy != null">#{updateBy, jdbcType=BIGINT},</if>
-			<if test="updateDate != null">#{updateDate, jdbcType=TIMESTAMP},</if>
-			<if test="remarks != null">#{remarks, jdbcType=VARCHAR},</if>
-			<if test="delFlag != null">#{delFlag, jdbcType=CHAR},</if>
-		</trim>
-	</insert>
-
-	<update id="update" parameterType="com.wpc.sys.model.Role">
-		UPDATE
-			sys_role
-		<trim prefix="set" suffixOverrides=",">
-			<if test="roleName != null">role_name = #{roleName, jdbcType=VARCHAR },</if>
-			<if test="roleCode != null">role_code = #{roleCode, jdbcType=VARCHAR },</if>
-			<if test="roleType != null">role_type = #{roleType, jdbcType=VARCHAR },</if>
-			<if test="dataScope != null">data_scope = #{dataScope, jdbcType=CHAR },</if>
-			<if test="isSys != null">is_sys = #{isSys, jdbcType=VARCHAR },</if>
-			<if test="useable != null">useable = #{useable, jdbcType=VARCHAR },</if>
-			<if test="sort != null">sort = #{sort, jdbcType=INTEGER },</if>
-			<if test="createBy != null">create_by = #{createBy, jdbcType=BIGINT },</if>
-			<if test="createDate != null">create_date = #{createDate, jdbcType=TIMESTAMP },</if>
-			<if test="updateBy != null">update_by = #{updateBy, jdbcType=BIGINT },</if>
-			<if test="updateDate != null">update_date = #{updateDate, jdbcType=TIMESTAMP },</if>
-			<if test="remarks != null">remarks = #{remarks, jdbcType=VARCHAR },</if>
-			<if test="delFlag != null">del_flag = #{delFlag, jdbcType=CHAR },</if>
-		</trim>
-		WHERE
-			id = #{id}
-	</update>
-
-	<delete id="deleteById" parameterType="long">
-		DELETE FROM
-			sys_role
-		WHERE
-			id = #{id}
-	</delete>
-
-	<delete id="deleteByIds">
-		DELETE FROM
-			sys_role
-		WHERE id IN
-		<foreach item="item" collection="array" open="(" separator="," close=")">
-			#{item}
-		</foreach>
-	</delete>
-
-	<select id="findById" parameterType="long" resultMap="BaseResultMap">
+	
+    <sql id="roleColumns">
+    	a.id,
+    	a.office_id AS "office.id",
+    	a.name,
+    	a.enname,
+    	a.role_type AS roleType,
+		a.data_scope AS dataScope,
+		a.remarks,
+		a.create_by AS "createBy.id",
+		a.create_date,
+		a.update_by AS "updateBy.id",
+		a.update_date,
+		a.del_flag,
+    	o.name AS "office.name",
+    	o.code,
+    	a.useable AS useable,
+    	a.is_sys AS sysData
+    </sql>
+    
+	<select id="findById" resultMap="roleResult">
 		SELECT
-			<include refid="table_columns" />
-		FROM
-			sys_role
-		WHERE
-			id = #{id}
+			<include refid="roleColumns"/>,<!-- 
+			ur.user_id AS "userList.id",
+			u.login_name AS "userList.loginName",
+			u.name AS "userList.name",
+			u.email AS "userList.email",
+			u.phone AS "userList.phone",
+			u.mobile AS "userList.mobile",
+			uc.name AS "userList.company.name",
+			uo.name AS "userList.office.name", -->
+			rm.menu_id AS "menuList.id",
+			ro.office_id AS "officeList.id"
+		FROM sys_role a
+		JOIN sys_office o ON o.id = a.office_id<!-- 
+		LEFT JOIN sys_user_role ur ON ur.role_id = a.id
+		LEFT JOIN sys_user u ON u.id = ur.user_id
+		LEFT JOIN sys_office uc ON uc.id = u.company_id
+		LEFT JOIN sys_office uo ON uo.id = u.office_id -->
+		LEFT JOIN sys_role_menu rm ON rm.role_id = a.id
+		LEFT JOIN sys_role_office ro ON ro.role_id = a.id
+		WHERE a.id = #{id}
 	</select>
-
-	<select id="queryAll" resultMap="BaseResultMap">
+	
+	<select id="getByName" resultType="Role">
 		SELECT
-			<include refid="table_columns"/>
-		FROM
-			sys_role
+			<include refid="roleColumns"/>
+		FROM sys_role a
+		JOIN sys_office o ON o.id = a.office_id
+		WHERE a.name = #{name} AND a.del_flag = #{DEL_FLAG_NORMAL}
 	</select>
-
-	<sql id="sel_where">
-		<trim prefix="where" prefixOverrides="and |or ">
-			<if test="roleName != null and roleName != ''">and role_name = #{roleName}</if>
-			<if test="roleCode != null and roleCode != ''">and role_code = #{roleCode}</if>
-			<if test="roleType != null and roleType != ''">and role_type = #{roleType}</if>
-			<if test="dataScope != null and dataScope != ''">and data_scope = #{dataScope}</if>
-			<if test="isSys != null and isSys != ''">and is_sys = #{isSys}</if>
-			<if test="useable != null and useable != ''">and useable = #{useable}</if>
-			<if test="sort != null and sort != ''">and sort = #{sort}</if>
-			<if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
-			<if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
-			<if test="updateBy != null and updateBy != ''">and update_by = #{updateBy}</if>
-			<if test="updateDate != null and updateDate != ''">and update_date = #{updateDate}</if>
-			<if test="remarks != null and remarks != ''">and remarks = #{remarks}</if>
-			<if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag}</if>
-		</trim>
-	</sql>
-
-	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.sys.model.Role">
+	
+	<select id="getByEnname" resultType="Role">
 		SELECT
-			<include refid="table_columns"/>
-		FROM
-			sys_role
-		<include refid="sel_where" />
+			<include refid="roleColumns"/>
+		FROM sys_role a
+		JOIN sys_office o ON o.id = a.office_id
+		WHERE a.enname = #{enname} AND a.del_flag = #{DEL_FLAG_NORMAL}
 	</select>
-
-	<select id="count" resultType="int" parameterType="com.wpc.sys.model.Role">
-		SELECT
-			COUNT(id)
-		FROM
-			sys_role
-		<include refid="sel_where" />
-	</select>
-
-		<!-- 分页查询条件，供datatables插件查询使用 -->
-	<sql id="page_where">
-		<if test="condition != null">
-		<trim prefix="where" prefixOverrides="and |or ">
-			<if test="condition.roleName != null and condition.roleName != ''">and role_name = #{condition.roleName}</if>
-			<if test="condition.roleCode != null and condition.roleCode != ''">and role_code = #{condition.roleCode}</if>
-			<if test="condition.roleType != null and condition.roleType != ''">and role_type = #{condition.roleType}</if>
-			<if test="condition.dataScope != null and condition.dataScope != ''">and data_scope = #{condition.dataScope}</if>
-			<if test="condition.isSys != null and condition.isSys != ''">and is_sys = #{condition.isSys}</if>
-			<if test="condition.useable != null and condition.useable != ''">and useable = #{condition.useable}</if>
-			<if test="condition.sort != null and condition.sort != ''">and sort = #{condition.sort}</if>
-			<if test="condition.createBy != null and condition.createBy != ''">and create_by = #{condition.createBy}</if>
-			<if test="condition.createDate != null and condition.createDate != ''">and create_date = #{condition.createDate}</if>
-			<if test="condition.updateBy != null and condition.updateBy != ''">and update_by = #{condition.updateBy}</if>
-			<if test="condition.updateDate != null and condition.updateDate != ''">and update_date = #{condition.updateDate}</if>
-			<if test="condition.remarks != null and condition.remarks != ''">and remarks = #{condition.remarks}</if>
-			<if test="condition.delFlag != null and condition.delFlag != ''">and del_flag = #{condition.delFlag}</if>
-		</trim>
+	
+	<select id="findList" resultMap="roleResult" parameterType="Role">
+		SELECT <!-- DISTINCT -->
+			<include refid="roleColumns"/>,
+			ro.office_id AS "officeList.id"
+		FROM sys_role a
+		LEFT JOIN sys_office o ON o.id = a.office_id
+		LEFT JOIN sys_user_role ur ON ur.role_id = a.id
+		LEFT JOIN sys_user u ON u.id = ur.user_id
+		LEFT JOIN sys_role_office ro ON ro.role_id = a.id
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} AND a.useable=#{useable}
+		<if test="user != null and user.id != null and user.id != ''">
+			AND u.id = #{user.id}
 		</if>
-	</sql>
-
-	<!-- 查询条数，供datatables插件查询使用 -->
-	<select id="countPage" resultType="int">
-		SELECT
-			COUNT(id)
-		FROM
-			sys_role
-		<include refid="page_where" />
+		<if test="user != null and user.loginName != null and user.loginName != ''">
+			AND u.login_name = #{user.loginName}
+		</if>
+		<!-- 数据范围过滤 -->
+		${sqlMap.dsf}
+		ORDER BY o.code, a.name
 	</select>
-
-	<!-- 分页查询，供datatables插件查询使用 -->
-	<select id="searchPage" resultMap="BaseResultMap">
+	
+	<select id="findAllList" resultType="Role">
 		SELECT
-			<include refid="table_columns"/>
-		FROM
-			sys_role
-		<include refid="page_where" />
-		<include refid="order"/>
-		<include refid="limit"/>
+			<include refid="roleColumns"/>
+		FROM sys_role a
+		LEFT JOIN sys_office o ON o.id = a.office_id
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		ORDER BY o.code, a.name
 	</select>
-
-	<!-- 排序，供datatables插件查询使用 -->
-	<sql id="order">
-		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
-	</sql>
-
-	<!-- 分页，供datatables插件查询使用  -->
-	<sql id="limit">
-		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
-	</sql>
-
-
-	<!-- 自定义sql语句 -->
-
+	
+	<insert id="insert">
+		INSERT INTO sys_role(
+			id, 
+			office_id, 
+			name, 
+			enname, 
+			role_type, 
+			data_scope, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag,
+			is_sys,
+			useable
+		) VALUES (
+			#{id}, 
+			#{office.id}, 
+			#{name}, 
+			#{enname}, 
+			#{roleType}, 
+			#{dataScope}, 
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag},
+			#{sysData},
+			#{useable}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sys_role SET 
+			office_id = #{office.id}, 
+			name = #{name}, 
+			enname = #{enname}, 
+			role_type = #{roleType}, 
+			data_scope = #{dataScope}, 
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks},
+			is_sys = #{sysData},
+			useable = #{useable}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteRoleMenu">
+		DELETE FROM sys_role_menu WHERE role_id = #{id}
+	</delete>
+	
+	<insert id="insertRoleMenu">
+		INSERT INTO sys_role_menu(role_id, menu_id)
+		<foreach collection="menuList" item="menu" separator=" union all ">
+			SELECT #{id}, #{menu.id}
+			<if test="dbName != 'mssql'">
+			FROM dual
+			</if>
+		</foreach>
+	</insert>
+	
+	<delete id="deleteRoleOffice">
+		DELETE FROM sys_role_office WHERE role_id = #{id}
+	</delete>
+	
+	<insert id="insertRoleOffice">
+		INSERT INTO sys_role_office(role_id, office_id)
+		<foreach collection="officeList" item="office" separator=" union all ">
+			SELECT #{id}, #{office.id}
+			<if test="dbName != 'mssql'">
+			FROM dual
+			</if>
+		</foreach>
+	</insert>
+	
+	<update id="delete">
+		UPDATE sys_role SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
 </mapper>

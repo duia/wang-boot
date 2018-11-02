@@ -3,6 +3,7 @@ package com.wpc.base.service.impl;
 import com.wpc.base.dao.BaseDao;
 import com.wpc.base.entity.BaseEntity;
 import com.wpc.base.entity.DataEntity;
+import com.wpc.base.entity.Page;
 import com.wpc.base.entity.datatables.DataTablesRequest;
 import com.wpc.base.entity.datatables.DataTablesResponse;
 import com.wpc.base.service.BaseService;
@@ -29,6 +30,27 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
     @Autowired
     protected BaseDao<T> baseDao;
 
+    /**
+     * 查询列表数据
+     * @param entity
+     * @return
+     */
+    public List<T> findList(T entity) {
+        return baseDao.findList(entity);
+    }
+
+    /**
+     * 查询分页数据
+     * @param page 分页对象
+     * @param entity
+     * @return
+     */
+    public Page<T> findPage(Page<T> page, T entity) {
+        entity.setPage(page);
+        page.setList(baseDao.findList(entity));
+        return page;
+    }
+
     @Override
     public void save(T t) {
         t.preInsert();
@@ -39,7 +61,7 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
     public void delete(Long id) {
     	this.baseDao.delete(id);
     }
-    
+
     @Override
     public void deleteByIds(Long[] ids) {
     	this.baseDao.deleteByIds(ids);

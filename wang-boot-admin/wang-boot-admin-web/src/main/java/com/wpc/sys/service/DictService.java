@@ -1,20 +1,35 @@
-/*
- * Copyright(c) 2016 cncounter.com All rights reserved.
- * distributed with this file and available online at
- * http://www.cncounter.com/
+/**
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.wpc.sys.service;
 
-import com.wpc.base.service.BaseService;
-import com.wpc.sys.model.Dict;
+import com.wpc.base.service.impl.BaseServiceImpl;
+import com.wpc.sys.dao.DictDao;
+import com.wpc.sys.entity.Dict;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
- * 功能描述:
- * @Author: 王鹏程
- * @E-mail: wpcfree@qq.com @QQ: 376205421
- * @Blog: http://www.wpcfree.com
- * @Date:
+ * 字典Service
+ * @author ThinkGem
+ * @version 2014-05-16
  */
-public interface DictService extends BaseService<Dict> {
-	
+@Service
+@Transactional(readOnly = true)
+public class DictService extends BaseServiceImpl<Dict> {
+
+	@Autowired
+	private DictDao dictDao;
+
+	/**
+	 * 查询字段类型列表
+	 * @return
+	 */
+	public List<String> findTypeList(){
+		return dictDao.findTypeList(new Dict());
+	}
+
 }

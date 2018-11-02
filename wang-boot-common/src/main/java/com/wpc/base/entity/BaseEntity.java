@@ -25,6 +25,11 @@ public abstract class BaseEntity<T> implements Serializable {
 	protected Long id;
 
 	/**
+	 * 当前实体分页对象
+	 */
+	protected Page<T> page;
+
+	/**
 	 * 自定义SQL（SQL标识，SQL内容）
 	 */
 	protected Map<String, String> sqlMap;
@@ -44,6 +49,20 @@ public abstract class BaseEntity<T> implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@JsonIgnore
+	@XmlTransient
+	public Page<T> getPage() {
+		if (page == null){
+			page = new Page<T>();
+		}
+		return page;
+	}
+
+	public Page<T> setPage(Page<T> page) {
+		this.page = page;
+		return page;
 	}
 
 	@JsonIgnore
@@ -90,8 +109,10 @@ public abstract class BaseEntity<T> implements Serializable {
 	}
 
 	/**
-	 * 删除标记（1：正常；-1：删除；）
+	 * 删除标记（0：正常；1：删除；2：审核；）
 	 */
-	public static final String DEL_FLAG_DELETE = "-1";
+	public static final String DEL_FLAG_NORMAL = "0";
+	public static final String DEL_FLAG_DELETE = "1";
+	public static final String DEL_FLAG_AUDIT = "2";
 
 }

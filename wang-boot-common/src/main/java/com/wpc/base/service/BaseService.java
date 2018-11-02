@@ -1,8 +1,10 @@
 package com.wpc.base.service;
 
 import com.wpc.base.entity.DataEntity;
+import com.wpc.base.entity.Page;
 import com.wpc.base.entity.datatables.DataTablesRequest;
 import com.wpc.base.entity.datatables.DataTablesResponse;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,9 +17,28 @@ import java.util.List;
  */
 public interface BaseService<T extends DataEntity<T>> {
 
-    void save(T t);
+    /**
+     * 查询列表数据
+     * @param entity
+     * @return
+     */
+    public List<T> findList(T entity);
 
-    void delete(Long id);
+    /**
+     * 查询分页数据
+     * @param page 分页对象
+     * @param entity
+     * @return
+     */
+    public Page<T> findPage(Page<T> page, T entity);
+
+    /**
+     * 删除数据
+     * @param entity
+     */
+    public void delete(Long id);
+
+    void save(T t);
 
     void deleteByIds(Long[] ids);
 
