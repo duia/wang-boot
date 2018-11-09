@@ -14,7 +14,7 @@ public abstract class TreeBaseServiceImpl<T extends TreeEntity<T>> extends BaseS
     protected TreeBaseDao<T> treeBaseDao;
 
     @Override
-    public void save(T t) {
+    public void insert(T t) {
         
         @SuppressWarnings("unchecked")
         Class<T> tClass = Reflections.getClassGenricType(t.getClass(), 0);
@@ -41,7 +41,7 @@ public abstract class TreeBaseServiceImpl<T extends TreeEntity<T>> extends BaseS
         t.setParentIds(t.getParent().getParentIds()+t.getParent().getId()+",");
 
         // 保存或更新实体
-        super.save(t);
+        super.insert(t);
 
     }
 

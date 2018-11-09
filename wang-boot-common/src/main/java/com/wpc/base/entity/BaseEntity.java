@@ -3,6 +3,10 @@ package com.wpc.base.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -17,11 +21,14 @@ import java.util.Map;
  */
 public abstract class BaseEntity<T> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 
 	/**
 	 * 实体编号（唯一标识）
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT LAST_INSERT_ID()")
+	@Column(name = "id")// 注解声明该表的字段名
 	protected Long id;
 
 	/**

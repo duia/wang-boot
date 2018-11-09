@@ -30,45 +30,45 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
     protected BaseDao<T> baseDao;
 
     @Override
-    public void save(T t) {
+    public void insert(T t) {
         t.preInsert();
-        this.baseDao.save(t);
+        this.baseDao.insert(t);
     }
 
     @Override
     public void delete(Long id) {
-    	this.baseDao.delete(id);
+    	this.baseDao.deleteByPrimaryKey(id);
     }
     
     @Override
     public void deleteByIds(Long[] ids) {
-    	this.baseDao.deleteByIds(ids);
+//    	this.baseDao.deleteByIds(ids);
     }
 
     @Override
     public void update(T t) {
         t.preUpdate();
-        this.baseDao.update(t);
+        this.baseDao.updateByPrimaryKey(t);
     }
 
     @Override
     public T findById(Long id) {
-        return baseDao.findById(id);
+        return baseDao.selectByPrimaryKey(id);
     }
 
     @Override
     public List<T> queryAll() {
-        return this.baseDao.search(null);
+        return null;//this.baseDao.search(null);
     }
     
     @Override
     public List<T> search(T query) {
-        return this.baseDao.search(query);
+        return null;//this.baseDao.search(query);
     }
     
     @Override
     public List<T> query(T query) {
-        return this.baseDao.query(query);
+        return null;//this.baseDao.query(query);
     }
     
     @Override
@@ -76,22 +76,22 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
 		// TODO Auto-generated method stub
 		query.setOrder();
 		DataTablesResponse<T> dtr = new DataTablesResponse<T>();
-		dtr.setDraw(query.getDraw());
-		dtr.setData(this.baseDao.searchPage(query));
-		dtr.setRecordsFiltered(this.baseDao.countPage(query));
-		query.setCondition(null);
-		dtr.setRecordsTotal(this.baseDao.countPage(query));
+//		dtr.setDraw(query.getDraw());
+//		dtr.setData(this.baseDao.searchPage(query));
+//		dtr.setRecordsFiltered(this.baseDao.countPage(query));
+//		query.setCondition(null);
+//		dtr.setRecordsTotal(this.baseDao.countPage(query));
 		return dtr;
 	}
 
     @Override
     public Integer count() {
-        return this.baseDao.count();
+        return 0;//this.baseDao.count();
     }
 
     @Override
     public Integer count(T t) {
-        return this.baseDao.count(t);
+        return 0;//this.baseDao.count(t);
     }
 
     /**

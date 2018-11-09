@@ -3,6 +3,7 @@ package com.wpc.base.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -20,14 +21,19 @@ import java.util.Date;
  */
 public class DataEntity<T> extends BaseEntity<T> {
 
-	private static final long serialVersionUID = 1L;
-
+	@Transient
 	protected Integer sort;		// 排序
+	@Transient
 	protected String remarks;	// 备注
+	@Transient
 	protected Long createBy;	// 创建者
+	@Transient
 	protected Date createDate;	// 创建日期
+	@Transient
 	protected Long updateBy;	// 更新者
+	@Transient
 	protected Date updateDate;	// 更新日期
+	@Transient
 	protected String delFlag; 	// 删除标记（-1：删除）
 
 	public DataEntity() {

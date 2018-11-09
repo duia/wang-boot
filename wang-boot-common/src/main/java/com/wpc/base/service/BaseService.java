@@ -15,13 +15,13 @@ import java.util.List;
  */
 public interface BaseService<T extends DataEntity<T>> {
 
-    void save(T t);
+    void insert(T t);
+
+    void update(T t);
 
     void delete(Long id);
 
     void deleteByIds(Long[] ids);
-
-    void update(T t);
 
     T findById(Long id);
 

@@ -5,12 +5,12 @@ package com.wpc.base.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wpc.common.bean.ResponseResult;
 import com.wpc.common.utils.date.DateUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
@@ -36,24 +36,11 @@ public abstract class BaseController {
 	 */
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 
-	/**
-	 * 管理基础路径
-	 */
-	@Value("${adminPath}")
-	protected String adminPath;
-	
-	/**
-	 * 前端基础路径
-	 */
-	@Value("${frontPath}")
-	protected String frontPath;
-	
-	/**
-	 * 前端URL后缀
-	 */
-	@Value("${urlSuffix}")
-	protected String urlSuffix;
-	
+	protected final String REDIRECT = "redirect:";
+	protected final String FORWARD = "forward:";
+
+	protected static ResponseResult SUCCESS_TIP = ResponseResult.success();
+
 	/**
 	 * 添加Model消息
 	 * @param messages

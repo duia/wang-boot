@@ -3,6 +3,8 @@ package com.wpc.base.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wpc.common.utils.base.Reflections;
 
+import javax.persistence.Transient;
+
 /**
  * 功能描述: 树形实体基础类
  * @Author: 王鹏程
@@ -12,11 +14,12 @@ import com.wpc.common.utils.base.Reflections;
  */
 public class TreeEntity<T> extends DataEntity<T> {
 
-	private static final long serialVersionUID = 1L;
-
+	@Transient
 	protected Long parentId;	// 父级编号
+	@Transient
 	protected String parentIds; // 所有父级编号
 
+	@Transient
 	protected T parent;	// 父级
 
 	public TreeEntity() {
