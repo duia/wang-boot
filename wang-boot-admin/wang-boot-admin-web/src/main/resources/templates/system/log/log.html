@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+
+<body class="gray-bg">
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>业务日志</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle"
+                                                type="button">开始时间
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control layer-date" id="beginTime" isTime="false" pattern="YYYY-MM-DD"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle"
+                                                type="button">结束时间
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control layer-date" id="endTime" isTime="false" pattern="YYYY-MM-DD"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle"
+                                                type="button">日志名称
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" id="logName" />
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">
+                                            日志类型
+                                        </button>
+                                    </div>
+                                    <select class="form-control" id="logType">
+                                        <option value="0">全部</option>
+                                        <option value="1">业务日志</option>
+                                        <option value="2">异常日志</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-primary ${spaceCss}" onclick="OptLog.search()">
+                                    <i class="fa fa-search"></i>&nbsp;搜索
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="OptLogTableToolbar" role="group">
+                            <button type="button" class="btn btn-primary" onclick="OptLog.detail()">
+                                <i class="fa fa-plus"></i>&nbsp;查看详情
+                            </button>
+                            <!--@if(shiro.hasPermission("/log/delLog")){-->
+                            <button type="button" class="btn btn-primary button-margin" onclick="OptLog.delLog()">
+                                <i class="fa fa-plus"></i>&nbsp;清空日志
+                            </button>
+                            <!--@}-->
+                        </div>
+                        <table id="OptLogTable" data-mobile-responsive="true" data-click-to-select="true">
+                            <thead>
+                            <tr>
+                                <th data-field="selectItem" data-checkbox="true"></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/log/log.js"></script>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>

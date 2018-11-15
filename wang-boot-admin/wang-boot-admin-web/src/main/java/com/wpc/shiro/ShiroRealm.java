@@ -3,8 +3,8 @@ package com.wpc.shiro;
 import com.wpc.common.Global;
 import com.wpc.SessionUtil;
 import com.wpc.shiro.session.SessionDAO;
-import com.wpc.sys.model.Role;
-import com.wpc.sys.model.User;
+import com.wpc.system.model.Role;
+import com.wpc.system.model.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -16,9 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class ShiroRealm extends AuthorizingRealm {
 
@@ -78,8 +76,8 @@ public class ShiroRealm extends AuthorizingRealm {
         // 添加用户权限
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        info.addRoles(principal.getRoleValues());
-        info.addStringPermissions(principal.getPermissionValues());
+        info.addRoles(principal.getRoles());
+        info.addStringPermissions(principal.getPermissions());
 
         // 更新登录IP和时间
 //        SessionUtil.updateUserLoginInfo(user.getId());
@@ -159,45 +157,94 @@ public class ShiroRealm extends AuthorizingRealm {
         private Long id; // 编号
         private String loginName; // 登录名
         private String name; // 姓名
+        private Long deptId;      // 部门id
+        private String deptName;        // 部门名称
         //角色集
-        private List<Role> roleList;
-        //菜单权限值
-        List<String> permissionValues = new ArrayList<>();
-        //角色值
-        List<String> roleValues = new ArrayList<>();
+        private List<Long> roleIds;
+        private List<String> roleNames; // 角色名称集
 
-        Principal(User user) {
+        //角色码
+        Set<String> roles;
+        //菜单权限值
+        Set<String> permissions;
+
+        public Principal(User user) {
             this.id = user.getId();
-            this.loginName = user.getLoginName();
-            this.name = user.getUsername();
+            this.loginName = user.getAccount();
+            this.name = user.getName();
+            this.deptId = user.getDeptid();
         }
 
         public Long getId() {
             return id;
         }
 
+        public void setId(Long id) {
+            this.id = id;
+        }
+
         public String getLoginName() {
             return loginName;
+        }
+
+        public void setLoginName(String loginName) {
+            this.loginName = loginName;
         }
 
         public String getName() {
             return name;
         }
 
-        public List<String> getPermissionValues() {
-            return permissionValues;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public void setPermissionValues(List<String> permissionValues) {
-            this.permissionValues = permissionValues;
+        public Long getDeptId() {
+            return deptId;
         }
 
-        public List<String> getRoleValues() {
-            return roleValues;
+        public void setDeptId(Long deptId) {
+            this.deptId = deptId;
         }
 
-        public void setRoleValues(List<String> roleValues) {
-            this.roleValues = roleValues;
+        public String getDeptName() {
+            return deptName;
+        }
+
+        public void setDeptName(String deptName) {
+            this.deptName = deptName;
+        }
+
+        public List<Long> getRoleIds() {
+            return roleIds;
+        }
+
+        public void setRoleIds(List<Long> roleIds) {
+            this.roleIds = roleIds;
+        }
+
+        public List<String> getRoleNames() {
+            return roleNames;
+        }
+
+        public void setRoleNames(List<String> roleNames) {
+            this.roleNames = roleNames;
+        }
+
+        public Set<String> getRoles() {
+            return roles;
+        }
+
+        public void setRoles(Set<String> roles) {
+            this.roles = roles;
+        }
+
+        public Set<String> getPermissions() {
+            return permissions;
+        }
+
+        public void setPermissions(Set<String> permissions) {
+            this.permissions = permissions;
         }
 
         @Override

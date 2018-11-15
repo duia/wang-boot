@@ -1,15 +1,21 @@
 package com.wpc.shiro;
 
 import com.wpc.SessionUtil;
-import com.wpc.sys.model.User;
 import com.wpc.shiro.ShiroRealm.Principal;
+import com.wpc.system.dao.MenuMapper;
+import com.wpc.system.factory.ConstantFactory;
+import com.wpc.system.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 功能描述:
@@ -30,11 +36,8 @@ public class ShiroFactory {
 //    private RcUserRoleService userRoleService;
 //    @Autowired
 //    private RoleService roleService;
-//
-//    @Autowired
-//    private PrivilegeService privilegeService;
-//    @Autowired
-//    private MenuService menuService;
+    @Autowired
+    private MenuMapper menuMapper;
 
     public User user(String username) {
         User user = SessionUtil.getByLoginName(username);
@@ -49,27 +52,36 @@ public class ShiroFactory {
 
     public Principal shiroUser(User user) {
         ShiroRealm.Principal principal = new ShiroRealm.Principal(user);
-        List<String> roles = new ArrayList<String>();
-        List<String> permissions = new ArrayList<String>();
-        permissions.add("user");
-        if (user.isAdmin()) {//可以修改为别的验证是否是超级管理员
-//            for (Role role : roleDao.queryAll()) {
-//                roles.add(role.getRoleCode());
-//            }
-//            for (Permission permission : permissionDao.queryAll()) {
-//                permissions.add(permission.getPermissionCode());
-//            }
-        } else {
-            // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权
-            /*for (Role role : roleDao.queryRoleByUserId(user.getId())) {
-                roles.add(role.getRoleCode());
-                for (Permission permission : permissionDao.queryPermissionByRoleId(role.getId())) {
-                    permissions.add(permission.getPermissionCode());
-                }
-            }*/
+        principal.setDeptName(ConstantFactory.me().getDeptName(user.getDeptid()));
+
+        String[] roleArray = user.getRoleid().split(",");
+        List<Long> roleIdList = new ArrayList<>();
+        List<String> roleNameList = new ArrayList<>();
+        for (String roleId : roleArray) {
+            roleIdList.add(Long.parseLong(roleId));
+            roleNameList.add(ConstantFactory.me().getSingleRoleName(Long.parseLong(roleId)));
         }
-        principal.setRoleValues(roles);
-        principal.setPermissionValues(permissions);
+        principal.setRoleIds(roleIdList);
+        principal.setRoleNames(roleNameList);
+
+        Set<String> roleSet = new HashSet<>();
+        Set<String> permissionSet = new HashSet<>();
+
+        for (Long roleId : roleIdList) {
+            List<String> permissions = menuMapper.getResUrlsByRoleId(roleId);
+            if (permissions != null) {
+                for (String permission : permissions) {
+                    if (StringUtils.isNotEmpty(permission)) {
+                        permissionSet.add(permission);
+                    }
+                }
+            }
+//            String roleName = shiroFactory.findRoleNameByRoleId(roleId);
+//            roleSet.add(roleName);
+        }
+
+        principal.setRoles(roleSet);
+        principal.setPermissions(permissionSet);
         return principal;
     }
 

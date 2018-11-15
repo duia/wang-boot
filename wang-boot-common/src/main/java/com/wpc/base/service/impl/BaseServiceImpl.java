@@ -1,5 +1,7 @@
 package com.wpc.base.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wpc.base.dao.BaseDao;
 import com.wpc.base.entity.BaseEntity;
 import com.wpc.base.entity.DataEntity;
@@ -58,28 +60,37 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
 
     @Override
     public List<T> queryAll() {
-        return null;//this.baseDao.search(null);
+        return this.baseDao.selectAll();
     }
     
     @Override
     public List<T> search(T query) {
-        return null;//this.baseDao.search(query);
+        return this.baseDao.select(query);
     }
-    
+
+    @Override
+    public PageInfo<T> search(T query, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<T> list = this.baseDao.select(query);
+        return new PageInfo<>(list);
+    }
+
     @Override
     public List<T> query(T query) {
-        return null;//this.baseDao.query(query);
+        return this.baseDao.select(query);
     }
     
     @Override
 	public DataTablesResponse<T> searchPage(DataTablesRequest query) {
 		// TODO Auto-generated method stub
-		query.setOrder();
+//		query.setOrder();
 		DataTablesResponse<T> dtr = new DataTablesResponse<T>();
-//		dtr.setDraw(query.getDraw());
-//		dtr.setData(this.baseDao.searchPage(query));
-//		dtr.setRecordsFiltered(this.baseDao.countPage(query));
-//		query.setCondition(null);
+		dtr.setDraw(query.getDraw());
+        PageHelper.startPage(query.getStart(), query.getLength());
+        PageInfo<T> page = new PageInfo<>(this.baseDao.selectByExample(query.getCondition()));
+		dtr.setData(page.getList());
+		dtr.setRecordsFiltered(page.getTotal());
+		query.setCondition(null);
 //		dtr.setRecordsTotal(this.baseDao.countPage(query));
 		return dtr;
 	}

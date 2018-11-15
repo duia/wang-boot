@@ -1,5 +1,6 @@
 package com.wpc.base.service;
 
+import com.github.pagehelper.PageInfo;
 import com.wpc.base.entity.DataEntity;
 import com.wpc.base.entity.datatables.DataTablesRequest;
 import com.wpc.base.entity.datatables.DataTablesResponse;
@@ -28,6 +29,8 @@ public interface BaseService<T extends DataEntity<T>> {
     List<T> queryAll();
     
     List<T> search(T query);
+
+    PageInfo<T> search(T query, int pageNum, int pageSize);
     
     List<T> query(T query);
     

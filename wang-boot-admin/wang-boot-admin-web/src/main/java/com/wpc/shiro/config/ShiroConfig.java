@@ -34,7 +34,7 @@ import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-//@Configuration
+@Configuration
 public class ShiroConfig {
 
     @Bean
@@ -103,6 +103,7 @@ public class ShiroConfig {
         // 配置退出过滤器,其中的具体代码Shiro已经替我们实现了
         chains.put("/static/**", "anon");
         chains.put("/favicon.ico", "anon");
+        chains.put("/login", "anon");
         chains.put("/register", "anon");
         chains.put("/getJPGCode", "anon");
         chains.put("/getGifCode", "anon");

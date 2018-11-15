@@ -18,11 +18,11 @@ public class DataTablesResponse<T extends Serializable> {
 	/**
 	 * 必要。即没有过滤的记录数（数据库里总共记录数）
 	 */
-	private Integer recordsTotal;
+	private Long recordsTotal;
 	/**
 	 * 必要。过滤后的记录数
 	 */
-	private Integer recordsFiltered;
+	private Long recordsFiltered;
 	private String error;
 	private List<T> data = new ArrayList<T>();
 	public Integer getDraw() {
@@ -31,16 +31,16 @@ public class DataTablesResponse<T extends Serializable> {
 	public void setDraw(Integer draw) {
 		this.draw = draw;
 	}
-	public Integer getRecordsTotal() {
+	public Long getRecordsTotal() {
 		return recordsTotal;
 	}
-	public void setRecordsTotal(Integer recordsTotal) {
+	public void setRecordsTotal(Long recordsTotal) {
 		this.recordsTotal = recordsTotal;
 	}
-	public Integer getRecordsFiltered() {
+	public Long getRecordsFiltered() {
 		return recordsFiltered;
 	}
-	public void setRecordsFiltered(Integer recordsFiltered) {
+	public void setRecordsFiltered(Long recordsFiltered) {
 		this.recordsFiltered = recordsFiltered;
 	}
 	public String getError() {

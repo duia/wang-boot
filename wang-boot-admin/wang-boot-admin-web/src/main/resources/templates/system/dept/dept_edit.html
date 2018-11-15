@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+<body class="gray-bg">
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="deptInfoForm">
+
+            <input type="hidden" id="id" value="${dept.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">部门名称</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="simplename" name="simplename"
+                                   th:value="${tool.dateType(${dept.simplename})}"
+                                   type="text"
+                            >
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">部门全称</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="fullname" name="fullname"
+                                   th:value="${tool.dateType(${dept.fullname})}"
+                                   type="text"
+                            >
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">备注</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="tips" name="tips"
+                                   th:value="${tool.dateType(${dept.tips})}"
+                                   type="text"
+                            >
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">排序</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="num" name="num"
+                                   th:value="${tool.dateType(${dept.num})}"
+                                   type="text"
+                            >
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">上级部门</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="pName" name="pName"
+                                   th:value="${tool.dateType(${pName})}"
+                                   type="text"
+                                   readonly="readonly"
+                                   onclick="DeptInfoDlg.showDeptSelectTree(); return false;"
+                                   style="background-color: #ffffff !important;"
+                            >
+                            <input class="form-control" type="hidden" id="pid" value="${dept.pid}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 父级部门的选择框 -->
+            <div id="parentDeptMenu" class="menuContent"
+                 style="display: none; position: absolute; z-index: 200;">
+                <ul id="parentDeptMenuTree" class="ztree tree-box" style="width: 245px !important;"></ul>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-info" onclick="DeptInfoDlg.editSubmit()" id="ensure">
+                        <i class="fa fa-check"></i>&nbsp;提交
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="DeptInfoDlg.close()" id="cancel">
+                        <i class="fa ${icon}"></i>&nbsp;取消
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script th:src="@{/static/js/modular/system/dept/dept_info.js}"></script>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>

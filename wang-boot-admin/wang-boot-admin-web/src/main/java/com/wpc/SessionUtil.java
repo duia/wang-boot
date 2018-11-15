@@ -5,8 +5,9 @@ import com.wpc.common.utils.Servlets;
 import com.wpc.common.utils.net.IpUtils;
 import com.wpc.redis.utils.JedisUtils;
 import com.wpc.shiro.ShiroRealm.Principal;
-import com.wpc.sys.dao.UserDao;
-import com.wpc.sys.model.User;
+import com.wpc.system.dao.UserMapper;
+import com.wpc.system.factory.ConstantFactory;
+import com.wpc.system.model.User;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
@@ -17,6 +18,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
 import java.util.Date;
+import java.util.List;
 
 public class SessionUtil {
 
@@ -30,7 +32,7 @@ public class SessionUtil {
     public static final int HASH_INTERATIONS = 1024;
     public static final int SALT_SIZE = 8;
 
-    private static UserDao userDao = SpringContextHolder.getBean(UserDao.class);
+    private static UserMapper userDao = SpringContextHolder.getBean(UserMapper.class);
 
     public static Session getSession(){
         try{
@@ -140,12 +142,12 @@ public class SessionUtil {
     public static User get(Long id){
         User user = (User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_ID_ + id);
         if (user ==  null){
-            user = userDao.findById(id);
+            user = userDao.selectByPrimaryKey(id);
             if (user == null){
                 return null;
             }
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -158,12 +160,12 @@ public class SessionUtil {
     public static User getByLoginName(String loginName){
         User user = (User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
         if (user == null){
-            user = userDao.getUserByLoginName(loginName);
+//            user = userDao.getUserByLoginName(loginName);
             if (user == null){
                 return null;
             }
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+//            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -173,16 +175,49 @@ public class SessionUtil {
      * @param user
      */
     public static void clearCache(User user){
-        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_ID_ + user.getId());
-        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
+//        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_ID_ + user.getId());
+//        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
     }
 
     public static void updateUserLoginInfo(Long id) {
-        User entity = new User();
-        entity.setId(id);
-        entity.setLoginDate(new Date());
-        entity.setLoginIp(IpUtils.getIpAddress(Servlets.getRequest()));
-        userDao.update(entity);
+//        User entity = new User();
+//        entity.setId(id);
+//        entity.setLoginDate(new Date());
+//        entity.setLoginIp(IpUtils.getIpAddress(Servlets.getRequest()));
+//        userDao.update(entity);
     }
 
+    /**
+     * 获取当前用户的部门数据范围的集合
+     */
+    public static List<Long> getDeptDataScope() {
+        Long deptId = getPrincipal().getDeptId();
+        List<Long> subDeptIds = ConstantFactory.me().getSubDeptId(deptId);
+        subDeptIds.add(deptId);
+        return subDeptIds;
+    }
+
+    /**
+     * 判断当前用户是否是超级管理员
+     */
+    public static boolean isAdmin() {
+        List<Long> roleList = getPrincipal().getRoleIds();
+        for (Long id : roleList) {
+            String singleRoleTip = ConstantFactory.me().getSingleRoleTip(id);
+            if (singleRoleTip.equals("administrator")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 已认证通过的用户。不包含已记住的用户，这是与user标签的区别所在。与notAuthenticated搭配使用
+     *
+     * @return 通过身份验证：true，否则false
+     */
+    public static boolean isAuthenticated() {
+        return getSubject() != null && getSubject().isAuthenticated();
+    }
 }

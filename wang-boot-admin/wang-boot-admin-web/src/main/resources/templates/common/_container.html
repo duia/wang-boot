@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit"/><!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <link rel="shortcut icon" th:href="@{/static/favicon.ico}">
+    <link th:href="@{/static/plugins/bootstrap-3.3.5-dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/font-awesome-4.5.0/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/chosen/amazeui.chosen.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/bootstrapvalidator/css/bootstrapValidator.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/style.css}" rel="stylesheet">
+    <link th:href="@{/static/css/_fstyle.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/icheck/skins/all.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/webuploader/webuploader.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css}" rel="stylesheet">
+    <link th:href="@{/static/plugins/bootstrap-treetable/bootstrap-treetable.css}" rel="stylesheet"/>
+    <!-- <link href="${ctxPath}/static/css/plugins/ztree/demo.css" rel="stylesheet"> -->
+
+    <!-- 全局js -->
+    <script th:src="@{/static/js/jquery-2.1.3.min.js}"></script>
+    <script th:src="@{/static/plugins/bootstrap-3.3.5-dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{/static/plugins/zTree_v3/js/jquery.ztree.all.min.js}"></script>
+    <script th:src="@{/static/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+    <script th:src="@{/static/plugins/bootstrapvalidator/js/bootstrapValidator.min.js}"></script>
+    <script th:src="@{/static/plugins/bootstrapvalidator/js/language/zh_CN.js}"></script>
+    <script th:src="@{/static/plugins/bootstrap-table/extensions/mobile/bootstrap-table-mobile.min.js}"></script>
+    <script th:src="@{/static/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+    <script th:src="@{/static/plugins/bootstrap-treetable/bootstrap-treetable.js}"></script>
+    <script th:src="@{/static/plugins/layer/layer.js}"></script>
+    <script th:src="@{/static/plugins/chosen/amazeui.chosen.js}"></script>
+    <script th:src="@{/static/plugins/icheck/icheck.min.js}"></script>
+    <script th:src="@{/static/plugins/laydate/laydate.js}"></script>
+    <script th:src="@{/static/plugins/webuploader/webuploader.min.js}"></script>
+    <script th:src="@{/static/js/common/ajax-object.js}"></script>
+    <script th:src="@{/static/js/common/bootstrap-table-object.js}"></script>
+    <script th:src="@{/static/js/common/tree-table-object.js}"></script>
+    <script th:src="@{/static/js/common/web-upload-object.js}"></script>
+    <script th:src="@{/static/js/common/ztree-object.js}"></script>
+    <script th:src="@{/static/js/common/Feng.js}"></script>
+
+    <style type="text/css">
+        table{  
+            width:100px;  
+            table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */  
+        }
+        td{  
+            width:100%;  
+            word-break:keep-all;/* 不换行 */  
+            white-space:nowrap;/* 不换行 */  
+            overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */  
+            text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/  
+        }
+    </style>
+
+    <script type="text/javascript">
+        Feng.addCtx("");
+        Feng.sessionTimeoutRegistry();
+    </script>
+</head>
+
+<body class="gray-bg">
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>

@@ -1,8 +1,13 @@
 package com.wpc.test.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.wpc.base.entity.datatables.DataTablesRequest;
+import com.wpc.base.entity.datatables.DataTablesResponse;
 import com.wpc.common.bean.ResponseResult;
 import com.wpc.common.limit.lock.Callback;
 import com.wpc.common.limit.lock.RedisDistributedLockTemplate;
+import com.wpc.system.model.User;
+import com.wpc.system.service.IUserService;
 import com.wpc.test.dao.DemoDao;
 import com.wpc.test.entity.Demo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +24,30 @@ public class DemoController {
 
     @Autowired
     private DemoDao demoDao;
+    @Autowired
+    private IUserService userService;
 
     @Autowired
     private RedisDistributedLockTemplate lockTemplate;
+
+    @RequestMapping("/1")
+    @ResponseBody
+    public PageInfo<User> index(Integer sex) {
+        User query = new User();
+        query.setSex(sex);
+        return userService.search(query, 1,10);
+    }
+
+    @RequestMapping("/2")
+    @ResponseBody
+    public DataTablesResponse<User> index2(Integer sex) {
+        DataTablesRequest query = new DataTablesRequest();
+        query.getCondition().put("sex", sex);
+        query.setDraw(1);
+        query.setStart(1);
+        query.setLength(10);
+        return userService.searchPage(query);
+    }
 
     @RequestMapping("/save")
     public void save() {

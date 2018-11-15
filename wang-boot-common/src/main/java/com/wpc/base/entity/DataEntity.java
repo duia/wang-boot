@@ -36,11 +36,11 @@ public class DataEntity<T> extends BaseEntity<T> {
 	@Transient
 	protected String delFlag; 	// 删除标记（-1：删除）
 
-	public DataEntity() {
+	protected DataEntity() {
 		super();
 	}
 
-	public DataEntity(Long id) {
+	protected DataEntity(Long id) {
 		super(id);
 	}
 

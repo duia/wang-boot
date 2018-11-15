@@ -1,12 +1,18 @@
 package com.wpc.base;
 
 import com.wpc.SessionUtil;
+import com.wpc.base.controller.BaseController;
 import com.wpc.common.utils.image.CaptchaUtils;
 import com.wpc.common.utils.image.vcode.Captcha;
 import com.wpc.common.utils.image.vcode.GifCaptcha;
 import com.wpc.shiro.MyFormAuthenticationFilter;
 import com.wpc.shiro.ShiroRealm;
+import com.wpc.system.model.User;
+import com.wpc.system.node.MenuNode;
+import com.wpc.system.service.IMenuService;
+import com.wpc.system.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
@@ -22,11 +28,13 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.wpc.shiro.ShiroRealm.*;
 
 @Controller
-@RequestMapping(value = "/")
-public class LoginController {
+public class LoginController extends BaseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
@@ -35,23 +43,56 @@ public class LoginController {
     @Autowired
     private SessionDAO sessionDAO;
 
-	@RequestMapping(value="/login", method = RequestMethod.GET)
-    public String login() {
-        return "login2";
+    @Autowired
+    private IMenuService menuService;
+    @Autowired
+    private IUserService userService;
+
+    /**
+     * 跳转到主页
+     */
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(Model model) {
+        //获取菜单列表
+        List<Long> roleList = new ArrayList<>();//ShiroKit.getUser().getRoleList();
+//        if (roleList == null || roleList.size() == 0) {
+//            ShiroKit.getSubject().logout();
+//            model.addAttribute("tips", "该用户没有角色，无法登陆");
+//            return "/login";
+//        }
+        roleList.add(1L);
+        List<MenuNode> menus = menuService.getMenusByRoleIds(roleList);
+        List<MenuNode> titles = MenuNode.buildTitle(menus);
+//        titles = ApiMenuFilter.build(titles);
+
+        model.addAttribute("titles", titles);
+
+        //获取用户头像
+//        Long id = SessionUtil.getUser().getId();
+//        User user = userService.findById(id);
+        String avatar = "girl.gif";
+        model.addAttribute("avatar", avatar);
+
+        return "index";
     }
-    
-//    @RequestMapping(value = "/logout")
-//    public String doLogout() {
-//        logger.info("======用户"+ SessionUtil.getUser().getLoginName()+"退出了系统");
-//        SecurityUtils.getSubject().logout();
-//        return "login2";
-//    }
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public String register() {
         return "register";
     }
-  
+
+    /**
+     * 跳转到登录页面
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+//        if (SessionUtil.isAuthenticated() || SessionUtil.getUser() != null) {
+//            return REDIRECT + "/";
+//        } else {
+            return "/login";
+//        }
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(HttpServletRequest request, Model model) {
 
@@ -90,7 +131,14 @@ public class LoginController {
                     sessionDAO.getActiveSessions().size(), message, exception);
         }
         
-        return "login2";
+        return "login";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String doLogout() {
+        logger.info("======用户"+ SessionUtil.getUser().getAccount()+"退出了系统");
+        SecurityUtils.getSubject().logout();
+        return "login";
     }
 
     /**

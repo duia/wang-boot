@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+
+<body class="gray-bg">
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>用户管理</h5>
+			</div>
+			<div class="ibox-content">
+				<div class="row row-lg">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-lg-2 col-sm-3">
+								<div class="panel panel-default">
+									<div class="panel-heading">组织机构</div>
+									<div class="panel-body dept-tree">
+										<ul id="deptTree" class="ztree"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-10 col-sm-9">
+								<div class="row">
+									<div class="col-lg-10 col-sm-9">
+										<div class="row">
+											<div class="col-lg-4 col-sm-12">
+												<div class="input-group">
+													<div class="input-group-btn">
+														<button data-toggle="dropdown" class="btn btn-white dropdown-toggle"
+																type="button">用户名称
+														</button>
+													</div>
+													<input type="text" class="form-control" id="name" placeholder="帐号/姓名/手机号" />
+												</div>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<div class="input-group">
+													<div class="input-group-btn">
+														<button data-toggle="dropdown" class="btn btn-white dropdown-toggle"
+																type="button">注册开始日期
+														</button>
+													</div>
+													<input type="text" class="form-control layer-date" id="beginTime"/>
+												</div>
+											</div>
+											<div class="col-lg-4 col-sm-6">
+												<div class="input-group">
+													<div class="input-group-btn">
+														<button data-toggle="dropdown" class="btn btn-white dropdown-toggle"
+																type="button">注册结束日期
+														</button>
+													</div>
+													<input type="text" class="form-control layer-date" id="endTime"/>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-2 col-sm-3">
+										<div class="row">
+											<div class="col-lg-12 col-sm-12">
+												<button type="button" class="btn btn-primary" onclick="MgrUser.search()">
+													<i class="fa fa-search"></i>&nbsp;搜索
+												</button>
+												<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.resetSearch()">
+													<i class="fa fa-trash"></i>&nbsp;重置
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="hidden-xs" id="managerTableToolbar" role="group">
+									<!--@if(shiro.hasPermission("/mgr/add")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.openAddMgr()">
+										<i class="fa fa-plus"></i>&nbsp;添加
+									</button>
+									<!--@}-->
+									<!--@if(shiro.hasPermission("/mgr/edit")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.openChangeUser()">
+										<i class="fa fa-edit"></i>&nbsp;修改
+									</button>
+									<!--@}-->
+									<!--@if(shiro.hasPermission("/mgr/delete")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.delMgrUser()">
+										<i class="fa fa-remove"></i>&nbsp;删除
+									</button>
+									<!--@}-->
+									<!--@if(shiro.hasPermission("/mgr/reset")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.resetPwd()">
+										<i class="fa fa-refresh"></i>&nbsp;重置密码
+									</button>
+									<!--@}-->
+									<!--@if(shiro.hasPermission("/mgr/freeze")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.freezeAccount()">
+										<i class="fa fa-warning"></i>&nbsp;冻结
+									</button>
+									<!--@}-->
+									<!--@if(shiro.hasPermission("/mgr/unfreeze")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.unfreeze()">
+										<i class="fa fa-check-circle"></i>&nbsp;解除冻结
+									</button>
+									<!--@}-->
+									<!--@if(shiro.hasPermission("/mgr/setRole")){-->
+									<button type="button" class="btn btn-primary button-margin" onclick="MgrUser.roleAssign()">
+										<i class="fa fa-user-secret"></i>&nbsp;角色分配
+									</button>
+									<!--@}-->
+								</div>
+								<table id="managerTable" data-mobile-responsive="true" data-click-to-select="true">
+									<thead>
+									<tr>
+										<th data-field="selectItem" data-checkbox="true"></th>
+									</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script th:src="@{/static/js/modular/system/user/user.js}"></script>
+<script>
+    laydate.render({
+        elem: '#beginTime'
+    });
+    laydate.render({
+        elem: '#endTime'
+    });
+</script>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>

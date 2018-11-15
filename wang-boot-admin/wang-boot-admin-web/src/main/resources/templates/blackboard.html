@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content">
+	<div class="container-fluid" style="padding: 0 !important;">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="alert alert-success alert-dismissable" th:each="notice : ${noticeList}">
+					<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+					<p th:text="${notice.content}"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>
