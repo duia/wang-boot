@@ -47,7 +47,7 @@ public class ShiroFactory {
             throw new UnknownAccountException();//没找到帐号
         }
         if(ManagerStatus.OK.getCode() != user.getStatus()) {
-            throw new LockedAccountException(); //帐号锁定
+            throw new LockedAccountException("msg:该已帐号禁止登录."); //帐号锁定
         }
         return user;
     }
