@@ -37,6 +37,26 @@ public class Global {
 	private static PropertiesLoader loader = new PropertiesLoader("param.properties");
 
 	/**
+	 * 系统默认的管理员密码
+	 */
+	public static final String DEFAULT_PWD = "123456";
+
+	/**
+	 * 管理员角色的名字
+	 */
+	public static final String ADMIN_NAME = "administrator";
+
+	/**
+	 * 管理员id
+	 */
+	public static final Long ADMIN_ID = 1L;
+
+	/**
+	 * 超级管理员角色id
+	 */
+	public static final Long ADMIN_ROLE_ID = 1L;
+
+	/**
 	 * 显示/隐藏
 	 */
 	public static final String SHOW = "1";

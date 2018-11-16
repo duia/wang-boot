@@ -16,8 +16,8 @@
 package com.wpc.system.controller;
 
 import com.wpc.base.controller.BaseController;
+import com.wpc.common.Global;
 import com.wpc.common.bean.ResponseResult;
-import com.wpc.constant.Const;
 import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Role;
 import com.wpc.system.model.User;
@@ -141,7 +141,7 @@ public class RoleController extends BaseController {
     public ResponseResult remove(@RequestParam Integer roleId) {
 
         //不能删除超级管理员角色
-        if (roleId.equals(Const.ADMIN_ROLE_ID)) {
+        if (roleId.equals(Global.ADMIN_ROLE_ID)) {
 //            throw new ServiceException(BizExceptionEnum.CANT_DELETE_ADMIN);
         }
 

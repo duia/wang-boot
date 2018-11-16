@@ -1,5 +1,6 @@
 package com.wpc.shiro.config;
 
+import com.wpc.shiro.JCaptchaValidateFilter;
 import com.wpc.shiro.MyFormAuthenticationFilter;
 import com.wpc.shiro.ShiroRealm;
 import com.wpc.shiro.cache.JedisCacheManager;
@@ -47,16 +48,6 @@ public class ShiroConfig {
         return filterRegistration;
     }
 
-    /*基于 Form 表单的身份验证过滤器*/
-//    @Bean(name = "formAuthenticationFilter")
-    public MyFormAuthenticationFilter formAuthenticationFilter() {
-        MyFormAuthenticationFilter formAuthenticationFilter = new MyFormAuthenticationFilter();
-        formAuthenticationFilter.setUsernameParam("loginName");
-        formAuthenticationFilter.setPasswordParam("password");
-        formAuthenticationFilter.setRememberMeParam("rememberMe");
-        return formAuthenticationFilter;
-    }
-
     /**
      * 功能描述: CAS认证过滤器
      * @param: null
@@ -92,7 +83,8 @@ public class ShiroConfig {
         Map<String, Filter> filters = shiroFilter.getFilters();
 //        filtersMap.put("cas", casFilter());
         filters.put("anon", new AnonymousFilter());
-        filters.put("authc", formAuthenticationFilter());// 自定义拦截器
+        filters.put("authc", new MyFormAuthenticationFilter());// 自定义拦截器
+        filters.put("jcaptcha", new JCaptchaValidateFilter());
         filters.put("logout", new LogoutFilter());
         filters.put("roles", new RolesAuthorizationFilter());
         filters.put("user", new UserFilter());
@@ -103,7 +95,7 @@ public class ShiroConfig {
         // 配置退出过滤器,其中的具体代码Shiro已经替我们实现了
         chains.put("/static/**", "anon");
         chains.put("/favicon.ico", "anon");
-        chains.put("/login", "anon");
+        chains.put("/login", "jcaptcha,authc");
         chains.put("/register", "anon");
         chains.put("/getJPGCode", "anon");
         chains.put("/getGifCode", "anon");

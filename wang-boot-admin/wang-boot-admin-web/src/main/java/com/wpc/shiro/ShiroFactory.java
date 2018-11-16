@@ -1,11 +1,13 @@
 package com.wpc.shiro;
 
 import com.wpc.SessionUtil;
+import com.wpc.constant.ManagerStatus;
 import com.wpc.shiro.ShiroRealm.Principal;
 import com.wpc.system.dao.MenuMapper;
 import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.User;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.util.ByteSource;
@@ -44,9 +46,9 @@ public class ShiroFactory {
         if (user == null) {
             throw new UnknownAccountException();//没找到帐号
         }
-//        if(Global.NO.equals(user.getLoginFlag())) {
-//            throw new LockedAccountException(); //帐号锁定
-//        }
+        if(ManagerStatus.OK.getCode() != user.getStatus()) {
+            throw new LockedAccountException(); //帐号锁定
+        }
         return user;
     }
 

@@ -14,56 +14,28 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 /**
- * 表单验证（包含验证码）过滤类
- * @author ThinkGem
+ * 表单验证过滤类
+ * @author 王鹏程
  * @version 2014-5-19
  */
-@Service
 public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
 
-	public static final String DEFAULT_CAPTCHA_PARAM = "validateCode";
-	public static final String DEFAULT_MOBILE_PARAM = "mobileLogin";
 	public static final String DEFAULT_MESSAGE_PARAM = "message";
 
-	private String captchaParam = DEFAULT_CAPTCHA_PARAM;
-	private String mobileLoginParam = DEFAULT_MOBILE_PARAM;
 	private String messageParam = DEFAULT_MESSAGE_PARAM;
 
-	/*protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
-		String username = getUsername(request);
-		String password = getPassword(request);
-		if (password==null){
-			password = "";
-		}
-		boolean rememberMe = isRememberMe(request);
-		String host = StringUtils.getRemoteAddr((HttpServletRequest)request);
-		String captcha = getCaptcha(request);
-		boolean mobile = isMobileLogin(request);
-		return new UsernamePasswordToken(username, password.toCharArray(), rememberMe, host, captcha, mobile);
-	}*/
-	
-	public String getCaptchaParam() {
-		return captchaParam;
-	}
-
-	protected String getCaptcha(ServletRequest request) {
-		return WebUtils.getCleanParam(request, getCaptchaParam());
-	}
-
-	public String getMobileLoginParam() {
-		return mobileLoginParam;
-	}
-	
-	protected boolean isMobileLogin(ServletRequest request) {
-        return WebUtils.isTrue(request, getMobileLoginParam());
-    }
-	
 	public String getMessageParam() {
 		return messageParam;
 	}
-	
+
+	@Override
+	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+		return request.getAttribute(getFailureKeyAttribute()) != null || super.onAccessDenied(request, response);
+	}
+
 	/**
 	 * 登录失败调用事件
 	 */

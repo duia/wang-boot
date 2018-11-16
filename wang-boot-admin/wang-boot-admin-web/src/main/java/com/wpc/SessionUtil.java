@@ -1,8 +1,7 @@
 package com.wpc;
 
+import com.wpc.common.Global;
 import com.wpc.common.SpringContextHolder;
-import com.wpc.common.utils.Servlets;
-import com.wpc.common.utils.net.IpUtils;
 import com.wpc.redis.utils.JedisUtils;
 import com.wpc.shiro.ShiroRealm.Principal;
 import com.wpc.system.dao.UserMapper;
@@ -62,7 +61,7 @@ public class SessionUtil {
      */
     public static Principal getPrincipal(){
         try{
-            Subject subject = SecurityUtils.getSubject();
+            Subject subject = getSubject();
             Principal principal = (Principal)subject.getPrincipal();
             if (principal != null){
                 return principal;
@@ -122,16 +121,15 @@ public class SessionUtil {
      * @return 取不到返回 new User()
      */
     public static User getUser(){
-        Principal principal = SessionUtil.getPrincipal();
+        Principal principal = getPrincipal();
         if (principal!=null){
             User user = get(principal.getId());
             if (user != null){
                 return user;
             }
-            return new User();
         }
         // 如果没有登录，则返回实例化空的User对象。
-        return new User();
+        return null;
     }
 
     /**
@@ -160,7 +158,7 @@ public class SessionUtil {
     public static User getByLoginName(String loginName){
         User user = (User) JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
         if (user == null){
-//            user = userDao.getUserByLoginName(loginName);
+            user = userDao.getByAccount(loginName);
             if (user == null){
                 return null;
             }
@@ -204,7 +202,7 @@ public class SessionUtil {
         List<Long> roleList = getPrincipal().getRoleIds();
         for (Long id : roleList) {
             String singleRoleTip = ConstantFactory.me().getSingleRoleTip(id);
-            if (singleRoleTip.equals("administrator")) {
+            if (singleRoleTip.equals(Global.ADMIN_NAME)) {
                 return true;
             }
         }

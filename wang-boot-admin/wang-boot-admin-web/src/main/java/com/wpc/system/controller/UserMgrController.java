@@ -17,8 +17,8 @@ package com.wpc.system.controller;
 
 import com.wpc.SessionUtil;
 import com.wpc.base.controller.BaseController;
+import com.wpc.common.Global;
 import com.wpc.common.bean.ResponseResult;
-import com.wpc.constant.Const;
 import com.wpc.constant.ManagerStatus;
 import com.wpc.system.DataScope;
 import com.wpc.system.factory.ConstantFactory;
@@ -223,7 +223,7 @@ public class UserMgrController extends BaseController {
     @ResponseBody
     public ResponseResult delete(@RequestParam Long userId) {
         //不能删除超级管理员
-        if (userId.equals(Const.ADMIN_ID)) {
+        if (userId.equals(Global.ADMIN_ID)) {
 //            throw new ServiceException(BizExceptionEnum.CANT_DELETE_ADMIN);
         }
         assertAuth(userId);
