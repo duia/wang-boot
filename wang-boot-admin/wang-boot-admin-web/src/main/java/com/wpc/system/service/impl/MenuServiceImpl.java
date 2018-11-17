@@ -23,6 +23,7 @@ import com.wpc.system.model.Menu;
 import com.wpc.system.service.IMenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -45,28 +46,29 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements IMenuServi
     public void delMenu(Long menuId) {
 
         //删除菜单
-//        this.menuMapper.deleteById(menuId);
+        this.menuMapper.deleteByPrimaryKey(menuId);
 
         //删除关联的relation
-//        this.menuMapper.deleteRelationByMenu(menuId);
+        this.menuMapper.deleteRelationByMenu(menuId);
     }
 
     @Override
     @Transactional
     public void delMenuContainSubMenus(Long menuId) {
 
-//        Menu menu = menuMapper.selectById(menuId);
+        Menu menu = menuMapper.selectByPrimaryKey(menuId);
 
         //删除当前菜单
-//        delMenu(menuId);
+        delMenu(menuId);
 
         //删除所有子菜单
-//        Wrapper<Menu> wrapper = new EntityWrapper<>();
-//        wrapper = wrapper.like("pcodes", "%[" + menu.getCode() + "]%");
-//        List<Menu> menus = menuMapper.selectList(wrapper);
-//        for (Menu temp : menus) {
-//            delMenu(temp.getId());
-//        }
+        Example example = new Example(Menu.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andLike("pcodes", "%[" + menu.getCode() + "]%");
+        List<Menu> menus = menuMapper.selectByExample(example);
+        for (Menu temp : menus) {
+            delMenu(temp.getId());
+        }
     }
 
     @Override

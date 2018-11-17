@@ -18,6 +18,7 @@ package com.wpc.system.controller;
 import com.wpc.base.controller.BaseController;
 import com.wpc.common.bean.ResponseResult;
 import com.wpc.common.utils.base.BeanUtils;
+import com.wpc.constant.MenuStatus;
 import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Menu;
 import com.wpc.system.node.ZTreeNode;
@@ -78,9 +79,9 @@ public class MenuController extends BaseController {
         Menu menu = this.menuService.findById(menuId);
 
         //获取父级菜单的id
-        Menu temp = new Menu();
-        temp.setCode(menu.getPcode());
-        Menu pMenu = null;//this.menuService.selectOne(new EntityWrapper<>(temp));
+        Menu query = new Menu();
+        query.setCode(menu.getPcode());
+        Menu pMenu = this.menuService.selectOne(query);
 
         //如果父级是顶级菜单
         if (pMenu == null) {
@@ -91,7 +92,7 @@ public class MenuController extends BaseController {
         }
 
         Map<String, Object> menuMap = BeanUtils.object2Map(menu);
-        menuMap.put("pcodeName", ConstantFactory.me().getMenuNameByCode(temp.getCode()));
+        menuMap.put("pcodeName", ConstantFactory.me().getMenuNameByCode(query.getCode()));
         model.addAttribute("menu", menuMap);
 //        LogObjectHolder.me().set(menu);
         return PREFIX + "menu_edit";
@@ -109,6 +110,7 @@ public class MenuController extends BaseController {
         //设置父级菜单编号
         menuSetPcode(menu);
 
+        menu.setStatus(MenuStatus.ENABLE.getCode());
         this.menuService.update(menu);
         return SUCCESS_TIP;
     }
@@ -134,15 +136,15 @@ public class MenuController extends BaseController {
 //        }
 
         //判断是否存在该编号
-//        String existedMenuName = ConstantFactory.me().getMenuNameByCode(menu.getCode());
-//        if (ToolUtil.isNotEmpty(existedMenuName)) {
-//            throw new ServiceException(BizExceptionEnum.EXISTED_THE_MENU);
-//        }
+        String existedMenuName = ConstantFactory.me().getMenuNameByCode(menu.getCode());
+        if (StringUtils.isNotEmpty(existedMenuName)) {
+            throw new RuntimeException("菜单编号重复，不能添加");
+        }
 
         //设置父级菜单编号
         menuSetPcode(menu);
 
-//        menu.setStatus(MenuStatus.ENABLE.getCode());
+        menu.setStatus(MenuStatus.ENABLE.getCode());
         this.menuService.insert(menu);
         return SUCCESS_TIP;
     }
@@ -226,9 +228,9 @@ public class MenuController extends BaseController {
             menu.setPcode(pMenu.getCode());
 
             //如果编号和父编号一致会导致无限递归
-//            if (menu.getCode().equals(menu.getPcode())) {
-//                throw new ServiceException(BizExceptionEnum.MENU_PCODE_COINCIDENCE);
-//            }
+            if (menu.getCode().equals(menu.getPcode())) {
+                throw new RuntimeException("菜单编号和副编号不能一致");
+            }
 
             menu.setLevels(pLevels + 1);
             menu.setPcodes(pMenu.getPcodes() + "[" + pMenu.getCode() + "],");

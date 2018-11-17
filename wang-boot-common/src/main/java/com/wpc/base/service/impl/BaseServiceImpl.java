@@ -62,7 +62,12 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
     public List<T> queryAll() {
         return this.baseDao.selectAll();
     }
-    
+
+    @Override
+    public T selectOne(T query) {
+        return this.baseDao.selectOne(query);
+    }
+
     @Override
     public List<T> search(T query) {
         return this.baseDao.select(query);

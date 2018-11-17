@@ -40,7 +40,7 @@
                                    readonly="readonly"
                                    onclick="MenuInfoDlg.showMenuSelectTree(); return false;"
                                    style="background-color: #ffffff !important;">
-                            <input class="form-control" type="hidden" id="pcode" value="${menu.pcode}">
+                            <input class="form-control" type="hidden" id="pcode" th:value="${menu.pcode}">
                             <div id="pcodeTreeDiv" style="display: none; position: absolute; z-index: 200;">
                                 <ul id="pcodeTree" class="ztree tree-box" style="width:244px !important;"></ul>
                             </div>

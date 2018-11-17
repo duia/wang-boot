@@ -27,6 +27,8 @@ public interface BaseService<T extends DataEntity<T>> {
     T findById(Long id);
 
     List<T> queryAll();
+
+    T selectOne(T query);
     
     List<T> search(T query);
 
