@@ -17,11 +17,15 @@ package com.wpc.system.service.impl;
 
 import com.wpc.base.service.impl.BaseServiceImpl;
 import com.wpc.system.dao.DictMapper;
+import com.wpc.system.factory.MutiStrFactory;
 import com.wpc.system.model.Dict;
 import com.wpc.system.service.IDictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
+
+import static com.wpc.system.factory.MutiStrFactory.*;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +33,7 @@ import java.util.Map;
 /**
  * 字典服务
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @Date 2018/10/15 下午11:39
  */
 @Service
@@ -42,40 +46,43 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
     @Transactional
     public void addDict(String dictCode, String dictName, String dictTips, String dictValues) {
         //判断有没有该字典
-//        List<Dict> dicts = dictMapper.selectList(new EntityWrapper<Dict>().eq("code", dictCode).and().eq("pid", 0));
-//        if (dicts != null && dicts.size() > 0) {
-//            throw new ServiceException(BizExceptionEnum.DICT_EXISTED);
-//        }
+        Example example = new Example(Dict.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("pid", 0)
+                .andEqualTo("code", dictCode);
+        List<Dict> dicts = dictMapper.selectByExample(example);
+        if (dicts != null && dicts.size() > 0) {
+            throw new RuntimeException("字典编码已存在");
+        }
 
         //解析dictValues
-//        List<Map<String, String>> items = parseKeyValue(dictValues);
+        List<Map<String, String>> items = parseKeyValue(dictValues);
 
         //添加字典
-//        Dict dict = new Dict();
-//        dict.setName(dictName);
-//        dict.setCode(dictCode);
-//        dict.setTips(dictTips);
-//        dict.setNum(0);
-//        dict.setPid(0);
-//        this.dictMapper.insert(dict);
+        Dict dict = new Dict();
+        dict.setName(dictName);
+        dict.setCode(dictCode);
+        dict.setTips(dictTips);
+        dict.setNum(0);
+        dict.setPid(0L);
+        this.dictMapper.insert(dict);
 
         //添加字典条目
-//        for (Map<String, String> item : items) {
-//            String code = item.get(MUTI_STR_CODE);
-//            String name = item.get(MUTI_STR_NAME);
-//            String num = item.get(MUTI_STR_NUM);
-//            Dict itemDict = new Dict();
-//            itemDict.setPid(dict.getId());
-//            itemDict.setCode(code);
-//            itemDict.setName(name);
-//
-//            try {
-//                itemDict.setNum(Integer.valueOf(num));
-//            } catch (NumberFormatException e) {
-////                throw new ServiceException(BizExceptionEnum.DICT_MUST_BE_NUMBER);
-//            }
-//            this.dictMapper.insert(itemDict);
-//        }
+        for (Map<String, String> item : items) {
+            String code = item.get(MUTI_STR_CODE);
+            String name = item.get(MUTI_STR_NAME);
+            String num = item.get(MUTI_STR_NUM);
+            Dict itemDict = new Dict();
+            itemDict.setPid(dict.getId());
+            itemDict.setCode(code);
+            itemDict.setName(name);
+
+            try {
+                itemDict.setNum(Integer.valueOf(num));
+            } catch (NumberFormatException e) {
+            }
+            this.dictMapper.insert(itemDict);
+        }
     }
 
     @Override
@@ -92,12 +99,13 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
     @Transactional
     public void delteDict(Integer dictId) {
         //删除这个字典的子词典
-//        Wrapper<Dict> dictEntityWrapper = new EntityWrapper<>();
-//        dictEntityWrapper = dictEntityWrapper.eq("pid", dictId);
-//        dictMapper.delete(dictEntityWrapper);
+        Example example = new Example(Dict.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("pid", dictId);
+        dictMapper.deleteByExample(example);
 //
 //        //删除这个词典
-//        dictMapper.deleteById(dictId);
+        dictMapper.deleteByPrimaryKey(dictId);
     }
 
     @Override
@@ -110,6 +118,14 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
         return this.dictMapper.selectByParentCode(code);
     }
 
+    @Override
+    public List<Dict> selectByParentId(Long pid) {
+        Example example = new Example(Dict.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("pid", pid);
+        List<Dict> dicts = dictMapper.selectByExample(example);
+        return dicts;
+    }
 
     @Override
     public List<Map<String, Object>> list(String conditiion) {

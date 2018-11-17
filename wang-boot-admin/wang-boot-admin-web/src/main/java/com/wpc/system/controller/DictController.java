@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * 字典控制器
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @Date 2017年4月26日 12:55:31
  */
 @Controller
@@ -67,8 +67,8 @@ public class DictController extends BaseController {
     public String deptUpdate(@PathVariable Long dictId, Model model) {
         Dict dict = dictService.findById(dictId);
         model.addAttribute("dict", dict);
-//        List<Dict> subDicts = dictService.selectList(new EntityWrapper<Dict>().eq("pid", dictId));
-//        model.addAttribute("subDicts", subDicts);
+        List<Dict> subDicts = dictService.selectByParentId(dictId);
+        model.addAttribute("subDicts", subDicts);
 //        LogObjectHolder.me().set(dict);
         return PREFIX + "dict_edit";
     }

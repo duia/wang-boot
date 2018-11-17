@@ -11,7 +11,7 @@
 
             <div class="row">
                 <div class="col-sm-12" id="itemsArea">
-                    <input type="hidden" id="itemSize" value="${subDicts.~size!0}" />
+                    <input type="hidden" id="itemSize" th:value="${subDicts.size()}" />
                     <div class="form-group">
 
                         <label class="col-sm-2 control-label">类型编码</label>
@@ -38,8 +38,7 @@
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
-                    @for(item in subDicts){
-                    <div class="form-group" name="dictItem" id="dictItem${itemLP.index}">
+                    <div class="form-group" th:each="item,itemStat : ${subDicts}" name="dictItem" th:id="|dictItem${itemStat.index}|">
                         <label class="col-sm-1 control-label">值</label>
                         <div class="col-sm-2">
                             <input class="form-control" type="text" name="itemCode" th:value="${item.code}">
@@ -58,7 +57,6 @@
                             </button>
                         </div>
                     </div>
-                    @}
                     </input>
                 </div>
                 <div class="row btn-group-m-t">
@@ -67,7 +65,7 @@
                             <i class="fa fa-check"></i>&nbsp;提交
                         </button>
                         <button type="button" class="btn btn-danger" onclick="DictInfoDlg.close()" id="cancel">
-                            <i class="fa ${icon}"></i>&nbsp;取消
+                            <i class="fa fa-eraser"></i>&nbsp;取消
                         </button>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ public class Dict extends DataEntity<Dict> {
     /**
      * 父级字典
      */
-    private Integer pid;
+    private Long pid;
     /**
      * 名称
      */
@@ -47,11 +47,11 @@ public class Dict extends DataEntity<Dict> {
         this.num = num;
     }
 
-    public Integer getPid() {
+    public Long getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(Long pid) {
         this.pid = pid;
     }
 

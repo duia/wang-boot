@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * 字典服务
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @date 2017-04-27 17:00
  */
 public interface IDictService extends BaseService<Dict> {
@@ -54,6 +54,11 @@ public interface IDictService extends BaseService<Dict> {
      * 根据父类编码获取词典列表
      */
     List<Dict> selectByParentCode(@Param("code") String code);
+
+    /**
+     * 根据父类ID获取词典列表
+     */
+    List<Dict> selectByParentId(Long pid);
 
     /**
      * 查询字典列表
