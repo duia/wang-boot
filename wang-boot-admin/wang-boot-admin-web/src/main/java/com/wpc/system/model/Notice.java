@@ -12,7 +12,7 @@ import java.util.Date;
  * 通知表
  * </p>
  *
- * @author stylefeng
+ * @author 王鹏程
  * @since 2017-07-11
  */
 @Alias("Notice")

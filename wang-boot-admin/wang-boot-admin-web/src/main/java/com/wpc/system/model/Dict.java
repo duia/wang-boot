@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * 字典表
  * </p>
  *
- * @author stylefeng
+ * @author 王鹏程
  * @since 2017-07-11
  */
 @Alias("Dict")

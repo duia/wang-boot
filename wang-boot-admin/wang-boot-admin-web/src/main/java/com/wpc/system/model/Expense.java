@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * 报销表
  * </p>
  *
- * @author stylefeng
+ * @author 王鹏程
  * @since 2017-12-05
  */
 @Alias("Expense")
