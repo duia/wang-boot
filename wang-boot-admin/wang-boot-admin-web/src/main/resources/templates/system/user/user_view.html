@@ -15,8 +15,8 @@
                         <div class="ibox-content" style="border:none !important; ">
                             <div class="form-horizontal" id="userInfoForm">
 
-                                <input type="hidden" id="id" value="${user.id}">
-                                <input type="hidden" id="sexValue" value="${user.sex}">
+                                <input type="hidden" id="id" th:value="${user.id}">
+                                <input type="hidden" id="sexValue" th:value="${user.sex}">
 
                                 <div class="row">
                                     <div class="col-sm-6 b-r">
@@ -37,7 +37,7 @@
                                                 <i class="fa fa-upload"></i>&nbsp;上传
                                             </div>
                                         </div>
-                                        <input type="hidden" id="avatar" value="${user.avatar}"/>
+                                        <input type="hidden" id="avatar" th:value="${user.avatar}"/>
                                     </div>
                                     <div class="hr-line-dashed"></div>
 
@@ -120,7 +120,7 @@
                                                            onclick="UserInfoDlg.showInfoDeptSelectTree(); return false;"
                                                            style="background-color: #ffffff !important;"
                                                     >
-                                                    <input class="form-control" type="hidden" id="deptid" value="${user.deptid}">
+                                                    <input class="form-control" type="hidden" id="deptid" th:value="${user.deptid}">
 
                                                     <div id="menuContent" style="display: none; position: absolute; z-index: 200;">
                                                         <ul id="treeDemo" class="ztree tree-box" style="width:250px !important;"></ul>

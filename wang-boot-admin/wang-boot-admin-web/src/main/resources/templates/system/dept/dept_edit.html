@@ -7,7 +7,7 @@
     <div class="ibox-content">
         <div class="form-horizontal" id="deptInfoForm">
 
-            <input type="hidden" id="id" value="${dept.id}">
+            <input type="hidden" id="id" th:value="${dept.id}">
 
             <div class="row">
                 <div class="col-sm-6 b-r">
@@ -15,7 +15,7 @@
                         <label class="col-sm-3 control-label">部门名称</label>
                         <div class="col-sm-9">
                             <input class="form-control" id="simplename" name="simplename"
-                                   th:value="${tool.dateType(${dept.simplename})}"
+                                   th:value="${dept.simplename}"
                                    type="text"
                             >
                         </div>
@@ -26,7 +26,7 @@
                         <label class="col-sm-3 control-label">部门全称</label>
                         <div class="col-sm-9">
                             <input class="form-control" id="fullname" name="fullname"
-                                   th:value="${tool.dateType(${dept.fullname})}"
+                                   th:value="${dept.fullname}"
                                    type="text"
                             >
                         </div>
@@ -37,7 +37,7 @@
                         <label class="col-sm-3 control-label">备注</label>
                         <div class="col-sm-9">
                             <input class="form-control" id="tips" name="tips"
-                                   th:value="${tool.dateType(${dept.tips})}"
+                                   th:value="${dept.tips}"
                                    type="text"
                             >
                         </div>
@@ -49,7 +49,7 @@
                         <label class="col-sm-3 control-label">排序</label>
                         <div class="col-sm-9">
                             <input class="form-control" id="num" name="num"
-                                   th:value="${tool.dateType(${dept.num})}"
+                                   th:value="${dept.num}"
                                    type="text"
                             >
                         </div>
@@ -60,13 +60,13 @@
                         <label class="col-sm-3 control-label">上级部门</label>
                         <div class="col-sm-9">
                             <input class="form-control" id="pName" name="pName"
-                                   th:value="${tool.dateType(${pName})}"
+                                   th:value="${pName}"
                                    type="text"
                                    readonly="readonly"
                                    onclick="DeptInfoDlg.showDeptSelectTree(); return false;"
                                    style="background-color: #ffffff !important;"
                             >
-                            <input class="form-control" type="hidden" id="pid" value="${dept.pid}">
+                            <input class="form-control" type="hidden" id="pid" th:value="${dept.pid}">
                         </div>
                     </div>
                 </div>

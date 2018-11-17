@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * 部门控制器
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @Date 2017年2月17日20:27:22
  */
 @Controller
@@ -150,7 +150,7 @@ public class DeptController extends BaseController {
     }
 
     private void deptSetPids(Dept dept) {
-        if (ObjectUtils.isEmpty(dept.getPid()) || dept.getPid().equals(0)) {
+        if (ObjectUtils.isEmpty(dept.getPid()) || dept.getPid().equals(0L)) {
             dept.setPid(0L);
             dept.setPids("[0],");
         } else {

@@ -7,7 +7,7 @@
 	<div class="ibox-content">
 		<div class="form-horizontal" id="roleInfoForm">
 		
-			<input type="hidden" id="id" value="${role.id}">
+			<input type="hidden" id="id" th:value="${role.id}">
 
 			<div class="row">
 				<div class="col-sm-6 b-r">
@@ -31,7 +31,7 @@
 								   onclick="RolInfoDlg.showPNameSelectTree(); return false;"
 								   style="background-color: #ffffff !important;"
 							>
-							<input class="form-control" type="hidden" id="pid" value="${role.pid}">
+							<input class="form-control" type="hidden" id="pid" th:value="${role.pid}">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
@@ -45,7 +45,7 @@
 								   onclick="RolInfoDlg.showDeptSelectTree(); return false;"
 								   style="background-color: #ffffff !important;"
 							>
-							<input class="form-control" type="hidden" id="deptid" value="${role.deptid}">
+							<input class="form-control" type="hidden" id="deptid" th:value="${role.deptid}">
 						</div>
 					</div>
 				</div>

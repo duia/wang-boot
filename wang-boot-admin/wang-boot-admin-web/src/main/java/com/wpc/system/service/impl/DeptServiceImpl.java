@@ -22,6 +22,7 @@ import com.wpc.system.model.Dept;
 import com.wpc.system.service.IDeptService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,7 +31,7 @@ import java.util.Map;
 /**
  * 部门服务
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @Date 2018/10/15 下午11:39
  */
 @Service
@@ -42,16 +43,17 @@ public class DeptServiceImpl extends BaseServiceImpl<Dept> implements IDeptServi
     @Override
     @Transactional
     public void deleteDept(Integer deptId) {
-//        Dept dept = deptMapper.selectById(deptId);
-//
-//        Wrapper<Dept> wrapper = new EntityWrapper<>();
-//        wrapper = wrapper.like("pids", "%[" + dept.getId() + "]%");
-//        List<Dept> subDepts = deptMapper.selectList(wrapper);
-//        for (Dept temp : subDepts) {
-//            temp.deleteById();
-//        }
-//
-//        dept.deleteById();
+        Dept dept = deptMapper.selectByPrimaryKey(deptId);
+
+        Example example = new Example(Dept.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andLike("pids", "%[" + dept.getId() + "]%");
+        List<Dept> subDepts = deptMapper.selectByExample(example);
+        for (Dept temp : subDepts) {
+            deptMapper.delete(temp);
+        }
+
+        deptMapper.delete(dept);
     }
 
     @Override
