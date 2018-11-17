@@ -78,8 +78,8 @@ public class ShiroFactory {
                     }
                 }
             }
-//            String roleName = shiroFactory.findRoleNameByRoleId(roleId);
-//            roleSet.add(roleName);
+            String roleName = ConstantFactory.me().getSingleRoleTip(roleId);
+            roleSet.add(roleName);
         }
 
         principal.setRoles(roleSet);

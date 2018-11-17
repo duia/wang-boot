@@ -127,7 +127,7 @@ public class RoleController extends BaseController {
 
         //不能删除超级管理员角色
         if (roleId.equals(Global.ADMIN_ROLE_ID)) {
-//            throw new ServiceException(BizExceptionEnum.CANT_DELETE_ADMIN);
+            throw new RuntimeException("不能删除超级管理员");
         }
 
         //缓存被删除的角色名称

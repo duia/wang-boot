@@ -38,7 +38,7 @@
 						<label class="col-sm-3 control-label">角色</label>
 						<div class="col-sm-9">
 							<input class="form-control" id="roleid" name="roleid"
-								   th:value="${tool.dateType(${roleName})}"
+								   th:value="${roleName}"
 								   type="text"
 								   disabled="disabled"
 							>
@@ -50,7 +50,7 @@
 						<label class="col-sm-3 control-label">邮箱</label>
 						<div class="col-sm-9">
 							<input class="form-control" id="email" name="email"
-								   th:value="${tool.dateType(${user.email})}"
+								   th:value="${user.email}"
 								   type="email"
 							>
 						</div>
@@ -62,7 +62,7 @@
 							<label class="col-sm-3 control-label">姓名</label>
 							<div class="col-sm-9">
 								<input class="form-control" id="name" name="name"
-									   th:value="${tool.dateType(${user.name})}"
+									   th:value="${user.name}"
 									   type="text"
 								>
 							</div>
@@ -73,7 +73,7 @@
 							<label class="col-sm-3 control-label">出生日期</label>
 							<div class="col-sm-9">
 								<input class="form-control" id="birthday" name="birthday"
-									   th:value="${tool.dateType(${user.birthday})}"
+									   th:value="${user.birthday}"
 									   type="text"
 								>
 							</div>
@@ -84,7 +84,7 @@
 							<label class="col-sm-3 control-label">部门</label>
 							<div class="col-sm-9">
 								<input class="form-control" id="citySel" name="citySel"
-									   th:value="${tool.dateType(${deptName})}"
+									   th:value="${deptName}"
 									   type="text"
 									   readonly="readonly"
 									   onclick="UserInfoDlg.showDeptSelectTree(); return false;"
@@ -99,7 +99,7 @@
 							<label class="col-sm-3 control-label">电话</label>
 							<div class="col-sm-9">
 								<input class="form-control" id="phone" name="phone"
-									   th:value="${tool.dateType(${user.phone})}"
+									   th:value="${user.phone}"
 									   type="text"
 								>
 							</div>

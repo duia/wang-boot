@@ -7,6 +7,7 @@ import com.wpc.common.bean.ResponseResult;
 import com.wpc.constant.ManagerStatus;
 import com.wpc.system.DataScope;
 import com.wpc.system.factory.ConstantFactory;
+import com.wpc.system.factory.UserFactory;
 import com.wpc.system.model.User;
 import com.wpc.system.service.IUserService;
 import com.wpc.system.transfer.UserDto;
@@ -114,7 +115,7 @@ public class UserMgrController extends BaseController {
     @ResponseBody
     public Object changePwd(@RequestParam String oldPwd, @RequestParam String newPwd, @RequestParam String rePwd) {
         if (!newPwd.equals(rePwd)) {
-//            throw new ServiceException(BizExceptionEnum.TWO_PWD_NOT_MATCH);
+            throw new RuntimeException("两次输入密码不一致");
         }
         Long userId = SessionUtil.getUser().getId();
         User user = userService.findById(userId);
@@ -158,7 +159,7 @@ public class UserMgrController extends BaseController {
         // 判断账号是否重复
         User theUser = userService.getByAccount(userDto.getAccount());
         if (theUser != null) {
-//            throw new ServiceException(BizExceptionEnum.USER_ALREADY_REG);
+            throw new RuntimeException("该用户已经注册");
         }
 
         // 完善账号信息
@@ -186,19 +187,19 @@ public class UserMgrController extends BaseController {
 
         User oldUser = userService.findById(user.getId());
 
-//        if (ShiroKit.hasRole(Const.ADMIN_NAME)) {
-//            this.userService.updateById(UserFactory.editUser(user, oldUser));
+        if (SessionUtil.hasRole(Global.ADMIN_NAME)) {
+            this.userService.update(UserFactory.editUser(user, oldUser));
             return SUCCESS_TIP;
-//        } else {
-//            assertAuth(user.getId());
-//            ShiroUser shiroUser = ShiroKit.getUser();
-//            if (shiroUser.getId().equals(user.getId())) {
-//                this.userService.updateById(UserFactory.editUser(user, oldUser));
-//                return SUCCESS_TIP;
-//            } else {
-////                throw new ServiceException(BizExceptionEnum.NO_PERMITION);
-//            }
-//        }
+        } else {
+            assertAuth(user.getId());
+            User shiroUser = SessionUtil.getUser();
+            if (shiroUser.getId().equals(user.getId())) {
+                this.userService.update(UserFactory.editUser(user, oldUser));
+                return SUCCESS_TIP;
+            } else {
+                throw new RuntimeException("权限异常");
+            }
+        }
     }
 
     /**
@@ -209,7 +210,7 @@ public class UserMgrController extends BaseController {
     public ResponseResult delete(@RequestParam Long userId) {
         //不能删除超级管理员
         if (userId.equals(Global.ADMIN_ID)) {
-//            throw new ServiceException(BizExceptionEnum.CANT_DELETE_ADMIN);
+            throw new RuntimeException("不能删除超级管理员");
         }
         assertAuth(userId);
         this.userService.setStatus(userId, ManagerStatus.DELETED.getCode());
@@ -234,7 +235,7 @@ public class UserMgrController extends BaseController {
     public ResponseResult reset(@RequestParam Long userId) {
         assertAuth(userId);
         User user = this.userService.findById(userId);
-        user.setPassword(SessionUtil.entryptPassword("123456"));
+        user.setPassword(SessionUtil.entryptPassword(Global.DEFAULT_PWD));
         this.userService.update(user);
         return SUCCESS_TIP;
     }
@@ -246,8 +247,8 @@ public class UserMgrController extends BaseController {
     @ResponseBody
     public ResponseResult freeze(@RequestParam Long userId) {
         //不能冻结超级管理员
-        if (userId.equals(1L)) {
-//            throw new ServiceException(BizExceptionEnum.CANT_FREEZE_ADMIN);
+        if (userId.equals(Global.ADMIN_ID)) {
+            throw new RuntimeException("不能冻结超级管理员");
         }
         assertAuth(userId);
         this.userService.setStatus(userId, ManagerStatus.FREEZED.getCode());
@@ -272,8 +273,8 @@ public class UserMgrController extends BaseController {
     @ResponseBody
     public ResponseResult setRole(@RequestParam("userId") Long userId, @RequestParam("roleIds") String roleIds) {
         //不能修改超级管理员
-        if (userId.equals(1L)) {
-//            throw new ServiceException(BizExceptionEnum.CANT_CHANGE_ADMIN);
+        if (userId.equals(Global.ADMIN_ID)) {
+            throw new RuntimeException("不能修改超级管理员角色");
         }
         assertAuth(userId);
         this.userService.setRoles(userId, roleIds);

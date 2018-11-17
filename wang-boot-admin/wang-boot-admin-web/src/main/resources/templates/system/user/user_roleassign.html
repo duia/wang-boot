@@ -3,7 +3,9 @@
 <div th:replace="/common/_container::head"></div>
 <body class="gray-bg">
 
+<input type="hidden" id="userId" th:value="${userId}"/>
 <script type="text/javascript">
+    var userId = $('#userId').val();
     $(function () {
 
         var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
@@ -22,7 +24,7 @@
                 Feng.error("分配角色失败!" + data.responseJSON.message + "!");
             });
             ajax.set("roleIds", ids);
-            ajax.set("userId", "${userId}");
+            ajax.set("userId", userId);
             ajax.start();
         });
 
@@ -45,7 +47,7 @@
             }
         };
 
-        var ztree = new $ZTree("zTree", "/role/roleTreeListByUserId/${userId}");
+        var ztree = new $ZTree("zTree", "/role/roleTreeListByUserId/" + userId);
         ztree.setSettings(setting);
         ztree.init();
     }
@@ -58,7 +60,7 @@
     <div class="row">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>${userAccount!}</h5>
+                <h5 th:text="${userAccount}"></h5>
             </div>
             <div class="ibox-content">
                 <ul id="zTree" class="ztree"></ul>

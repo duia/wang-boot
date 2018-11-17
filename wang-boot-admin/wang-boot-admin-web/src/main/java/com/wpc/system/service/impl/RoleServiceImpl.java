@@ -1,6 +1,7 @@
 package com.wpc.system.service.impl;
 
 import com.wpc.base.service.impl.BaseServiceImpl;
+import com.wpc.system.model.Relation;
 import com.wpc.system.node.ZTreeNode;
 import com.wpc.system.dao.RelationMapper;
 import com.wpc.system.dao.RoleMapper;
@@ -33,25 +34,25 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements IRoleServi
     public void setAuthority(Integer roleId, String ids) {
 
         // 删除该角色所有的权限
-//        this.roleMapper.deleteRolesById(roleId);
+        this.roleMapper.deleteRolesById(roleId);
 
         // 添加新的权限
-//        for (Long id : Convert.toLongArray(ids.split(","))) {
-//            Relation relation = new Relation();
-//            relation.setRoleid(roleId);
-//            relation.setMenuid(id);
-//            this.relationMapper.insert(relation);
-//        }
+        for (String id : ids.split(",")) {
+            Relation relation = new Relation();
+            relation.setRoleid(roleId);
+            relation.setMenuid(Long.parseLong(id));
+            this.relationMapper.insert(relation);
+        }
     }
 
     @Override
     @Transactional
     public void delRoleById(Integer roleId) {
         //删除角色
-//        this.roleMapper.deleteById(roleId);
+        this.roleMapper.deleteByPrimaryKey(roleId);
 
         // 删除该角色所有的权限
-//        this.roleMapper.deleteRolesById(roleId);
+        this.roleMapper.deleteRolesById(roleId);
     }
 
     @Override
