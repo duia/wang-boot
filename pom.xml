@@ -16,6 +16,7 @@
     </properties>
 
     <modules>
+        <module>wang-boot-parent</module>
         <module>wang-boot-common</module>
         <module>wang-boot-admin</module>
         <module>wang-boot-redis</module>

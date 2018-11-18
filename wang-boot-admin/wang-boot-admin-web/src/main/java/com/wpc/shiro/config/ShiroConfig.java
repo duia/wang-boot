@@ -95,17 +95,17 @@ public class ShiroConfig {
         // 配置退出过滤器,其中的具体代码Shiro已经替我们实现了
         chains.put("/static/**", "anon");
         chains.put("/favicon.ico", "anon");
-        chains.put("/login", "jcaptcha,authc");
         chains.put("/register", "anon");
         chains.put("/getJPGCode", "anon");
         chains.put("/getGifCode", "anon");
+        chains.put("/login", "jcaptcha,authc");
 
         chains.put("/test/**", "anon");
         chains.put("/locks/**", "anon");
         // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         chains.put("/logout", "logout");
-        chains.put("/**", "authc");
+        chains.put("/**", "user");
         // 加载shiroFilter权限控制规则
         shiroFilter.setFilterChainDefinitionMap(chains);
         return shiroFilter;
