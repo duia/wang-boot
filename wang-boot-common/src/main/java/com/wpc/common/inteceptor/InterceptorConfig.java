@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -23,7 +24,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
         for (String s : StringUtils.split(Global.getConfig("web.staticFile"), ",")) {
             ignoredUrls.add("/**/*" + s);
         }
-        ignoredUrls.add("/test/**");
+        ignoredUrls.addAll(Arrays.asList(StringUtils.split(Global.getConfig("web.ignoredUrls"), ",")));
     }
 
     @Override

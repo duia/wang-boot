@@ -1,11 +1,13 @@
 package com.wpc.shiro.config;
 
+import com.wpc.common.Global;
 import com.wpc.shiro.JCaptchaValidateFilter;
 import com.wpc.shiro.MyFormAuthenticationFilter;
 import com.wpc.shiro.ShiroRealm;
 import com.wpc.shiro.cache.JedisCacheManager;
 import com.wpc.shiro.session.JedisSessionDAO;
 import com.wpc.shiro.session.SessionManager;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.codec.Base64;
@@ -69,16 +71,16 @@ public class ShiroConfig {
      * @return
      */
     @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter() {
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager manager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         // 必须设置SecuritManager
-        shiroFilter.setSecurityManager(securityManager());
+        shiroFilter.setSecurityManager(manager);
         // 如果不设置默认会自动寻找工程根目录下的"/login"页面
         shiroFilter.setLoginUrl("/login");
         // 登录成功后要跳转的链接
         shiroFilter.setSuccessUrl("/");
         // 未授权界面;
-        shiroFilter.setUnauthorizedUrl("/WEB-INF/405.jsp");
+        shiroFilter.setUnauthorizedUrl("/shiro/403");
 
         Map<String, Filter> filters = shiroFilter.getFilters();
 //        filtersMap.put("cas", casFilter());
@@ -100,8 +102,9 @@ public class ShiroConfig {
         chains.put("/getGifCode", "anon");
         chains.put("/login", "jcaptcha,authc");
 
-        chains.put("/test/**", "anon");
-        chains.put("/locks/**", "anon");
+        for (String url : StringUtils.split(Global.getConfig("web.ignoredUrls"), ",")) {
+            chains.put(url, "anon");
+        }
         // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         chains.put("/logout", "logout");

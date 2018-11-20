@@ -76,8 +76,10 @@ Notice.delete = function () {
 
         var operation = function(){
             var ajax = new $ax(Feng.ctxPath + "/notice/delete", function (data) {
-                Feng.success("删除成功!");
-                Notice.table.refresh();
+                if (Feng.isError(data)) {
+                    Feng.success("删除成功!");
+                    Notice.table.refresh();
+                }
             }, function (data) {
                 Feng.error("删除失败!" + data.responseJSON.message + "!");
             });

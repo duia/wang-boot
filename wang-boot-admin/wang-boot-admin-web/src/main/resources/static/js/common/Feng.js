@@ -192,5 +192,20 @@ var Feng = {
             parent.$('.J_mainContent').find('iframe.J_iframe').hide().parents('.J_mainContent').append(iframeContent);
             parent.MyCrontab.scrollToTab($('.J_menuTab.active'));
         }
+    },
+    /**
+     * 针对不同的错误可结合业务自定义处理方式
+     * @param result
+     * @returns {Boolean}
+     */
+    isError: function(result){
+        var flag=true;
+        if(result && result.code){
+            flag=false;
+            if(result.code == '-1' || result.code=='-101' || result.code=='403' || result.code=='404' || result.code=='500'){
+                Feng.error(result.msg);
+            }
+        }
+        return flag;//返回true
     }
 };

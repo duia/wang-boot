@@ -1,4 +1,4 @@
-package com.wpc.base;
+package com.wpc.shiro;
 
 import com.wpc.common.bean.ResponseResult;
 import com.wpc.common.utils.Servlets;
@@ -15,30 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/shiro")
 public class ShiroController {
 
-	@RequestMapping("/401")
-	public String authorizationException(ModelMap modelMap, HttpServletRequest request) {
+	@RequestMapping("/403")
+	public String authorizationException(HttpServletRequest request) {
 		// ajax 请求
 		if (Servlets.isAjaxRequest(request)) {
-			return "redirect:/shiro/asyn401";
+			return "redirect:/shiro/asyn403";
 		} else {
-			return "redirect:/shiro/syn401";
+			return "redirect:/shiro/syn403";
 		}
 	}
 
 	// 异步
-	@RequestMapping("/asyn401")
+	@RequestMapping("/asyn403")
 	@ResponseBody
-	public ResponseResult asyn401(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+	public ResponseResult asyn401() {
 		ResponseResult ajaxResult = new ResponseResult();
-		ajaxResult.setCode(ResponseResult.AJAX_STATUS_CODE_WARN);
+		ajaxResult.setCode(ResponseResult.UNAUTHORIZED);
 		ajaxResult.setMsg("您无权操作");
 		return ajaxResult;
 	}
 
 	// 同步
-	@RequestMapping("/syn401")
-	public String syn401(ModelMap modelMap, HttpServletRequest request) {
-		return "common/error/405";
+	@RequestMapping("/syn403")
+	public String syn401() {
+		return "403";
 	}
 
 }

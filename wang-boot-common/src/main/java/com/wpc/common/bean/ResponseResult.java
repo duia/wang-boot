@@ -18,6 +18,8 @@ public class ResponseResult implements Serializable {
     public static final Integer AJAX_STATUS_CODE_ERROR = 500;
     public static final Integer AJAX_STATUS_CODE_WARN = 300;
 
+    public static final Integer UNAUTHORIZED = 403;
+
     public static final Integer SIGN_WARN = 301;
     public static final Integer PARAME_WARN = 302;
     public static final Integer NOEXIST_WARN = 303;

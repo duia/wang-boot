@@ -1,4 +1,4 @@
-package com.wpc.base;
+package com.wpc.system.controller;
 
 import com.wpc.SessionUtil;
 import com.wpc.base.controller.BaseController;
@@ -7,15 +7,12 @@ import com.wpc.common.utils.image.vcode.Captcha;
 import com.wpc.common.utils.image.vcode.GifCaptcha;
 import com.wpc.shiro.JCaptchaValidateFilter;
 import com.wpc.shiro.MyFormAuthenticationFilter;
-import com.wpc.shiro.ShiroRealm;
 import com.wpc.system.model.User;
 import com.wpc.system.node.MenuNode;
 import com.wpc.system.service.IMenuService;
-import com.wpc.system.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
-import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +26,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.wpc.shiro.ShiroRealm.*;
 
 @Controller
 public class LoginController extends BaseController {

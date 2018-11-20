@@ -15,7 +15,7 @@ public class JCaptchaValidateFilter extends AccessControlFilter {
     /**
      * 是否开启验证码验证   默认true
      */
-    private boolean jcaptchaEnabled = true;
+    private boolean jcaptchaEnabled = false;
 
     /**
      * 验证失败后存储到的属性名
