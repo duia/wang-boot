@@ -1,5 +1,7 @@
 package com.wpc.shiro;
 
+import com.wpc.log.LogManager;
+import com.wpc.log.factory.LogTaskFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;

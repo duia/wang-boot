@@ -3,8 +3,10 @@ package com.wpc.shiro;
 import com.wpc.common.Global;
 import com.wpc.SessionUtil;
 import com.wpc.shiro.session.SessionDAO;
+import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Role;
 import com.wpc.system.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -73,16 +75,29 @@ public class ShiroRealm extends AuthorizingRealm {
             }
         }
 
+        List<Long> roleList = principal.getRoleIds();
+
         // 添加用户权限
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        info.addRoles(principal.getRoles());
-        info.addStringPermissions(principal.getPermissions());
+        Set<String> roleSet = new HashSet<>();
+        Set<String> permissionSet = new HashSet<>();
 
-        // 更新登录IP和时间
-//        SessionUtil.updateUserLoginInfo(user.getId());
-        // 记录登录日志
-//        LogUtils.saveLog(Servlets.getRequest(), "系统登录");
+        for (Long roleId : roleList) {
+            List<String> permissions = shiroFactory.findPermissionsByRoleId(roleId);
+            if (permissions != null) {
+                for (String permission : permissions) {
+                    if (StringUtils.isNotEmpty(permission)) {
+                        permissionSet.add(permission);
+                    }
+                }
+            }
+            String roleName = ConstantFactory.me().getSingleRoleTip(roleId);
+            roleSet.add(roleName);
+        }
+
+        info.addRoles(roleSet);
+        info.addStringPermissions(permissionSet);
 
         return info;
     }
@@ -163,11 +178,6 @@ public class ShiroRealm extends AuthorizingRealm {
         private List<Long> roleIds;
         private List<String> roleNames; // 角色名称集
 
-        //角色码
-        Set<String> roles;
-        //菜单权限值
-        Set<String> permissions;
-
         public Principal(User user) {
             this.id = user.getId();
             this.loginName = user.getAccount();
@@ -229,22 +239,6 @@ public class ShiroRealm extends AuthorizingRealm {
 
         public void setRoleNames(List<String> roleNames) {
             this.roleNames = roleNames;
-        }
-
-        public Set<String> getRoles() {
-            return roles;
-        }
-
-        public void setRoles(Set<String> roles) {
-            this.roles = roles;
-        }
-
-        public Set<String> getPermissions() {
-            return permissions;
-        }
-
-        public void setPermissions(Set<String> permissions) {
-            this.permissions = permissions;
         }
 
         @Override

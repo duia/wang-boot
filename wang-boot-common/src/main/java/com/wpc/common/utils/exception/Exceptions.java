@@ -4,6 +4,7 @@
 package com.wpc.common.utils.exception;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -66,6 +67,23 @@ public class Exceptions {
 			ex = (Throwable) request.getAttribute("javax.servlet.error.exception");
 		}
 		return ex;
+	}
+
+	public static String getExceptionMsg(Throwable e) {
+		StringWriter sw = new StringWriter();
+
+		try {
+			e.printStackTrace(new PrintWriter(sw));
+		} finally {
+			try {
+				sw.close();
+			} catch (IOException var8) {
+				var8.printStackTrace();
+			}
+
+		}
+
+		return sw.getBuffer().toString().replaceAll("\\$", "T");
 	}
 	
 }

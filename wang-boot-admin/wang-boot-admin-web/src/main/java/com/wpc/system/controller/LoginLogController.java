@@ -1,10 +1,9 @@
 package com.wpc.system.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.wpc.base.entity.PageInfoBT;
 import com.wpc.base.controller.BaseController;
-import com.wpc.system.model.LoginLog;
 import com.wpc.system.service.ILoginLogService;
-import org.apache.ibatis.jdbc.SqlRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,16 +49,16 @@ public class LoginLogController extends BaseController {
         String order = request.getParameter("order");       //asc或desc(升序或降序)
         PageInfo<Map<String, Object>> result = loginLogService.getLoginLogs(offset, limit, beginTime, endTime, logName,
                 sort, "asc".equalsIgnoreCase(order));
-        return result;
+        return new PageInfoBT<>(result);
     }
 
     /**
      * 清空日志
      */
-//    @RequestMapping("/delLoginLog")
-//    @ResponseBody
-//    public Object delLog() {
+    @RequestMapping("/delLoginLog")
+    @ResponseBody
+    public Object delLog() {
 //        SqlRunner.db().delete("delete from sys_login_log");
-//        return SUCCESS_TIP;
-//    }
+        return SUCCESS_TIP;
+    }
 }

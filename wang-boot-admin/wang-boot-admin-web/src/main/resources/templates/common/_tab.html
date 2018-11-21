@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
     <nav class="navbar-default navbar-static-side" role="navigation" >
         <div class="nav-close"><i class="fa fa-times-circle"></i>
         </div>
@@ -6,7 +6,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <img alt="image" class="img-circle" src="/static/images/girl.gif" width="64px" height="64px"/>
+                        <img alt="image" class="img-circle" th:src="@{/static/images/girl.gif}" width="64px" height="64px"/>
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
@@ -15,10 +15,10 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu m-t-xs">
-                            <li><a class="J_menuItem" href="${ctxPath}/mgr/user_info">个人资料</a></li>
-                            <li><a class="J_menuItem" href="${ctxPath}/mgr/user_chpwd">修改密码</a></li>
+                            <li><a class="J_menuItem" th:href="@{/mgr/user_info}">个人资料</a></li>
+                            <li><a class="J_menuItem" th:href="@{/mgr/user_chpwd}">修改密码</a></li>
                             <li class="divider"></li>
-                            <li><a href="${ctxPath}/logout">安全退出</a>
+                            <li><a th:href="@{/logout}">安全退出</a>
                             </li>
                         </ul>
                     </div>

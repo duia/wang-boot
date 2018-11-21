@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
     <div id="page-wrapper" class="gray-bg dashbard-1">
                 <div class="row border-bottom">
                     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -23,7 +23,7 @@
             </button>
             <nav class="page-tabs J_menuTabs">
                 <div class="page-tabs-content">
-                    <a href="javascript:;" class="active J_menuTab" data-id="${ctxPath}/blackboard">首页</a>
+                    <a href="javascript:;" class="active J_menuTab" data-id="/blackboard">首页</a>
                 </div>
             </nav>
             <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
@@ -42,13 +42,13 @@
                     </li>
                 </ul>
             </div>
-            <a href="logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            <a th:href="@{/logout}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/blackboard}" frameborder="0" data-id="${ctxPath}/blackboard" seamless></iframe>
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/blackboard}" frameborder="0" data-id="/blackboard" seamless></iframe>
         </div>
         <div class="footer">
-            <div class="pull-right">&copy; 2016-2017 <a href="http://git.oschina.net/naan1993/guns" target="_blank">guns</a>
+            <div class="pull-right">&copy; 2018-2019 <a href="http://duia.online" target="_blank">W鹏程</a>
             </div>
         </div>
     </div>

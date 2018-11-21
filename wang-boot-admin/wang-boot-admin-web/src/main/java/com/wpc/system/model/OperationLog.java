@@ -30,7 +30,7 @@ public class OperationLog extends DataEntity<OperationLog> {
     /**
      * 用户id
      */
-    private Integer userid;
+    private Long userid;
     /**
      * 类名称
      */
@@ -65,11 +65,11 @@ public class OperationLog extends DataEntity<OperationLog> {
         this.logname = logname;
     }
 
-    public Integer getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 

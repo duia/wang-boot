@@ -1,7 +1,10 @@
 package com.wpc.shiro;
 
 import com.wpc.SessionUtil;
+import com.wpc.common.utils.net.IpUtils;
 import com.wpc.constant.ManagerStatus;
+import com.wpc.log.LogManager;
+import com.wpc.log.factory.LogTaskFactory;
 import com.wpc.shiro.ShiroRealm.Principal;
 import com.wpc.system.dao.MenuMapper;
 import com.wpc.system.factory.ConstantFactory;
@@ -47,6 +50,7 @@ public class ShiroFactory {
             throw new UnknownAccountException();//没找到帐号
         }
         if(ManagerStatus.OK.getCode() != user.getStatus()) {
+            LogManager.me().executeLog(LogTaskFactory.loginLog(username, "账号被冻结", IpUtils.getIpAddress()));
             throw new LockedAccountException("msg:该已帐号禁止登录."); //帐号锁定
         }
         return user;
@@ -66,24 +70,6 @@ public class ShiroFactory {
         principal.setRoleIds(roleIdList);
         principal.setRoleNames(roleNameList);
 
-        Set<String> roleSet = new HashSet<>();
-        Set<String> permissionSet = new HashSet<>();
-
-        for (Long roleId : roleIdList) {
-            List<String> permissions = menuMapper.getResUrlsByRoleId(roleId);
-            if (permissions != null) {
-                for (String permission : permissions) {
-                    if (StringUtils.isNotEmpty(permission)) {
-                        permissionSet.add(permission);
-                    }
-                }
-            }
-            String roleName = ConstantFactory.me().getSingleRoleTip(roleId);
-            roleSet.add(roleName);
-        }
-
-        principal.setRoles(roleSet);
-        principal.setPermissions(permissionSet);
         return principal;
     }
 
@@ -94,4 +80,9 @@ public class ShiroFactory {
                 ByteSource.Util.bytes(user.getPassword().substring(0, SessionUtil.SALT_SIZE * 2)),
                 realmName);
     }
+
+    public List<String> findPermissionsByRoleId(Long roleId) {
+        return menuMapper.getResUrlsByRoleId(roleId);
+    }
+
 }

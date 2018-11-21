@@ -1,5 +1,6 @@
 package com.wpc.common.utils.net;
 
+import com.wpc.common.utils.Servlets;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 public class IpUtils {
 
 	private IpUtils() {
+	}
+
+	public static String getIpAddress() {
+		return getIpAddress(Servlets.getRequest());
 	}
 
 	public static String getIpAddress(HttpServletRequest request) {

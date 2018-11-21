@@ -177,7 +177,7 @@ public class SessionUtil {
 //        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
     }
 
-    public static void updateUserLoginInfo(Long id) {
+    public static void updateUserLoginInfo() {
 //        User entity = new User();
 //        entity.setId(id);
 //        entity.setLoginDate(new Date());

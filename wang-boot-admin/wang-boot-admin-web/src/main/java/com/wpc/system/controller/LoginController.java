@@ -2,9 +2,13 @@ package com.wpc.system.controller;
 
 import com.wpc.SessionUtil;
 import com.wpc.base.controller.BaseController;
+import com.wpc.common.utils.Servlets;
 import com.wpc.common.utils.image.CaptchaUtils;
 import com.wpc.common.utils.image.vcode.Captcha;
 import com.wpc.common.utils.image.vcode.GifCaptcha;
+import com.wpc.common.utils.net.IpUtils;
+import com.wpc.log.LogManager;
+import com.wpc.log.factory.LogTaskFactory;
 import com.wpc.shiro.JCaptchaValidateFilter;
 import com.wpc.shiro.MyFormAuthenticationFilter;
 import com.wpc.system.model.User;
@@ -123,8 +127,8 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping(value = "/logout")
-    public String doLogout() {
-        logger.info("======用户"+ SessionUtil.getUser().getAccount()+"退出了系统");
+    public String doLogout(HttpServletRequest request) {
+        LogManager.me().executeLog(LogTaskFactory.exitLog(SessionUtil.getUser().getId(), IpUtils.getIpAddress(request)));
         SecurityUtils.getSubject().logout();
         return "login";
     }
