@@ -4,6 +4,7 @@ import com.wpc.SessionUtil;
 import com.wpc.base.controller.BaseController;
 import com.wpc.system.model.Notice;
 import com.wpc.system.service.INoticeService;
+import com.wpc.system.warpper.NoticeWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,7 +76,7 @@ public class NoticeController extends BaseController {
     @ResponseBody
     public Object list(String condition) {
         List<Map<String, Object>> list = this.noticeService.list(condition);
-        return list;
+        return new NoticeWrapper(list).wrap();
     }
 
     /**

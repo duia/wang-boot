@@ -23,7 +23,7 @@ MgrUser.initColumn = function () {
         {title: '部门', field: 'deptName', align: 'center', valign: 'middle', sortable: true},
         {title: '邮箱', field: 'email', align: 'center', valign: 'middle', sortable: true},
         {title: '电话', field: 'phone', align: 'center', valign: 'middle', sortable: true},
-        {title: '创建时间', field: 'createtime', align: 'center', valign: 'middle', sortable: true},
+        {title: '创建时间', field: 'createTime', align: 'center', valign: 'middle', sortable: true},
         {title: '状态', field: 'statusName', align: 'center', valign: 'middle', sortable: true}];
     return columns;
 };
@@ -157,7 +157,7 @@ MgrUser.unfreeze = function () {
 MgrUser.resetPwd = function () {
     if (this.check()) {
         var userId = this.seItem.id;
-        parent.layer.confirm('是否重置密码为111111？', {
+        parent.layer.confirm('是否重置密码为123456？', {
             btn: ['确定', '取消'],
             shade: false //不显示遮罩
         }, function () {

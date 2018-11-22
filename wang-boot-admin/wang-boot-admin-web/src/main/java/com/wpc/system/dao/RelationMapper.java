@@ -1,8 +1,8 @@
 package com.wpc.system.dao;
 
-import com.wpc.base.dao.BaseDao;
 import com.wpc.system.model.Relation;
 import org.apache.ibatis.annotations.Mapper;
+import tk.mybatis.mapper.common.MySqlMapper;
 
 /**
  * <p>
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2017-07-11
  */
 @Mapper
-public interface RelationMapper extends BaseDao<Relation> {
+public interface RelationMapper extends tk.mybatis.mapper.common.Mapper<Relation>, MySqlMapper<Relation> {
 
 }

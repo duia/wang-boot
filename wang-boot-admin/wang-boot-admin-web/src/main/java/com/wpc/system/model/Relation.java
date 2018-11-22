@@ -1,5 +1,6 @@
 package com.wpc.system.model;
 
+import com.wpc.base.entity.BaseEntity;
 import com.wpc.base.entity.DataEntity;
 import org.apache.ibatis.type.Alias;
 
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  */
 @Alias("Relation")
 @Table(name = "sys_relation")
-public class Relation extends DataEntity<Relation> {
+public class Relation extends BaseEntity<Relation> {
 
     /**
      * 菜单id
@@ -40,6 +41,16 @@ public class Relation extends DataEntity<Relation> {
 
     public void setRoleid(Integer roleid) {
         this.roleid = roleid;
+    }
+
+    @Override
+    public void preInsert() {
+
+    }
+
+    @Override
+    public void preUpdate() {
+
     }
 
     @Override

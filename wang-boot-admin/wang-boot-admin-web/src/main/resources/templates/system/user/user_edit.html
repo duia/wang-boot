@@ -73,7 +73,7 @@
 							<label class="col-sm-3 control-label">出生日期</label>
 							<div class="col-sm-9">
 								<input class="form-control" id="birthday" name="birthday"
-									   th:value="${user.birthday}"
+									   th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}"
 									   type="text"
 								>
 							</div>

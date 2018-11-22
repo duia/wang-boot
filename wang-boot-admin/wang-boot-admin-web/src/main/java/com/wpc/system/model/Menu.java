@@ -46,10 +46,6 @@ public class Menu extends DataEntity<Menu> {
     @NotBlank
     private String url;
     /**
-     * 菜单排序号
-     */
-    private Integer num;
-    /**
      * 菜单层级
      */
     private Integer levels;
@@ -57,10 +53,6 @@ public class Menu extends DataEntity<Menu> {
      * 是否是菜单（1：是  0：不是）
      */
     private Integer ismenu;
-    /**
-     * 备注
-     */
-    private String tips;
     /**
      * 菜单状态 :  1:启用   0:不启用
      */
@@ -118,14 +110,6 @@ public class Menu extends DataEntity<Menu> {
         this.url = url;
     }
 
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
     public Integer getLevels() {
         return levels;
     }
@@ -140,14 +124,6 @@ public class Menu extends DataEntity<Menu> {
 
     public void setIsmenu(Integer ismenu) {
         this.ismenu = ismenu;
-    }
-
-    public String getTips() {
-        return tips;
-    }
-
-    public void setTips(String tips) {
-        this.tips = tips;
     }
 
     public Integer getStatus() {
@@ -176,10 +152,8 @@ public class Menu extends DataEntity<Menu> {
                 ", name=" + name +
                 ", icon=" + icon +
                 ", url=" + url +
-                ", num=" + num +
                 ", levels=" + levels +
                 ", ismenu=" + ismenu +
-                ", tips=" + tips +
                 ", status=" + status +
                 ", isopen=" + isopen +
                 "}";

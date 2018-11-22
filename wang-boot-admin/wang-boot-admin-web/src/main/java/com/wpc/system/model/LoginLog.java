@@ -1,5 +1,6 @@
 package com.wpc.system.model;
 
+import com.wpc.base.entity.BaseEntity;
 import com.wpc.base.entity.DataEntity;
 import org.apache.ibatis.type.Alias;
 
@@ -17,7 +18,7 @@ import java.util.Date;
  */
 @Alias("LoginLog")
 @Table(name = "sys_login_log")
-public class LoginLog extends DataEntity<LoginLog> {
+public class LoginLog extends BaseEntity<LoginLog> {
 
     /**
      * 日志名称
@@ -27,6 +28,8 @@ public class LoginLog extends DataEntity<LoginLog> {
      * 管理员id
      */
     private Long userid;
+
+    private Date createTime;
     /**
      * 是否执行成功
      */
@@ -56,6 +59,14 @@ public class LoginLog extends DataEntity<LoginLog> {
         this.userid = userid;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public String getSucceed() {
         return succeed;
     }
@@ -78,6 +89,16 @@ public class LoginLog extends DataEntity<LoginLog> {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    @Override
+    public void preInsert() {
+
+    }
+
+    @Override
+    public void preUpdate() {
+
     }
 
     @Override

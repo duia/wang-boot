@@ -8,6 +8,7 @@ import com.wpc.system.model.LoginLog;
 import com.wpc.system.service.ILoginLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ import java.util.Map;
  * @since 2018-02-22
  */
 @Service
-public class LoginLogServiceImpl extends BaseServiceImpl<LoginLog> implements ILoginLogService {
+public class LoginLogServiceImpl implements ILoginLogService {
 
     @Autowired
     private LoginLogMapper loginLogMapper;
@@ -31,5 +32,10 @@ public class LoginLogServiceImpl extends BaseServiceImpl<LoginLog> implements IL
         PageHelper.startPage(offset, limit);
         List<Map<String, Object>> list = this.loginLogMapper.getLoginLogs(beginTime, endTime, logName, orderByField, asc);
         return new PageInfo<>(list);
+    }
+
+    @Override
+    public void deleteLog() {
+        this.loginLogMapper.deleteByExample(null);
     }
 }

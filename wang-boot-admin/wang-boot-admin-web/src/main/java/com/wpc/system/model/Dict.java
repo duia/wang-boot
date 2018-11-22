@@ -1,6 +1,7 @@
 package com.wpc.system.model;
 
 import com.wpc.base.entity.DataEntity;
+import com.wpc.base.entity.TreeEntity;
 import org.apache.ibatis.type.Alias;
 
 import javax.persistence.Table;
@@ -15,16 +16,8 @@ import javax.persistence.Table;
  */
 @Alias("Dict")
 @Table(name = "sys_dict")
-public class Dict extends DataEntity<Dict> {
+public class Dict extends TreeEntity<Dict> {
 
-    /**
-     * 排序
-     */
-    private Integer num;
-    /**
-     * 父级字典
-     */
-    private Long pid;
     /**
      * 名称
      */
@@ -34,26 +27,6 @@ public class Dict extends DataEntity<Dict> {
      * 编码
      */
     private String code;
-    /**
-     * 提示
-     */
-    private String tips;
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
-    }
 
     public String getName() {
         return name;
@@ -61,14 +34,6 @@ public class Dict extends DataEntity<Dict> {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTips() {
-        return tips;
-    }
-
-    public void setTips(String tips) {
-        this.tips = tips;
     }
 
     public String getCode() {
@@ -83,11 +48,9 @@ public class Dict extends DataEntity<Dict> {
     public String toString() {
         return "Dict{" +
                 "id=" + id +
-                ", num=" + num +
-                ", pid=" + pid +
+                ", parentId=" + parentId +
                 ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
-                ", tips='" + tips + '\'' +
                 '}';
     }
 }

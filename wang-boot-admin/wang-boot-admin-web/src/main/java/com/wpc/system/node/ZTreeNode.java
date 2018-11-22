@@ -10,7 +10,7 @@ public class ZTreeNode {
 
     private Long id;         //节点id
 
-    private Long pId;        //父节点id
+    private Long parentId;        //父节点id
 
     private String name;     //节点名称
 
@@ -26,12 +26,12 @@ public class ZTreeNode {
         this.id = id;
     }
 
-    public Long getpId() {
-        return pId;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setpId(Long pId) {
-        this.pId = pId;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -72,7 +72,7 @@ public class ZTreeNode {
         zTreeNode.setId(0L);
         zTreeNode.setName("顶级");
         zTreeNode.setOpen(true);
-        zTreeNode.setpId(0L);
+        zTreeNode.setParentId(0L);
         return zTreeNode;
     }
 }

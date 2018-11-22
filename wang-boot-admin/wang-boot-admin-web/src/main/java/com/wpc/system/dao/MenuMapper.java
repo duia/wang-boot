@@ -1,6 +1,6 @@
 package com.wpc.system.dao;
 
-import com.wpc.base.dao.BaseDao;
+import com.wpc.base.dao.BaseMapper;
 import com.wpc.system.model.Menu;
 import com.wpc.system.node.MenuNode;
 import com.wpc.system.node.ZTreeNode;
@@ -19,7 +19,7 @@ import java.util.Map;
  * @since 2017-07-11
  */
 @Mapper
-public interface MenuMapper extends BaseDao<Menu> {
+public interface MenuMapper extends BaseMapper<Menu> {
 
     /**
      * 根据条件查询菜单

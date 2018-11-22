@@ -8,6 +8,7 @@ import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Menu;
 import com.wpc.system.node.ZTreeNode;
 import com.wpc.system.service.IMenuService;
+import com.wpc.system.warpper.MenuWarpper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -107,7 +108,7 @@ public class MenuController extends BaseController {
     @ResponseBody
     public Object list(@RequestParam(required = false) String menuName, @RequestParam(required = false) String level) {
         List<Map<String, Object>> menus = this.menuService.selectMenus(menuName, level);
-        return menus;
+        return new MenuWarpper(menus).wrap();
     }
 
     /**

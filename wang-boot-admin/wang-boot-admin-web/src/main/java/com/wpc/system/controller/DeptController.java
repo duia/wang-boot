@@ -5,6 +5,7 @@ import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Dept;
 import com.wpc.system.node.ZTreeNode;
 import com.wpc.system.service.IDeptService;
+import com.wpc.system.warpper.DeptWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +56,7 @@ public class DeptController extends BaseController {
     public String deptUpdate(@PathVariable Long deptId, Model model) {
         Dept dept = deptService.findById(deptId);
         model.addAttribute(dept);
-        model.addAttribute("pName", ConstantFactory.me().getDeptName(dept.getPid()));
+        model.addAttribute("pName", ConstantFactory.me().getDeptName(dept.getParentId()));
 //        LogObjectHolder.me().set(dept);
         return PREFIX + "dept_edit";
     }
@@ -93,7 +94,7 @@ public class DeptController extends BaseController {
     @ResponseBody
     public Object list(String condition) {
         List<Map<String, Object>> list = this.deptService.list(condition);
-        return list;
+        return new DeptWarpper(list).wrap();
     }
 
     /**
@@ -135,15 +136,15 @@ public class DeptController extends BaseController {
     }
 
     private void deptSetPids(Dept dept) {
-        if (ObjectUtils.isEmpty(dept.getPid()) || dept.getPid().equals(0L)) {
-            dept.setPid(0L);
-            dept.setPids("[0],");
+        if (ObjectUtils.isEmpty(dept.getParentId()) || dept.getParentId().equals(0L)) {
+            dept.setParentId(0L);
+            dept.setParentIds("[0],");
         } else {
-            long pid = dept.getPid();
+            long pid = dept.getParentId();
             Dept temp = deptService.findById(pid);
-            String pids = temp.getPids();
-            dept.setPid(pid);
-            dept.setPids(pids + "[" + pid + "],");
+            String pids = temp.getParentIds();
+            dept.setParentId(pid);
+            dept.setParentIds(pids + "[" + pid + "],");
         }
     }
 }

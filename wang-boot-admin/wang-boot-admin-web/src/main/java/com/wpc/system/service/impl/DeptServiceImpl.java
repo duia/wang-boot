@@ -32,7 +32,7 @@ public class DeptServiceImpl extends BaseServiceImpl<Dept> implements IDeptServi
 
         Example example = new Example(Dept.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andLike("pids", "%[" + dept.getId() + "]%");
+        criteria.andLike("parentIds", "%[" + dept.getId() + "]%");
         List<Dept> subDepts = deptMapper.selectByExample(example);
         for (Dept temp : subDepts) {
             deptMapper.delete(temp);

@@ -1,6 +1,6 @@
 package com.wpc.base.service.impl;
 
-import com.wpc.base.dao.TreeBaseDao;
+import com.wpc.base.dao.TreeBaseMapper;
 import com.wpc.base.entity.TreeEntity;
 import com.wpc.common.utils.base.Reflections;
 import org.apache.commons.lang3.StringUtils;
@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class TreeBaseServiceImpl<T extends TreeEntity<T>> extends BaseServiceImpl<T> {
 
     @Autowired
-    protected TreeBaseDao<T> treeBaseDao;
+    protected TreeBaseMapper<T> treeBaseDao;
 
     @Override
     public void insert(T t) {

@@ -13,7 +13,7 @@ var RolInfoDlg = {
                 }
             }
         },
-        tips: {
+        remarks: {
             validators: {
                 notEmpty: {
                     message: '别名不能为空'
@@ -93,7 +93,7 @@ RolInfoDlg.onDblClickDept = function (e, treeId, treeNode) {
  */
 RolInfoDlg.onClickPName = function (e, treeId, treeNode) {
     $("#pName").attr("value", RolInfoDlg.pNameZtree.getSelectedVal());
-    $("#pid").attr("value", treeNode.id);
+    $("#parentId").attr("value", treeNode.id);
 };
 
 /**
@@ -118,7 +118,7 @@ RolInfoDlg.showPNameSelectTree = function () {
  * 收集数据
  */
 RolInfoDlg.collectData = function () {
-    this.set('id').set('name').set('pid').set('deptid').set('tips').set('num');
+    this.set('id').set('name').set('parentId').set('deptid').set('code').set('sort');
 };
 
 /**

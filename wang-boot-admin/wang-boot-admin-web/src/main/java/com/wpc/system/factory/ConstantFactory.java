@@ -111,7 +111,7 @@ public class ConstantFactory implements IConstantFactory {
         }
         Role roleObj = roleMapper.selectByPrimaryKey(roleId);
         if (null != roleObj && StringUtils.isNotEmpty(roleObj.getName())) {
-            return roleObj.getTips();
+            return roleObj.getCode();
         }
         return "";
     }
@@ -227,12 +227,10 @@ public class ConstantFactory implements IConstantFactory {
         } else {
             Example example = new Example(Dict.class);
             Example.Criteria criteria = example.createCriteria();
-            criteria.andEqualTo("pid", dict.getId());
-//            Wrapper<Dict> wrapper = new EntityWrapper<>();
-//            wrapper = wrapper.eq("pid", dict.getId());
+            criteria.andEqualTo("parentId", dict.getId());
             List<Dict> dicts = dictMapper.selectByExample(example);
             for (Dict item : dicts) {
-                if (item.getNum() != null && item.getNum().equals(val)) {
+                if (item.getSort() != null && item.getSort().equals(val)) {
                     return item.getName();
                 }
             }
@@ -274,8 +272,7 @@ public class ConstantFactory implements IConstantFactory {
         } else {
             Example example = new Example(Dict.class);
             Example.Criteria criteria = example.createCriteria();
-            criteria.andEqualTo("pid", id);
-//            EntityWrapper<Dict> wrapper = new EntityWrapper<>();
+            criteria.andEqualTo("parentId", id);
             List<Dict> dicts = dictMapper.selectByExample(example);
             if (dicts == null || dicts.size() == 0) {
                 return null;
@@ -300,9 +297,7 @@ public class ConstantFactory implements IConstantFactory {
     public List<Long> getSubDeptId(Long deptid) {
         Example example = new Example(Dept.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andLike("pids", "%[" + deptid + "]%");
-//        Wrapper<Dept> wrapper = new EntityWrapper<>();
-//        wrapper = wrapper.like("pids", "%[" + deptid + "]%");
+        criteria.andLike("parent_ids", "%[" + deptid + "]%");
         List<Dept> depts = this.deptMapper.selectByExample(example);
 
         ArrayList<Long> deptids = new ArrayList<>();
@@ -322,7 +317,7 @@ public class ConstantFactory implements IConstantFactory {
     @Override
     public List<Long> getParentDeptIds(Long deptid) {
         Dept dept = deptMapper.selectByPrimaryKey(deptid);
-        String pids = dept.getPids();
+        String pids = dept.getParentIds();
         String[] split = pids.split(",");
         ArrayList<Long> parentDeptIds = new ArrayList<>();
         for (String s : split) {

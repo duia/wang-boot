@@ -14,9 +14,7 @@ import javax.persistence.Transient;
  */
 public class TreeEntity<T> extends DataEntity<T> {
 
-	@Transient
 	protected Long parentId;	// 父级编号
-	@Transient
 	protected String parentIds; // 所有父级编号
 
 	@Transient

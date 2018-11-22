@@ -37,7 +37,7 @@ public class MenuNode implements Comparable {
     /**
      * 按钮的排序
      */
-    private Integer num;
+    private Integer sort;
 
     /**
      * 节点的url
@@ -129,12 +129,12 @@ public class MenuNode implements Comparable {
         this.children = children;
     }
 
-    public Integer getNum() {
-        return num;
+    public Integer getSort() {
+        return sort;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 
     public Integer getIsmenu() {
@@ -152,7 +152,7 @@ public class MenuNode implements Comparable {
                 ", parentId=" + parentId +
                 ", name='" + name + '\'' +
                 ", levels=" + levels +
-                ", num=" + num +
+                ", sort=" + sort +
                 ", url='" + url + '\'' +
                 ", icon='" + icon + '\'' +
                 ", children=" + children +
@@ -169,16 +169,16 @@ public class MenuNode implements Comparable {
     @Override
     public int compareTo(Object o) {
         MenuNode menuNode = (MenuNode) o;
-        Integer num = menuNode.getNum();
+        Integer sort = menuNode.getSort();
         Integer levels = menuNode.getLevels();
-        if (num == null) {
-            num = 0;
+        if (sort == null) {
+            sort = 0;
         }
         if (levels == null) {
             levels = 0;
         }
         if (this.levels.compareTo(levels) == 0) {
-            return this.num.compareTo(num);
+            return this.sort.compareTo(sort);
         } else {
             return this.levels.compareTo(levels);
         }

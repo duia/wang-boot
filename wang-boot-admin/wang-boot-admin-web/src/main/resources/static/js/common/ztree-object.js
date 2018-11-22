@@ -21,7 +21,7 @@
 					dblClickExpand : true,
 					selectedMulti : false
 				},
-				data : {simpleData : {enable : true}},
+				data : {simpleData : {enable : true, pIdKey: "parentId"}},
 				callback : {
 					onClick : this.onClick,
 					onDblClick:this.ondblclick

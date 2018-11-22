@@ -3,6 +3,7 @@ package com.wpc.system.controller;
 import com.wpc.base.controller.BaseController;
 import com.wpc.system.model.Dict;
 import com.wpc.system.service.IDictService;
+import com.wpc.system.warpper.DictWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,7 +81,7 @@ public class DictController extends BaseController {
     @ResponseBody
     public Object list(String condition) {
         List<Map<String, Object>> list = this.dictService.list(condition);
-        return list;
+        return new DictWarpper(list).wrap();
     }
 
     /**

@@ -5,16 +5,16 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.wpc.system.model.Role">
 		<id column="id" property="id" />
-		<result column="num" property="num" />
-		<result column="pid" property="pid" />
+		<result column="sort" property="sort" />
+		<result column="parent_id" property="parentId" />
 		<result column="name" property="name" />
 		<result column="deptid" property="deptid" />
-		<result column="tips" property="tips" />
+		<result column="code" property="code" />
 		<result column="version" property="version" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, num, pid, name, deptid, tips, version
+		id, sort, parent_id, name, deptid, code, version
 	</sql>
 
 	<select id="selectRoles" resultType="map">
@@ -31,19 +31,18 @@
 	</delete>
 
 	<select id="roleTreeList" resultType="com.wpc.system.node.ZTreeNode">
-		select id "id",pId
-		"pId",name as "name",(case when (pId=0 or pId is null) then 'true'
+		select id "id",parent_id "parentId",name as "name",(case when (parent_id=0 or parent_id is null) then 'true'
 		else 'false' end) "open" from sys_role
 	</select>
 
 	<select id="roleTreeListByRoleId" resultType="com.wpc.system.node.ZTreeNode">
 		SELECT
 		r.id "id",
-		pId "pId",
+		parent_id "parentId",
 		NAME AS "name",
 		(
 		CASE
-		WHEN (pId = 0 OR pId IS NULL) THEN
+		WHEN (parent_id = 0 OR parent_id IS NULL) THEN
 		'true'
 		ELSE
 		'false'
@@ -73,7 +72,7 @@
 
 		) r1 ON r.ID = r1.ID
 		ORDER BY
-		pId,
-		num ASC
+		parent_id,
+		sort ASC
 	</select>
 </mapper>

@@ -21,19 +21,12 @@ import java.util.Date;
  */
 public class DataEntity<T> extends BaseEntity<T> {
 
-	@Transient
 	protected Integer sort;		// 排序
-	@Transient
 	protected String remarks;	// 备注
-	@Transient
 	protected Long createBy;	// 创建者
-	@Transient
-	protected Date createDate;	// 创建日期
-	@Transient
+	protected Date createTime;	// 创建日期
 	protected Long updateBy;	// 更新者
-	@Transient
-	protected Date updateDate;	// 更新日期
-	@Transient
+	protected Date updateTime;	// 更新日期
 	protected String delFlag; 	// 删除标记（-1：删除）
 
 	protected DataEntity() {
@@ -53,7 +46,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 //		if (null != user){
 //			this.createBy = user.getId();
 //		}
-		this.createDate = new Date();
+		this.createTime = new Date();
 	}
 
 	/**
@@ -65,7 +58,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 //		if (null != user){
 //			this.updateBy = user.getId();
 //		}
-		this.updateDate = new Date();
+		this.updateTime = new Date();
 	}
 
 	public Integer getSort() {
@@ -84,7 +77,6 @@ public class DataEntity<T> extends BaseEntity<T> {
 		this.remarks = remarks;
 	}
 	
-	@JsonIgnore
 	public Long getCreateBy() {
 		return createBy;
 	}
@@ -94,15 +86,14 @@ public class DataEntity<T> extends BaseEntity<T> {
 	}
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	public Date getCreateDate() {
-		return createDate;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
-	@JsonIgnore
 	public Long getUpdateBy() {
 		return updateBy;
 	}
@@ -112,15 +103,14 @@ public class DataEntity<T> extends BaseEntity<T> {
 	}
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	public Date getUpdateDate() {
-		return updateDate;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
-	@JsonIgnore
 	public String getDelFlag() {
 		return delFlag;
 	}

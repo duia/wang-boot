@@ -117,7 +117,7 @@
     	data: {
    			simpleData: {
    				enable: true,
-   				pIdKey: "pId",
+   				pIdKey: "parentId",
    			},
    			key: {
    				url: '',
@@ -163,7 +163,7 @@
 
    	var initRoles = function(){
 		var roles = [];
-		roles.push({ id:0, pId:null, roleName:'<i class="fa fa-users"></i> 所有角色', open:true});
+		roles.push({ id:0, parentId:null, roleName:'<i class="fa fa-users"></i> 所有角色', open:true});
 		$.ajax({
 			url:'/sys/role/allRoles',
 	    	data:{},
@@ -171,7 +171,7 @@
 	    	success:function(result){
 	    		$(result).each(function(index, role){
 	    			role.roleName = '<i class="fa fa-user"></i> '+role.roleName;
-	    			role.pId = 0;
+	    			role.parentId = 0;
 	    			roles.push(role);
 	    		});
 	    		treeObj = $.fn.zTree.init($("#treeDemo"), setting, roles);

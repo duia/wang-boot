@@ -18,7 +18,7 @@ Role.initColumn = function () {
         {title: '名称', field: 'name', align: 'center', valign: 'middle', sortable: true},
         {title: '上级角色', field: 'pName', align: 'center', valign: 'middle', sortable: true},
         {title: '所在部门', field: 'deptName', align: 'center', valign: 'middle', sortable: true},
-        {title: '别名', field: 'tips', align: 'center', valign: 'middle', sortable: true}]
+        {title: '编码', field: 'code', align: 'center', valign: 'middle', sortable: true}]
     return columns;
 };
 
@@ -27,7 +27,7 @@ Role.initColumn = function () {
  * 检查是否选中
  */
 Role.check = function () {
-    var selected = $('#' + this.id).bootstrapTable('getSelections');
+    var selected = $('#' + this.id).bootstrapTreeTable('getSelections');
     if (selected.length == 0) {
         Feng.info("请先选中表格中的某一记录！");
         return false;
@@ -118,8 +118,13 @@ Role.search = function () {
 
 $(function () {
     var defaultColunms = Role.initColumn();
-    var table = new BSTable(Role.id, "/role/list", defaultColunms);
-    table.setPaginationType("client");
+    var table = new BSTreeTable(Role.id, "/role/list", defaultColunms);
+    // table.setPaginationType("client");
+    table.setExpandColumn(2);
+    table.setIdField("id");
+    table.setCodeField("id");
+    table.setParentCodeField("parentId");
+    table.setExpandAll(true);
     table.init();
     Role.table = table;
 });

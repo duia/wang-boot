@@ -11,6 +11,7 @@ import com.wpc.system.factory.UserFactory;
 import com.wpc.system.model.User;
 import com.wpc.system.service.IUserService;
 import com.wpc.system.transfer.UserDto;
+import com.wpc.system.warpper.UserWarpper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -138,11 +139,11 @@ public class UserMgrController extends BaseController {
                        @RequestParam(required = false) String endTime, @RequestParam(required = false) Integer deptid) {
         if (SessionUtil.isAdmin()) {
             List<Map<String, Object>> users = userService.selectUsers(null, name, beginTime, endTime, deptid);
-            return users;
+            return new UserWarpper(users).wrap();
         } else {
             DataScope dataScope = new DataScope(SessionUtil.getDeptDataScope());
             List<Map<String, Object>> users = userService.selectUsers(dataScope, name, beginTime, endTime, deptid);
-            return users;
+            return new UserWarpper(users).wrap();
         }
     }
 

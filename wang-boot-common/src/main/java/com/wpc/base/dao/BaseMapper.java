@@ -13,6 +13,6 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * @Date:
  */
 @NoRepositoryBean
-public interface BaseDao<T extends DataEntity<T>> extends Mapper<T>, MySqlMapper<T> {
+public interface BaseMapper<T extends DataEntity<T>> extends Mapper<T>, MySqlMapper<T> {
 
 }

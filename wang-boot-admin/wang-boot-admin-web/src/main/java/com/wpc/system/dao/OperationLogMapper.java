@@ -1,6 +1,6 @@
 package com.wpc.system.dao;
 
-import com.wpc.base.dao.BaseDao;
+import com.wpc.base.dao.BaseMapper;
 import com.wpc.system.model.OperationLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,7 +17,7 @@ import java.util.Map;
  * @since 2017-07-11
  */
 @Mapper
-public interface OperationLogMapper extends BaseDao<OperationLog> {
+public interface OperationLogMapper extends BaseMapper<OperationLog> {
 
     /**
      * 获取操作日志

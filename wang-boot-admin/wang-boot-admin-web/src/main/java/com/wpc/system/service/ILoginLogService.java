@@ -15,11 +15,14 @@ import java.util.Map;
  * @author 王鹏程
  * @since 2018-02-22
  */
-public interface ILoginLogService extends BaseService<LoginLog> {
+public interface ILoginLogService {
 
     /**
      * 获取登录日志列表
      */
     PageInfo<Map<String, Object>> getLoginLogs(int offset, int limit, String beginTime, String endTime, String logName,
                                                String orderByField, boolean asc);
+
+    void deleteLog();
+
 }

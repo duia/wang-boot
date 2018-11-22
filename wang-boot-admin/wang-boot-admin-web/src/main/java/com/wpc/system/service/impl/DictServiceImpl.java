@@ -33,7 +33,7 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
         //判断有没有该字典
         Example example = new Example(Dict.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("pid", 0)
+        criteria.andEqualTo("parent_id", 0)
                 .andEqualTo("code", dictCode);
         List<Dict> dicts = dictMapper.selectByExample(example);
         if (dicts != null && dicts.size() > 0) {
@@ -47,9 +47,9 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
         Dict dict = new Dict();
         dict.setName(dictName);
         dict.setCode(dictCode);
-        dict.setTips(dictTips);
-        dict.setNum(0);
-        dict.setPid(0L);
+        dict.setRemarks(dictTips);
+        dict.setSort(0);
+        dict.setParentId(0L);
         this.dictMapper.insert(dict);
 
         //添加字典条目
@@ -58,12 +58,12 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
             String name = item.get(MUTI_STR_NAME);
             String num = item.get(MUTI_STR_NUM);
             Dict itemDict = new Dict();
-            itemDict.setPid(dict.getId());
+            itemDict.setParentId(dict.getId());
             itemDict.setCode(code);
             itemDict.setName(name);
 
             try {
-                itemDict.setNum(Integer.valueOf(num));
+                itemDict.setSort(Integer.valueOf(num));
             } catch (NumberFormatException e) {
             }
             this.dictMapper.insert(itemDict);
@@ -86,7 +86,7 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
         //删除这个字典的子词典
         Example example = new Example(Dict.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("pid", dictId);
+        criteria.andEqualTo("parent_id", dictId);
         dictMapper.deleteByExample(example);
 //
 //        //删除这个词典
@@ -107,7 +107,7 @@ public class DictServiceImpl extends BaseServiceImpl<Dict> implements IDictServi
     public List<Dict> selectByParentId(Long pid) {
         Example example = new Example(Dict.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("pid", pid);
+        criteria.andEqualTo("parent_id", pid);
         List<Dict> dicts = dictMapper.selectByExample(example);
         return dicts;
     }

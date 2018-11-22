@@ -36,8 +36,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">备注</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="tips" name="tips"
-                                   th:value="${dept.tips}"
+                            <input class="form-control" id="remarks" name="remarks"
+                                   th:value="${dept.remarks}"
                                    type="text"
                             >
                         </div>
@@ -48,8 +48,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">排序</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="num" name="num"
-                                   th:value="${dept.num}"
+                            <input class="form-control" id="sort" name="sort"
+                                   th:value="${dept.sort}"
                                    type="text"
                             >
                         </div>
@@ -66,7 +66,7 @@
                                    onclick="DeptInfoDlg.showDeptSelectTree(); return false;"
                                    style="background-color: #ffffff !important;"
                             >
-                            <input class="form-control" type="hidden" id="pid" th:value="${dept.pid}">
+                            <input class="form-control" type="hidden" id="parentId" th:value="${dept.parentId}">
                         </div>
                     </div>
                 </div>

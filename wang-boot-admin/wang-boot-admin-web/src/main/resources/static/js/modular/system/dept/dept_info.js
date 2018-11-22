@@ -74,7 +74,7 @@ DeptInfoDlg.close = function() {
  */
 DeptInfoDlg.onClickDept = function(e, treeId, treeNode) {
     $("#pName").attr("value", DeptInfoDlg.zTreeInstance.getSelectedVal());
-    $("#pid").attr("value", treeNode.id);
+    $("#parentId").attr("value", treeNode.id);
 }
 
 /**
@@ -105,7 +105,7 @@ DeptInfoDlg.hideDeptSelectTree = function() {
  * 收集数据
  */
 DeptInfoDlg.collectData = function() {
-    this.set('id').set('simplename').set('fullname').set('tips').set('num').set('pid');
+    this.set('id').set('simplename').set('fullname').set('remarks').set('sort').set('parentId');
 }
 
 /**

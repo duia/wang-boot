@@ -11,7 +11,7 @@
     $.extend($.fn.bootstrapTable.defaults, {
         treeShowField: null,
         idField: 'id',
-        parentIdField: 'pid',
+        parentIdField: 'parentId',
         treeVerticalcls: 'vertical',
         treeVerticalLastcls: 'vertical last',
         treeSpacecls: 'space',

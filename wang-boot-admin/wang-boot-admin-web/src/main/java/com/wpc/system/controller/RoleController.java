@@ -9,6 +9,7 @@ import com.wpc.system.model.User;
 import com.wpc.system.node.ZTreeNode;
 import com.wpc.system.service.IRoleService;
 import com.wpc.system.service.IUserService;
+import com.wpc.system.warpper.RoleWarpper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,7 +65,7 @@ public class RoleController extends BaseController {
     public String roleEdit(@PathVariable Long roleId, Model model) {
         Role role = this.roleService.findById(roleId);
         model.addAttribute(role);
-        model.addAttribute("pName", ConstantFactory.me().getSingleRoleName(role.getPid()));
+        model.addAttribute("pName", ConstantFactory.me().getSingleRoleName(role.getParentId()));
         model.addAttribute("deptName", ConstantFactory.me().getDeptName(role.getDeptid()));
 //        LogObjectHolder.me().set(role);
         return PREFIX + "/role_edit";
@@ -87,7 +88,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     public Object list(@RequestParam(required = false) String roleName) {
         List<Map<String, Object>> roles = this.roleService.selectRoles(roleName);
-        return roles;
+        return new RoleWarpper(roles).wrap();
     }
 
     /**

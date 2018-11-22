@@ -1,5 +1,6 @@
 package com.wpc.system.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wpc.base.entity.DataEntity;
 import org.apache.ibatis.type.Alias;
 
@@ -30,10 +31,6 @@ public class User extends DataEntity<User> {
      * 密码
      */
     private String password;
-    /**
-     * md5密码盐
-     */
-    private String salt;
     /**
      * 名字
      */
@@ -95,14 +92,6 @@ public class User extends DataEntity<User> {
         this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     public String getName() {
         return name;
     }
@@ -111,6 +100,7 @@ public class User extends DataEntity<User> {
         this.name = name;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getBirthday() {
         return birthday;
     }
@@ -182,7 +172,6 @@ public class User extends DataEntity<User> {
                 ", avatar=" + avatar +
                 ", account=" + account +
                 ", password=" + password +
-                ", salt=" + salt +
                 ", name=" + name +
                 ", birthday=" + birthday +
                 ", sex=" + sex +

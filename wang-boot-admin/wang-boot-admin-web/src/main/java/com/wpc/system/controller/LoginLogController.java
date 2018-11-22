@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.wpc.base.entity.PageInfoBT;
 import com.wpc.base.controller.BaseController;
 import com.wpc.system.service.ILoginLogService;
+import com.wpc.system.warpper.LogWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,7 @@ public class LoginLogController extends BaseController {
         String order = request.getParameter("order");       //asc或desc(升序或降序)
         PageInfo<Map<String, Object>> result = loginLogService.getLoginLogs(offset, limit, beginTime, endTime, logName,
                 sort, "asc".equalsIgnoreCase(order));
+        new LogWarpper(result.getList()).wrap();
         return new PageInfoBT<>(result);
     }
 
@@ -58,7 +60,7 @@ public class LoginLogController extends BaseController {
     @RequestMapping("/delLoginLog")
     @ResponseBody
     public Object delLog() {
-//        SqlRunner.db().delete("delete from sys_login_log");
+        loginLogService.deleteLog();
         return SUCCESS_TIP;
     }
 }

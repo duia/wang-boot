@@ -144,7 +144,7 @@ public class DateFormatUtils {
 	 * @return
 	 */
 	public static String formatDate(Date date,String format){
-		return formatDate(DateUtils.date2String(date), format);
+		return formatDate(DateUtils.date2String(date, format).replaceAll(" ", ""), format);
 	}
 	
 	/**

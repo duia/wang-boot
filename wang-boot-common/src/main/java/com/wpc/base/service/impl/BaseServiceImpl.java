@@ -2,8 +2,7 @@ package com.wpc.base.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.wpc.base.dao.BaseDao;
-import com.wpc.base.entity.BaseEntity;
+import com.wpc.base.dao.BaseMapper;
 import com.wpc.base.entity.DataEntity;
 import com.wpc.base.entity.datatables.DataTablesRequest;
 import com.wpc.base.entity.datatables.DataTablesResponse;
@@ -29,7 +28,7 @@ public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseSe
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    protected BaseDao<T> baseDao;
+    protected BaseMapper<T> baseDao;
 
     @Override
     public void insert(T t) {

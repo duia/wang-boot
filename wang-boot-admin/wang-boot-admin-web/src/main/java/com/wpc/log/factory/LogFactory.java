@@ -40,7 +40,7 @@ public class LogFactory {
         operationLog.setUserid(userId);
         operationLog.setClassname(clazzName);
         operationLog.setMethod(methodName);
-        operationLog.setCreateDate(new Date());
+        operationLog.setCreateTime(new Date());
         operationLog.setSucceed(succeed.getMessage());
         operationLog.setMessage(msg);
         return operationLog;
@@ -53,7 +53,7 @@ public class LogFactory {
         LoginLog loginLog = new LoginLog();
         loginLog.setLogname(logType.getMessage());
         loginLog.setUserid(userId);
-        loginLog.setCreateDate(new Date());
+        loginLog.setCreateTime(new Date());
         loginLog.setSucceed(LogSucceed.SUCCESS.getMessage());
         loginLog.setIp(ip);
         loginLog.setMessage(msg);

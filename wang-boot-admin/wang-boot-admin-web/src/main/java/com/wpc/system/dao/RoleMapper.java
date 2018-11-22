@@ -1,6 +1,6 @@
 package com.wpc.system.dao;
 
-import com.wpc.base.dao.BaseDao;
+import com.wpc.base.dao.BaseMapper;
 import com.wpc.system.model.Role;
 import com.wpc.system.node.ZTreeNode;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,7 +18,7 @@ import java.util.Map;
  * @since 2017-07-11
  */
 @Mapper
-public interface RoleMapper extends BaseDao<Role> {
+public interface RoleMapper extends BaseMapper<Role> {
 
     /**
      * 根据条件查询角色列表

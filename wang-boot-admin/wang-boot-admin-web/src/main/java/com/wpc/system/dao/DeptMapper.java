@@ -1,6 +1,6 @@
 package com.wpc.system.dao;
 
-import com.wpc.base.dao.BaseDao;
+import com.wpc.base.dao.BaseMapper;
 import com.wpc.system.model.Dept;
 import com.wpc.system.node.ZTreeNode;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,7 +18,7 @@ import java.util.Map;
  * @since 2017-07-11
  */
 @Mapper
-public interface DeptMapper extends BaseDao<Dept> {
+public interface DeptMapper extends BaseMapper<Dept> {
 
     /**
      * 获取ztree的节点列表

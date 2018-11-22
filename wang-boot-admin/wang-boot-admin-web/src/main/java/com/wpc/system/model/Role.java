@@ -1,10 +1,9 @@
 package com.wpc.system.model;
 
-import com.wpc.base.entity.DataEntity;
+import com.wpc.base.entity.TreeEntity;
 import org.apache.ibatis.type.Alias;
 
 import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
  * <p>
@@ -16,16 +15,8 @@ import java.io.Serializable;
  */
 @Alias("Role")
 @Table(name = "sys_role")
-public class Role extends DataEntity<Role> {
+public class Role extends TreeEntity<Role> {
 
-    /**
-     * 序号
-     */
-    private Integer num;
-    /**
-     * 父角色id
-     */
-    private Long pid;
     /**
      * 角色名称
      */
@@ -37,27 +28,11 @@ public class Role extends DataEntity<Role> {
     /**
      * 提示
      */
-    private String tips;
+    private String code;
     /**
      * 保留字段(暂时没用）
      */
     private Integer version;
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
-    }
 
     public String getName() {
         return name;
@@ -75,12 +50,12 @@ public class Role extends DataEntity<Role> {
         this.deptid = deptid;
     }
 
-    public String getTips() {
-        return tips;
+    public String getCode() {
+        return code;
     }
 
-    public void setTips(String tips) {
-        this.tips = tips;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Integer getVersion() {
@@ -95,11 +70,9 @@ public class Role extends DataEntity<Role> {
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", num=" + num +
-                ", pid=" + pid +
                 ", name=" + name +
                 ", deptid=" + deptid +
-                ", tips=" + tips +
+                ", code=" + code +
                 ", version=" + version +
                 "}";
     }

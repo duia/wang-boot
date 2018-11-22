@@ -7,7 +7,7 @@
 		<id column="id" property="id" />
 		<result column="logname" property="logname" />
 		<result column="userid" property="userid" />
-		<result column="create_date" property="createDate" />
+		<result column="create_time" property="createTime" />
 		<result column="succeed" property="succeed" />
 		<result column="message" property="message" />
 		<result column="ip" property="ip" />
@@ -16,7 +16,7 @@
 	<select id="getLoginLogs" resultType="map">
 		select * from sys_login_log where 1 = 1
 		<if test="beginTime != null and beginTime !='' and endTime != null and endTime != ''">
-			and (create_date between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+			and (create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
 		</if>
 		<if test="logName != null and logName !=''">
 			and logname like CONCAT('%',#{logName},'%')
@@ -33,7 +33,7 @@
 				</choose>
 			</when>
 			<otherwise>
-				order by create_date DESC
+				order by create_time DESC
 			</otherwise>
 		</choose>
 	</select>

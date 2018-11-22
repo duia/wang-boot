@@ -8,7 +8,6 @@
 		<result column="avatar" property="avatar" />
 		<result column="account" property="account" />
 		<result column="password" property="password" />
-		<result column="salt" property="salt" />
 		<result column="name" property="name" />
 		<result column="birthday" property="birthday" />
 		<result column="sex" property="sex" />
@@ -17,7 +16,7 @@
 		<result column="roleid" property="roleid" />
 		<result column="deptid" property="deptid" />
 		<result column="status" property="status" />
-		<result column="create_date" property="createDate" />
+		<result column="create_time" property="createTime" />
 		<result column="version" property="version" />
 	</resultMap>
 
@@ -25,14 +24,14 @@
 		id, account, name, birthday, sex, email, avatar,
 		phone, roleid,
 		deptid, status,
-		create_date, version
+		create_time, version
 	</sql>
 
 	<sql id="Base_Column_List_With_Pwd">
 		id, account, name, birthday,password, sex, email, avatar,
-		phone, roleid,salt,
+		phone, roleid,
 		deptid, status,
-		create_date, version
+		create_time, version
 	</sql>
 
 	<select id="selectUsers" resultType="map">
@@ -46,7 +45,7 @@
 			or name like CONCAT('%',#{name},'%'))
 		</if>
 		<if test="deptid != null and deptid != 0">
-			and (deptid = #{deptid} or deptid in ( select id from sys_dept where pids like CONCAT('%[', #{deptid}, ']%') ))
+			and (deptid = #{deptid} or deptid in ( select id from sys_dept where parent_ids like CONCAT('%[', #{deptid}, ']%') ))
 		</if>
 		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
 			and (createTime between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
@@ -68,7 +67,7 @@
 		#{userId}
 	</update>
 
-	<select id="getByAccount" resultType="user">
+	<select id="getByAccount" resultType="User">
 		select
 		<include refid="Base_Column_List_With_Pwd" />
 		from sys_user where account = #{account} and status != 3

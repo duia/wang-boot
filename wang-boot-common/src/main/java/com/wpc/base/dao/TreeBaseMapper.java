@@ -12,7 +12,7 @@ import java.util.List;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface TreeBaseDao<T extends TreeEntity<T>> extends BaseDao<T> {
+public interface TreeBaseMapper<T extends TreeEntity<T>> extends BaseMapper<T> {
 
     /**
      * 找到所有子节点
