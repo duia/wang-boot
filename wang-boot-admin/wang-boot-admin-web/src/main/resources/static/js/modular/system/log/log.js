@@ -15,13 +15,13 @@ OptLog.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
         {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
-        {title: '日志类型', field: 'logtype', align: 'center', valign: 'middle', sortable: true},
-        {title: '日志名称', field: 'logname', align: 'center', valign: 'middle', sortable: true},
+        {title: '日志类型', field: 'logType', align: 'center', valign: 'middle', sortable: true},
+        {title: '日志名称', field: 'oper_describe', align: 'center', valign: 'middle', sortable: true},
         // {title: '用户名称', field: 'userName', align: 'center', valign: 'middle', sortable: true, sortName: 'userid'},
         {title: '用户名称', field: 'userName', align: 'center', valign: 'middle'},
-        {title: '类名', field: 'classname', align: 'center', valign: 'middle', sortable: true},
-        {title: '方法名', field: 'method', align: 'center', valign: 'middle', sortable: true},
-        {title: '时间', field: 'createtime', align: 'center', valign: 'middle', sortable: true},
+        {title: '类名方法名', field: 'oper_name', align: 'center', valign: 'middle', sortable: true},
+        {title: '参数', field: 'oper_param', align: 'center', valign: 'middle', sortable: true},
+        {title: '时间', field: 'operTime', align: 'center', valign: 'middle', sortable: true},
         {title: '具体消息', field: 'message', align: 'center', valign: 'middle', sortable: true}];
 };
 
@@ -45,7 +45,7 @@ OptLog.check = function () {
 OptLog.detail = function () {
     if (this.check()) {
         var ajax = new $ax(Feng.ctxPath + "/log/detail/" + this.seItem.id, function (data) {
-            Feng.infoDetail("日志详情", data.regularMessage);
+            Feng.infoDetail("日志详情", JSON.stringify(data));
         }, function (data) {
             Feng.error("获取详情失败!");
         });

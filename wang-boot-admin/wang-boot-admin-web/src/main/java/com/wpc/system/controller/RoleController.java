@@ -6,7 +6,7 @@ import com.wpc.common.bean.ResponseResult;
 import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Role;
 import com.wpc.system.model.User;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.service.IRoleService;
 import com.wpc.system.service.IUserService;
 import com.wpc.system.warpper.RoleWarpper;

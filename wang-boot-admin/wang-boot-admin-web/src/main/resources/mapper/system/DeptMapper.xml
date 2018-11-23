@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wpc.system.dao.DeptMapper">
 
-    <select id="tree" resultType="com.wpc.system.node.ZTreeNode">
+    <select id="tree" resultType="com.wpc.system.model.node.ZTreeNode">
 		select id,parent_id as parentId,simplename as name,
 		(
 		CASE

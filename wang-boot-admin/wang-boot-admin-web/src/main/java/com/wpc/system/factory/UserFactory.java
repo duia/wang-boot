@@ -1,7 +1,7 @@
 package com.wpc.system.factory;
 
 import com.wpc.system.model.User;
-import com.wpc.system.transfer.UserDto;
+import com.wpc.system.model.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.ObjectUtils;
 

@@ -30,12 +30,12 @@
 		delete from sys_relation where roleid = #{roleId}
 	</delete>
 
-	<select id="roleTreeList" resultType="com.wpc.system.node.ZTreeNode">
+	<select id="roleTreeList" resultType="com.wpc.system.model.node.ZTreeNode">
 		select id "id",parent_id "parentId",name as "name",(case when (parent_id=0 or parent_id is null) then 'true'
 		else 'false' end) "open" from sys_role
 	</select>
 
-	<select id="roleTreeListByRoleId" resultType="com.wpc.system.node.ZTreeNode">
+	<select id="roleTreeListByRoleId" resultType="com.wpc.system.model.node.ZTreeNode">
 		SELECT
 		r.id "id",
 		parent_id "parentId",

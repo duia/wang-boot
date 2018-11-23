@@ -2,7 +2,6 @@ package com.wpc.system.controller;
 
 import com.wpc.SessionUtil;
 import com.wpc.base.controller.BaseController;
-import com.wpc.common.utils.Servlets;
 import com.wpc.common.utils.image.CaptchaUtils;
 import com.wpc.common.utils.image.vcode.Captcha;
 import com.wpc.common.utils.image.vcode.GifCaptcha;
@@ -12,7 +11,7 @@ import com.wpc.log.factory.LogTaskFactory;
 import com.wpc.shiro.JCaptchaValidateFilter;
 import com.wpc.shiro.MyFormAuthenticationFilter;
 import com.wpc.system.model.User;
-import com.wpc.system.node.MenuNode;
+import com.wpc.system.model.node.MenuNode;
 import com.wpc.system.service.IMenuService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;

@@ -1,18 +1,3 @@
-/**
- * Copyright 2018-2020 stylefeng & fengshuonan (https://gitee.com/stylefeng)
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.wpc.log.factory;
 
 import com.wpc.common.SpringContextHolder;
@@ -20,26 +5,27 @@ import com.wpc.common.utils.exception.Exceptions;
 import com.wpc.constant.LogSucceed;
 import com.wpc.constant.LogType;
 import com.wpc.log.LogManager;
+import com.wpc.system.dao.LogMapper;
 import com.wpc.system.dao.LoginLogMapper;
-import com.wpc.system.dao.OperationLogMapper;
+import com.wpc.system.model.Log;
 import com.wpc.system.model.LoginLog;
-import com.wpc.system.model.OperationLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.TimerTask;
 
 /**
  * 日志操作任务创建工厂
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @date 2016年12月6日 下午9:18:27
  */
 public class LogTaskFactory {
 
     private static Logger logger = LoggerFactory.getLogger(LogManager.class);
     private static LoginLogMapper loginLogMapper = SpringContextHolder.getBean(LoginLogMapper.class);
-    private static OperationLogMapper operationLogMapper = SpringContextHolder.getBean(OperationLogMapper.class);
+    private static LogMapper logMapper = SpringContextHolder.getBean(LogMapper.class);
 
     public static TimerTask loginLog(final Long userId, final String ip) {
         return new TimerTask() {
@@ -84,14 +70,15 @@ public class LogTaskFactory {
         };
     }
 
-    public static TimerTask bussinessLog(final Long userId, final String bussinessName, final String clazzName, final String methodName, final String msg) {
+    public static TimerTask businessLog(final HttpServletRequest request, final Long userId, final String businessName,
+                                         final String methodName, final String arguments, final String msg) {
         return new TimerTask() {
             @Override
             public void run() {
-                OperationLog operationLog = LogFactory.createOperationLog(
-                        LogType.BUSSINESS, userId, bussinessName, clazzName, methodName, msg, LogSucceed.SUCCESS);
+                Log operationLog = LogFactory.createOperationLog(request,
+                        LogType.BUSINESS, userId, businessName, methodName, arguments, msg, LogSucceed.SUCCESS);
                 try {
-                    operationLogMapper.insert(operationLog);
+                    logMapper.insert(operationLog);
                 } catch (Exception e) {
                     logger.error("创建业务日志异常!", e);
                 }
@@ -99,15 +86,16 @@ public class LogTaskFactory {
         };
     }
 
-    public static TimerTask exceptionLog(final Long userId, final Exception exception) {
+    public static TimerTask exceptionLog(final HttpServletRequest request, final Long userId, final String businessName,
+                                         final String methodName, final String arguments, final Exception exception) {
         return new TimerTask() {
             @Override
             public void run() {
                 String msg = Exceptions.getExceptionMsg(exception);
-                OperationLog operationLog = LogFactory.createOperationLog(
-                        LogType.EXCEPTION, userId, "", null, null, msg, LogSucceed.FAIL);
+                Log operationLog = LogFactory.createOperationLog(request,
+                        LogType.EXCEPTION, userId, businessName, methodName, arguments, msg, LogSucceed.FAIL);
                 try {
-                    operationLogMapper.insert(operationLog);
+                    logMapper.insert(operationLog);
                 } catch (Exception e) {
                     logger.error("创建异常日志异常!", e);
                 }

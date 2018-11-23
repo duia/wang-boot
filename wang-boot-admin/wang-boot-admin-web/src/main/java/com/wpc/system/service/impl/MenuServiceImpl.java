@@ -1,8 +1,8 @@
 package com.wpc.system.service.impl;
 
 import com.wpc.base.service.impl.BaseServiceImpl;
-import com.wpc.system.node.MenuNode;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.MenuNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.dao.MenuMapper;
 import com.wpc.system.model.Menu;
 import com.wpc.system.service.IMenuService;

@@ -3,7 +3,7 @@ package com.wpc.system.controller;
 import com.wpc.base.controller.BaseController;
 import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Dept;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.service.IDeptService;
 import com.wpc.system.warpper.DeptWarpper;
 import org.springframework.beans.factory.annotation.Autowired;

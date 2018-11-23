@@ -3,6 +3,7 @@ package com.wpc.system.controller;
 import com.wpc.SessionUtil;
 import com.wpc.base.controller.BaseController;
 import com.wpc.common.Global;
+import com.wpc.common.annotation.SysLogAnn;
 import com.wpc.common.bean.ResponseResult;
 import com.wpc.constant.ManagerStatus;
 import com.wpc.system.DataScope;
@@ -10,7 +11,7 @@ import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.factory.UserFactory;
 import com.wpc.system.model.User;
 import com.wpc.system.service.IUserService;
-import com.wpc.system.transfer.UserDto;
+import com.wpc.system.model.dto.UserDto;
 import com.wpc.system.warpper.UserWarpper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.naming.NoPermissionException;
 import javax.validation.Valid;
-import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * 系统管理员控制器
@@ -112,6 +110,7 @@ public class UserMgrController extends BaseController {
     /**
      * 修改当前用户的密码
      */
+    @SysLogAnn(describe = "修改当前用户的密码")
     @RequestMapping("/changePwd")
     @ResponseBody
     public Object changePwd(@RequestParam String oldPwd, @RequestParam String newPwd, @RequestParam String rePwd) {
@@ -150,6 +149,7 @@ public class UserMgrController extends BaseController {
     /**
      * 添加管理员
      */
+    @SysLogAnn(describe = "添加管理员")
     @RequestMapping("/add")
     @ResponseBody
     public ResponseResult add(@Valid UserDto userDto, BindingResult result) {
@@ -179,13 +179,10 @@ public class UserMgrController extends BaseController {
      *
      * @throws NoPermissionException
      */
+    @SysLogAnn(describe = "修改管理员")
     @RequestMapping("/edit")
     @ResponseBody
-    public ResponseResult edit(@Valid UserDto user, BindingResult result) throws NoPermissionException {
-        if (result.hasErrors()) {
-//            throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
-        }
-
+    public ResponseResult edit(@Valid UserDto user) throws NoPermissionException {
         User oldUser = userService.findById(user.getId());
 
         if (SessionUtil.hasRole(Global.ADMIN_NAME)) {
@@ -206,6 +203,7 @@ public class UserMgrController extends BaseController {
     /**
      * 删除管理员（逻辑删除）
      */
+    @SysLogAnn(describe = "删除管理员")
     @RequestMapping("/delete")
     @ResponseBody
     public ResponseResult delete(@RequestParam Long userId) {
@@ -231,6 +229,7 @@ public class UserMgrController extends BaseController {
     /**
      * 重置管理员的密码
      */
+    @SysLogAnn(describe = "重置管理员的密码")
     @RequestMapping("/reset")
     @ResponseBody
     public ResponseResult reset(@RequestParam Long userId) {
@@ -244,6 +243,7 @@ public class UserMgrController extends BaseController {
     /**
      * 冻结用户
      */
+    @SysLogAnn(describe = "冻结用户")
     @RequestMapping("/freeze")
     @ResponseBody
     public ResponseResult freeze(@RequestParam Long userId) {
@@ -259,6 +259,7 @@ public class UserMgrController extends BaseController {
     /**
      * 解除冻结用户
      */
+    @SysLogAnn(describe = "解除冻结用户")
     @RequestMapping("/unfreeze")
     @ResponseBody
     public ResponseResult unfreeze(@RequestParam Long userId) {
@@ -270,6 +271,7 @@ public class UserMgrController extends BaseController {
     /**
      * 分配角色
      */
+    @SysLogAnn(describe = "分配角色")
     @RequestMapping("/setRole")
     @ResponseBody
     public ResponseResult setRole(@RequestParam("userId") Long userId, @RequestParam("roleIds") String roleIds) {

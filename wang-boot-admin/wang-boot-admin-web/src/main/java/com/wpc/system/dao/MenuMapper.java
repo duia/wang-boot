@@ -2,8 +2,8 @@ package com.wpc.system.dao;
 
 import com.wpc.base.dao.BaseMapper;
 import com.wpc.system.model.Menu;
-import com.wpc.system.node.MenuNode;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.MenuNode;
+import com.wpc.system.model.node.ZTreeNode;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

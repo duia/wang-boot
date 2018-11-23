@@ -6,7 +6,7 @@ import com.wpc.common.utils.base.BeanUtils;
 import com.wpc.constant.MenuStatus;
 import com.wpc.system.factory.ConstantFactory;
 import com.wpc.system.model.Menu;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.service.IMenuService;
 import com.wpc.system.warpper.MenuWarpper;
 import org.apache.commons.lang3.StringUtils;

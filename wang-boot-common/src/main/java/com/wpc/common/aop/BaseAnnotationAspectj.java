@@ -38,18 +38,23 @@ public class BaseAnnotationAspectj {
 
 	protected final ThreadLocal<Long> startTimeThreadLocal = new NamedThreadLocal<Long>("ThreadLocal StartTime");
 
-	Object[] getArgs(JoinPoint joinPoint) {
-		return joinPoint.getArgs();
-	}
-
-	Class getTargetClass(JoinPoint joinPoint) {
+	protected Class getTargetClass(JoinPoint joinPoint) {
 		return joinPoint.getTarget().getClass();
 	}
 
-	Method getMethod(JoinPoint joinPoint) {
+	protected Object[] getArgs(JoinPoint joinPoint) {
+		return joinPoint.getArgs();
+	}
+
+	protected Method getMethod(JoinPoint joinPoint) {
 		Signature signature = joinPoint.getSignature();
 		MethodSignature methodSignature = (MethodSignature)signature;
-		return methodSignature.getMethod();
+		try {
+			return getTargetClass(joinPoint).getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
@@ -58,7 +63,7 @@ public class BaseAnnotationAspectj {
 	 * @return Object
 	 * @throws Throwable
 	 */
-	Object getData(ProceedingJoinPoint joinPoint) throws Throwable {
+	protected Object getData(ProceedingJoinPoint joinPoint) throws Throwable {
 		try {
 			long startTime = System.currentTimeMillis();
 			Object result = joinPoint.proceed();

@@ -1,4 +1,4 @@
-package com.wpc.system.node;
+package com.wpc.system.model.node;
 
 import java.util.*;
 

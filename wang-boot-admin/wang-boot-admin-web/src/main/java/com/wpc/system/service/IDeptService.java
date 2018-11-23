@@ -1,7 +1,7 @@
 package com.wpc.system.service;
 
 import com.wpc.base.service.BaseService;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.model.Dept;
 import org.apache.ibatis.annotations.Param;
 

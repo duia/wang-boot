@@ -1,7 +1,7 @@
 package com.wpc.system.service.impl;
 
 import com.wpc.base.service.impl.BaseServiceImpl;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.dao.DeptMapper;
 import com.wpc.system.model.Dept;
 import com.wpc.system.service.IDeptService;

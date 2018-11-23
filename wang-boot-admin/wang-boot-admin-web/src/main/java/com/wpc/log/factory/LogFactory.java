@@ -1,31 +1,18 @@
-/**
- * Copyright 2018-2020 stylefeng & fengshuonan (https://gitee.com/stylefeng)
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.wpc.log.factory;
 
+import com.wpc.common.utils.net.IpUtils;
 import com.wpc.constant.LogSucceed;
 import com.wpc.constant.LogType;
+import com.wpc.system.model.Log;
 import com.wpc.system.model.LoginLog;
-import com.wpc.system.model.OperationLog;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
  * 日志对象创建工厂
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @date 2016年12月6日 下午9:18:27
  */
 public class LogFactory {
@@ -33,16 +20,23 @@ public class LogFactory {
     /**
      * 创建操作日志
      */
-    public static OperationLog createOperationLog(LogType logType, Long userId, String bussinessName, String clazzName, String methodName, String msg, LogSucceed succeed) {
-        OperationLog operationLog = new OperationLog();
-        operationLog.setLogtype(logType.getMessage());
-        operationLog.setLogname(bussinessName);
-        operationLog.setUserid(userId);
-        operationLog.setClassname(clazzName);
-        operationLog.setMethod(methodName);
-        operationLog.setCreateTime(new Date());
+    public static Log createOperationLog(HttpServletRequest request, LogType logType, Long userId, String businessName,
+                                         String methodName, String arguments, String msg, LogSucceed succeed) {
+        Log operationLog = new Log();
+        operationLog.setLogType(logType.getCode());
+        operationLog.setOperDescribe(businessName);
+        operationLog.setOperName(methodName);
+        operationLog.setOperParam(arguments);
+        operationLog.setOperTime(new Date());
+        operationLog.setUserId(userId);
         operationLog.setSucceed(succeed.getMessage());
         operationLog.setMessage(msg);
+        if (null != request) {
+            operationLog.setRemoteAddr(IpUtils.getIpAddress(request));
+            operationLog.setUserAgent(request.getHeader("user-agent"));
+            operationLog.setRequestUri(request.getRequestURI());
+            operationLog.setMethod(request.getMethod());
+        }
         return operationLog;
     }
 

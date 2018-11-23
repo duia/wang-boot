@@ -23,7 +23,7 @@ public interface LoginLogMapper extends tk.mybatis.mapper.common.Mapper<LoginLog
     /**
      * 获取登录日志
      */
-    List<Map<String, Object>> getLoginLogs(@Param("beginTime") String beginTime,
-                                           @Param("endTime") String endTime, @Param("logName") String logName, @Param("orderByField") String orderByField, @Param("isAsc") boolean isAsc);
+    List<Map<String, Object>> getLoginLogs(@Param("beginTime") String beginTime, @Param("endTime") String endTime,
+                                           @Param("logName") String logName, @Param("orderByField") String orderByField, @Param("isAsc") boolean isAsc);
 
 }

@@ -2,7 +2,7 @@ package com.wpc.system.service.impl;
 
 import com.wpc.base.service.impl.BaseServiceImpl;
 import com.wpc.system.model.Relation;
-import com.wpc.system.node.ZTreeNode;
+import com.wpc.system.model.node.ZTreeNode;
 import com.wpc.system.dao.RelationMapper;
 import com.wpc.system.dao.RoleMapper;
 import com.wpc.system.model.Role;

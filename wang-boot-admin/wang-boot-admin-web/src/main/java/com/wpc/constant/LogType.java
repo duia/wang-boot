@@ -1,38 +1,32 @@
-/**
- * Copyright 2018-2020 stylefeng & fengshuonan (https://gitee.com/stylefeng)
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.wpc.constant;
 
 /**
  * 日志类型
  *
- * @author fengshuonan
+ * @author 王鹏程
  * @Date 2017年1月22日 下午12:14:59
  */
 public enum LogType {
 
-    LOGIN("登录日志"),
-    LOGIN_FAIL("登录失败日志"),
-    EXIT("退出日志"),
-    EXCEPTION("异常日志"),
-    BUSSINESS("业务日志");
+    LOGIN("登录日志", "login"),
+    LOGIN_FAIL("登录失败日志", "login_fail"),
+    EXIT("退出日志", "exit"),
+
+    ALL("全部", "all"),//全部日志
+    EXCEPTION("异常日志", "exception"),
+    BUSINESS("业务日志", "business");
 
     String message;
 
+    String code;
+
     LogType(String message) {
         this.message = message;
+    }
+
+    LogType(String message, String code) {
+        this.message = message;
+        this.code = code;
     }
 
     public String getMessage() {
@@ -42,4 +36,26 @@ public enum LogType {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public static String valueOfName(String code) {
+        if (code == null) {
+            return null;
+        } else {
+            for (LogType logType : LogType.values()) {
+                if (logType.getCode().equals(code)) {
+                    return logType.getMessage();
+                }
+            }
+            return null;
+        }
+    }
+
 }

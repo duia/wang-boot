@@ -1,7 +1,8 @@
-package com.wpc.system.transfer;
+package com.wpc.system.model.dto;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @author 王鹏程
  * @Date 2017/5/5 22:40
  */
-public class UserDto {
+public class UserDto implements Serializable {
 
     private Long id;
     private String account;
