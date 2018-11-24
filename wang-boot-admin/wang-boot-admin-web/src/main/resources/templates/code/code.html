@@ -1,54 +1,140 @@
-@layout("/common/_container.html"){
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+<body class="gray-bg">
+
 <div class="row" xmlns="">
     <div class="col-sm-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>代码生成</h5>
             </div>
+            <div th:text="${params}"></div>
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
                         <div class="form-horizontal" id="generate">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <#input id="projectPath" name="项目路径" value="${params.projectPath}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">项目路径</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="outRoot" name="outRoot"
+                                                type="text"
+                                                th:value="${params.outRoot}"
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <#input id="projectPackage" name="项目的包" value="${params.projectPackage}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">项目的包</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="projectPackage" name="projectPackage"
+                                                   type="text"
+                                            >
+                                            <!--th:value="${params.projectPackage}"-->
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <#input id="corePackage" name="核心包" value="${params.corePackage}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">核心包</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="basePackage" name="basePackage"
+                                                type="text"
+                                                th:value="${params.basepackage}"
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <#input id="author" name="作者" value="${params.author!}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">作者</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="author" name="author"
+                                                   type="text"
+                                            >
+                                            <!--th:value="${params.author!}"-->
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <#input id="bizName" name="业务名称" />
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">业务名称</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="bizName" name="bizName"
+                                                   type="text"
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <#input id="moduleName" name="模块名称" value="${params.moduleName}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">模块名称</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="moduleName" name="moduleName"
+                                                   type="text"
+                                            >
+                                            <!--th:value="${params.moduleName}"-->
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <#input id="parentMenuName" name="父级菜单名称" underline="false" value="${params.parentMenuName}"
-                                            hidden="pid" readonly="readonly"
-                                            clickFun="Code.showMenuSelectTree(); return false;"
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">父级菜单名称</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="parentMenuName" name="parentMenuName"
+                                                   type="text"
+                                            readonly="readonly"
+                                            onclick="Code.showMenuSelectTree(); return false;"
                                             style="background-color: #ffffff !important;"
-                                            selectFlag="true" selectId="pcodeTreeDiv" selectTreeId="pcodeTree" selectStyle=""/>
+                                            >
+                                            <!--th:value="${params.parentMenuName}"-->
+                                            <input class="form-control" type="hidden" id="pid" value="">
+                                            <div id="pcodeTreeDiv" style="display: none; position: absolute; z-index: 200;">
+                                                <ul id="pcodeTree" class="ztree tree-box" style=""></ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <#input id="tableName" name="表名称" disabled="disabled"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">表名称</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="tableName" name="tableName"
+                                                   type="text"
+                                                   disabled="disabled"
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <#input id="ignoreTabelPrefix" name="表前缀" value="${params.ignoreTabelPrefix}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">表前缀</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="ignoreTabelPrefix" name="ignoreTabelPrefix"
+                                            >
+                                            <!--th:value="${params.ignoreTabelPrefix}"-->
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <#input id="className" name="类名" disabled="disabled"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">类名</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="className" name="className"
+                                                   type="text"
+                                                   disabled="disabled"
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -69,9 +155,10 @@
                                         <div class="list-group" id="tableList"
                                              data-bind="foreach: tables"
                                              style="height: 500px; overflow-y: scroll">
-                                            @for(table in tables!){
-                                                <a href="javascript:void(0)" class="list-group-item" tableName="${table.tableName}" onclick="Code.selectTable('${table.tableName}')">${table.tableName}-${table.tableComment}</a>
-                                            @}
+                                            <a href="javascript:void(0)" class="list-group-item" th:each="table : ${tables}"
+                                               th:attr="tableName=${table.sqlName}" th:onclick="|Code.selectTable('${table.sqlName}')|"
+                                                th:text="|${table.sqlName}-${table.remarks}|">
+                                                </a>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -95,7 +182,10 @@
         </div>
     </div>
 </div>
-<script src="${ctxPath}/static/js/common/select-list-object.js"></script>
-<script src="${ctxPath}/static/modular/code/gen.js"></script>
-@}
+<script th:src="@{/static/js/common/select-list-object.js}"></script>
+<script th:src="@{/static/js/modular/code/gen.js}"></script>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>
 

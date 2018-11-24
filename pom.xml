@@ -21,6 +21,7 @@
         <module>wang-boot-admin</module>
         <module>wang-boot-redis</module>
         <module>wang-boot-mongo</module>
+        <module>wang-boot-generator</module>
     </modules>
 
 
