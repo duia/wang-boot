@@ -12,7 +12,6 @@
  */
 package com.wpc.common.inteceptor;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -89,19 +88,19 @@ public class MyInteceptor extends HandlerInterceptorAdapter {
 		// TODO Auto-generated method stub
 		System.out.println("该方法在 action 执行前执行，可以实现对数据的预处理，比如：编码、安全控制等。");
 		HandlerMethod method = (HandlerMethod) obj;//获取当前要执行的方法
-		RequiresPermissions p = method.getMethodAnnotation(RequiresPermissions.class);//获取权限注解
-		System.out.println(p.value()[0]);
-		if(p!=null){
-			String[] ss = p.value();
-			for(int i=0; i<ss.length; i++){
-				String s = ss[i];
-				if(s.contains("$1") && s.contains("$2")){
-					s = s.replace("$1", reuqest.getParameter("depId")).replace("$2", reuqest.getParameter("userId"));
-					p.value()[i] = s;
-				}
-			}
-		}
-		System.out.println(p.value()[0]);
+//		RequiresPermissions p = method.getMethodAnnotation(RequiresPermissions.class);//获取权限注解
+//		System.out.println(p.value()[0]);
+//		if(p!=null){
+//			String[] ss = p.value();
+//			for(int i=0; i<ss.length; i++){
+//				String s = ss[i];
+//				if(s.contains("$1") && s.contains("$2")){
+//					s = s.replace("$1", reuqest.getParameter("depId")).replace("$2", reuqest.getParameter("userId"));
+//					p.value()[i] = s;
+//				}
+//			}
+//		}
+//		System.out.println(p.value()[0]);
 		// 解决跨域问题
 		// response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		// response.setHeader("Access-Control-Allow-Methods", "GET");
