@@ -33,7 +33,7 @@ Menu.initColumn = function () {
 Menu.check = function () {
     var selected = $('#' + this.id).bootstrapTreeTable('getSelections');
     if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     } else {
         Menu.seItem = selected[0];
@@ -51,7 +51,7 @@ Menu.openAddMenu = function () {
         area: ['830px', '450px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/menu/menu_add'
+        content: WPC.ctxPath + '/menu/menu_add'
     });
     this.layerIndex = index;
 };
@@ -67,7 +67,7 @@ Menu.openChangeMenu = function () {
             area: ['800px', '450px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/menu/menu_edit/' + this.seItem.id
+            content: WPC.ctxPath + '/menu/menu_edit/' + this.seItem.id
         });
         this.layerIndex = index;
     }
@@ -80,17 +80,17 @@ Menu.delMenu = function () {
     if (this.check()) {
 
         var operation = function () {
-            var ajax = new $ax(Feng.ctxPath + "/menu/remove", function (data) {
-                Feng.success("删除成功!");
+            var ajax = new $ax(WPC.ctxPath + "/menu/remove", function (data) {
+                WPC.success("删除成功!");
                 Menu.table.refresh();
             }, function (data) {
-                Feng.error("删除失败!" + data.responseJSON.message + "!");
+                WPC.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("menuId", Menu.seItem.id);
             ajax.start();
         };
 
-        Feng.confirm("是否刪除该菜单?", operation);
+        WPC.confirm("是否刪除该菜单?", operation);
     }
 };
 

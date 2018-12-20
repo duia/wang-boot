@@ -60,12 +60,12 @@ ExpenseInfoDlg.addSubmit = function() {
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/expense/add", function(data){
-        Feng.success("添加成功!");
+    var ajax = new $ax(WPC.ctxPath + "/expense/add", function(data){
+        WPC.success("添加成功!");
         window.parent.Expense.table.refresh();
         ExpenseInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        WPC.error("添加失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.expenseInfoData);
     ajax.start();
@@ -80,12 +80,12 @@ ExpenseInfoDlg.editSubmit = function() {
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/expense/update", function(data){
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/expense/update", function(data){
+        WPC.success("修改成功!");
         window.parent.Expense.table.refresh();
         ExpenseInfoDlg.close();
     },function(data){
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.expenseInfoData);
     ajax.start();

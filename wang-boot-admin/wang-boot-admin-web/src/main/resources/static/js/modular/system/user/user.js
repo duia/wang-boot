@@ -34,7 +34,7 @@ MgrUser.initColumn = function () {
 MgrUser.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
     if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     } else {
         MgrUser.seItem = selected[0];
@@ -52,7 +52,7 @@ MgrUser.openAddMgr = function () {
         area: ['800px', '560px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/mgr/user_add'
+        content: WPC.ctxPath + '/mgr/user_add'
     });
     this.layerIndex = index;
 };
@@ -69,7 +69,7 @@ MgrUser.openChangeUser = function () {
             area: ['800px', '450px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/mgr/user_edit/' + this.seItem.id
+            content: WPC.ctxPath + '/mgr/user_edit/' + this.seItem.id
         });
         this.layerIndex = index;
     }
@@ -87,7 +87,7 @@ MgrUser.roleAssign = function () {
             area: ['300px', '400px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/mgr/role_assign/' + this.seItem.id
+            content: WPC.ctxPath + '/mgr/role_assign/' + this.seItem.id
         });
         this.layerIndex = index;
     }
@@ -101,17 +101,17 @@ MgrUser.delMgrUser = function () {
 
         var operation = function(){
             var userId = MgrUser.seItem.id;
-            var ajax = new $ax(Feng.ctxPath + "/mgr/delete", function () {
-                Feng.success("删除成功!");
+            var ajax = new $ax(WPC.ctxPath + "/mgr/delete", function () {
+                WPC.success("删除成功!");
                 MgrUser.table.refresh();
             }, function (data) {
-                Feng.error("删除失败!" + data.responseJSON.message + "!");
+                WPC.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("userId", userId);
             ajax.start();
         };
 
-        Feng.confirm("是否删除用户" + MgrUser.seItem.account + "?",operation);
+        WPC.confirm("是否删除用户" + MgrUser.seItem.account + "?",operation);
     }
 };
 
@@ -122,11 +122,11 @@ MgrUser.delMgrUser = function () {
 MgrUser.freezeAccount = function () {
     if (this.check()) {
         var userId = this.seItem.id;
-        var ajax = new $ax(Feng.ctxPath + "/mgr/freeze", function (data) {
-            Feng.success("冻结成功!");
+        var ajax = new $ax(WPC.ctxPath + "/mgr/freeze", function (data) {
+            WPC.success("冻结成功!");
             MgrUser.table.refresh();
         }, function (data) {
-            Feng.error("冻结失败!" + data.responseJSON.message + "!");
+            WPC.error("冻结失败!" + data.responseJSON.message + "!");
         });
         ajax.set("userId", userId);
         ajax.start();
@@ -140,11 +140,11 @@ MgrUser.freezeAccount = function () {
 MgrUser.unfreeze = function () {
     if (this.check()) {
         var userId = this.seItem.id;
-        var ajax = new $ax(Feng.ctxPath + "/mgr/unfreeze", function (data) {
-            Feng.success("解除冻结成功!");
+        var ajax = new $ax(WPC.ctxPath + "/mgr/unfreeze", function (data) {
+            WPC.success("解除冻结成功!");
             MgrUser.table.refresh();
         }, function (data) {
-            Feng.error("解除冻结失败!");
+            WPC.error("解除冻结失败!");
         });
         ajax.set("userId", userId);
         ajax.start();
@@ -161,10 +161,10 @@ MgrUser.resetPwd = function () {
             btn: ['确定', '取消'],
             shade: false //不显示遮罩
         }, function () {
-            var ajax = new $ax(Feng.ctxPath + "/mgr/reset", function (data) {
-                Feng.success("重置密码成功!");
+            var ajax = new $ax(WPC.ctxPath + "/mgr/reset", function (data) {
+                WPC.success("重置密码成功!");
             }, function (data) {
-                Feng.error("重置密码失败!");
+                WPC.error("重置密码失败!");
             });
             ajax.set("userId", userId);
             ajax.start();

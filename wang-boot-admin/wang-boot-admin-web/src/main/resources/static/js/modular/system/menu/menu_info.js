@@ -107,12 +107,12 @@ MenuInfoDlg.addSubmit = function () {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/menu/add", function (data) {
-        Feng.success("添加成功!");
+    var ajax = new $ax(WPC.ctxPath + "/menu/add", function (data) {
+        WPC.success("添加成功!");
         window.parent.Menu.table.refresh();
         MenuInfoDlg.close();
     }, function (data) {
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        WPC.error("添加失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.menuInfoData);
     ajax.start();
@@ -131,12 +131,12 @@ MenuInfoDlg.editSubmit = function () {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/menu/edit", function (data) {
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/menu/edit", function (data) {
+        WPC.success("修改成功!");
         window.parent.Menu.table.refresh();
         MenuInfoDlg.close();
     }, function (data) {
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.menuInfoData);
     ajax.start();
@@ -155,11 +155,11 @@ MenuInfoDlg.onClickDept = function (e, treeId, treeNode) {
  * 显示父级菜单选择的树
  */
 MenuInfoDlg.showMenuSelectTree = function () {
-    Feng.showInputTree("pcodeName", "pcodeTreeDiv", 15, 34);
+    WPC.showInputTree("pcodeName", "pcodeTreeDiv", 15, 34);
 };
 
 $(function () {
-    Feng.initValidator("menuInfoForm", MenuInfoDlg.validateFields);
+    WPC.initValidator("menuInfoForm", MenuInfoDlg.validateFields);
 
     var ztree = new $ZTree("pcodeTree", "/menu/selectMenuTreeList");
     ztree.bindOnClick(MenuInfoDlg.onClickDept);

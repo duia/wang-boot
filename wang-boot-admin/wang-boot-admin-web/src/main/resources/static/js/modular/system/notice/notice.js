@@ -28,7 +28,7 @@ Notice.initColumn = function () {
 Notice.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
     if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     } else {
         Notice.seItem = selected[0];
@@ -46,7 +46,7 @@ Notice.openAddNotice = function () {
         area: ['800px', '500px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/notice/notice_add'
+        content: WPC.ctxPath + '/notice/notice_add'
     });
     this.layerIndex = index;
 };
@@ -62,7 +62,7 @@ Notice.openNoticeDetail = function () {
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/notice/notice_update/' + Notice.seItem.id
+            content: WPC.ctxPath + '/notice/notice_update/' + Notice.seItem.id
         });
         this.layerIndex = index;
     }
@@ -75,19 +75,19 @@ Notice.delete = function () {
     if (this.check()) {
 
         var operation = function(){
-            var ajax = new $ax(Feng.ctxPath + "/notice/delete", function (data) {
-                if (Feng.isError(data)) {
-                    Feng.success("删除成功!");
+            var ajax = new $ax(WPC.ctxPath + "/notice/delete", function (data) {
+                if (WPC.isError(data)) {
+                    WPC.success("删除成功!");
                     Notice.table.refresh();
                 }
             }, function (data) {
-                Feng.error("删除失败!" + data.responseJSON.message + "!");
+                WPC.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("noticeId", Notice.seItem.id);
             ajax.start();
         };
 
-        Feng.confirm("是否删除通知 " + Notice.seItem.title + "?", operation);
+        WPC.confirm("是否删除通知 " + Notice.seItem.title + "?", operation);
     }
 };
 

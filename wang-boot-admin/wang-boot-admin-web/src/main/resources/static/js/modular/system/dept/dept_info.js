@@ -130,12 +130,12 @@ DeptInfoDlg.addSubmit = function() {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/dept/add", function(data){
-        Feng.success("添加成功!");
+    var ajax = new $ax(WPC.ctxPath + "/dept/add", function(data){
+        WPC.success("添加成功!");
         window.parent.Dept.table.refresh();
         DeptInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        WPC.error("添加失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.deptInfoData);
     ajax.start();
@@ -154,12 +154,12 @@ DeptInfoDlg.editSubmit = function() {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/dept/update", function(data){
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/dept/update", function(data){
+        WPC.success("修改成功!");
         window.parent.Dept.table.refresh();
         DeptInfoDlg.close();
     },function(data){
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.deptInfoData);
     ajax.start();
@@ -173,7 +173,7 @@ function onBodyDown(event) {
 }
 
 $(function() {
-    Feng.initValidator("deptInfoForm", DeptInfoDlg.validateFields);
+    WPC.initValidator("deptInfoForm", DeptInfoDlg.validateFields);
 
     var ztree = new $ZTree("parentDeptMenuTree", "/dept/tree");
     ztree.bindOnClick(DeptInfoDlg.onClickDept);

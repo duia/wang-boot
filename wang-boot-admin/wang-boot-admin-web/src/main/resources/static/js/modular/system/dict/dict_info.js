@@ -40,7 +40,7 @@ DictInfoDlg.addItem = function () {
  * 删除item
  */
 DictInfoDlg.deleteItem = function (event) {
-    var obj = Feng.eventParseObject(event);
+    var obj = WPC.eventParseObject(event);
     obj = obj.is('button') ? obj : obj.parent();
     obj.parent().parent().remove();
 };
@@ -83,12 +83,12 @@ DictInfoDlg.collectData = function () {
 DictInfoDlg.addSubmit = function () {
     this.collectData();
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/dict/add", function (data) {
-        Feng.success("添加成功!");
+    var ajax = new $ax(WPC.ctxPath + "/dict/add", function (data) {
+        WPC.success("添加成功!");
         window.parent.Dict.table.refresh();
         DictInfoDlg.close();
     }, function (data) {
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        WPC.error("添加失败!" + data.responseJSON.message + "!");
     });
     ajax.set('dictName',this.dictName);
     ajax.set('dictCode',this.dictCode);
@@ -102,12 +102,12 @@ DictInfoDlg.addSubmit = function () {
  */
 DictInfoDlg.editSubmit = function () {
     this.collectData();
-    var ajax = new $ax(Feng.ctxPath + "/dict/update", function (data) {
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/dict/update", function (data) {
+        WPC.success("修改成功!");
         window.parent.Dict.table.refresh();
         DictInfoDlg.close();
     }, function (data) {
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set('dictId',$("#dictId").val());
     ajax.set('dictName',this.dictName);

@@ -28,7 +28,7 @@ LoginLog.initColumn = function () {
 LoginLog.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
     if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     } else {
         LoginLog.seItem = selected[0];
@@ -41,8 +41,8 @@ LoginLog.check = function () {
  * 清空日志
  */
 LoginLog.delLog = function () {
-    Feng.confirm("是否清空所有日志?", function () {
-        var ajax = Feng.baseAjax("/loginLog/delLoginLog", "清空日志");
+    WPC.confirm("是否清空所有日志?", function () {
+        var ajax = WPC.baseAjax("/loginLog/delLoginLog", "清空日志");
         ajax.start();
         LoginLog.table.refresh();
     });

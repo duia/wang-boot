@@ -42,7 +42,7 @@ Expense.findRecord = function (id) {
         area: ['1000px', '500px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/expense/expense_update/' + id
+        content: WPC.ctxPath + '/expense/expense_update/' + id
     });
     this.layerIndex = index;
 };
@@ -51,11 +51,11 @@ Expense.findRecord = function (id) {
  * 删除审核记录
  */
 Expense.deleteRecord = function (id) {
-    var ajax = new $ax(Feng.ctxPath + "/expense/delete", function (data) {
-        Feng.success("删除成功!");
+    var ajax = new $ax(WPC.ctxPath + "/expense/delete", function (data) {
+        WPC.success("删除成功!");
         Expense.table.refresh();
     }, function (data) {
-        Feng.error("删除失败!" + data.responseJSON.message + "!");
+        WPC.error("删除失败!" + data.responseJSON.message + "!");
     });
     ajax.set("expenseId", id);
     ajax.start();
@@ -71,7 +71,7 @@ Expense.openAddExpense = function () {
         area: ['600px', '350px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/expense/expense_add'
+        content: WPC.ctxPath + '/expense/expense_add'
     });
     this.layerIndex = index;
 };

@@ -13,7 +13,7 @@
 		this.pictureId = pictureId;
 		this.uploadBtnId = pictureId + "BtnId";
 		this.uploadPreId = pictureId + "PreId";
-		this.uploadUrl = Feng.ctxPath + '/mgr/upload';
+		this.uploadUrl = WPC.ctxPath + '/mgr/upload';
 		this.fileSizeLimit = 100 * 1024 * 1024;
 		this.picWidth = 800;
 		this.picHeight = 800;
@@ -45,7 +45,7 @@
 					extensions : 'gif,jpg,jpeg,bmp,png',
                     mimeTypes : 'image/gif,image/jpg,image/jpeg,image/bmp,image/png'
 				},
-				swf : Feng.ctxPath
+				swf : WPC.ctxPath
 						+ '/static/js/plugins/webuploader/Uploader.swf',
 				disableGlobalDnd : true,
 				duplicate : true,
@@ -84,27 +84,27 @@
 
 			// 文件上传成功，给item添加成功class, 用样式标记上传成功。
 			bindedObj.on('uploadSuccess', function(file,response) {
-				Feng.success("上传成功");
+                WPC.success("上传成功");
 				$("#" + me.pictureId).val(response);
 			});
 
 			// 文件上传失败，显示上传出错。
 			bindedObj.on('uploadError', function(file) {
-				Feng.error("上传失败");
+                WPC.error("上传失败");
 			});
 
 			// 其他错误
 			bindedObj.on('error', function(type) {
 				if ("Q_EXCEED_SIZE_LIMIT" == type) {
-					Feng.error("文件大小超出了限制");
+                    WPC.error("文件大小超出了限制");
 				} else if ("Q_TYPE_DENIED" == type) {
-					Feng.error("文件类型不满足");
+                    WPC.error("文件类型不满足");
 				} else if ("Q_EXCEED_NUM_LIMIT" == type) {
-					Feng.error("上传数量超过限制");
+                    WPC.error("上传数量超过限制");
 				} else if ("F_DUPLICATE" == type) {
-					Feng.error("图片选择重复");
+                    WPC.error("图片选择重复");
 				} else {
-					Feng.error("上传过程中出错");
+                    WPC.error("上传过程中出错");
 				}
 			});
 

@@ -29,7 +29,7 @@ Role.initColumn = function () {
 Role.check = function () {
     var selected = $('#' + this.id).bootstrapTreeTable('getSelections');
     if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     } else {
         Role.seItem = selected[0];
@@ -47,7 +47,7 @@ Role.openAddRole = function () {
         area: ['800px', '450px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/role/role_add'
+        content: WPC.ctxPath + '/role/role_add'
     });
     this.layerIndex = index;
 };
@@ -63,7 +63,7 @@ Role.openChangeRole = function () {
             area: ['800px', '450px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/role/role_edit/' + this.seItem.id
+            content: WPC.ctxPath + '/role/role_edit/' + this.seItem.id
         });
         this.layerIndex = index;
     }
@@ -76,17 +76,17 @@ Role.delRole = function () {
     if (this.check()) {
 
         var operation = function(){
-            var ajax = new $ax(Feng.ctxPath + "/role/remove", function () {
-                Feng.success("删除成功!");
+            var ajax = new $ax(WPC.ctxPath + "/role/remove", function () {
+                WPC.success("删除成功!");
                 Role.table.refresh();
             }, function (data) {
-                Feng.error("删除失败!" + data.responseJSON.message + "!");
+                WPC.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("roleId", Role.seItem.id);
             ajax.start();
         };
 
-        Feng.confirm("是否删除角色 " + Role.seItem.name + "?",operation);
+        WPC.confirm("是否删除角色 " + Role.seItem.name + "?",operation);
     }
 };
 
@@ -101,7 +101,7 @@ Role.assign = function () {
             area: ['300px', '450px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/role/role_assign/' + this.seItem.id
+            content: WPC.ctxPath + '/role/role_assign/' + this.seItem.id
         });
         this.layerIndex = index;
     }

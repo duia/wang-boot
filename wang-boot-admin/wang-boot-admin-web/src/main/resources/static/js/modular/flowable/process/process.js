@@ -36,11 +36,11 @@ Process.initColumn = function () {
  * 通过审核
  */
 Process.pass = function (id) {
-    var ajax = new $ax(Feng.ctxPath + "/process/pass", function (data) {
-        Feng.success("审核成功!");
+    var ajax = new $ax(WPC.ctxPath + "/process/pass", function (data) {
+        WPC.success("审核成功!");
         Process.table.refresh();
     }, function (data) {
-        Feng.error("审核失败!" + data.responseJSON.message + "!");
+        WPC.error("审核失败!" + data.responseJSON.message + "!");
     });
     ajax.set("taskId", id);
     ajax.start();
@@ -50,11 +50,11 @@ Process.pass = function (id) {
  * 未通过审核
  */
 Process.unPass = function (id) {
-    var ajax = new $ax(Feng.ctxPath + "/process/unPass", function (data) {
-        Feng.success("审核成功!");
+    var ajax = new $ax(WPC.ctxPath + "/process/unPass", function (data) {
+        WPC.success("审核成功!");
         Process.table.refresh();
     }, function (data) {
-        Feng.error("审核失败!" + data.responseJSON.message + "!");
+        WPC.error("审核失败!" + data.responseJSON.message + "!");
     });
     ajax.set("taskId", id);
     ajax.start();

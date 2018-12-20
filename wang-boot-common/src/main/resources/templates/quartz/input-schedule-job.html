@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+
+<body class="gray-bg">
+
+<div class="row">
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <h4 class="panel-title">定时任务</h4>
+        </div>
+        <div class="panel-body">
+            <div class="jumbotron p-5">
+                <h1>Spring Quartz分布式定时任务</h1>
+                <p>Spring整合Quartz基于数据库的分布式定时任务，可动态添加、删除、修改定时任务。</p>
+            </div>
+            <form th:action="@{save-schedule-job}" method="post" class="form-horizontal">
+                <input type="hidden" name="scheduleJobId" th:value="${scheduleJobVo.scheduleJobId}">
+                <input type="hidden" name="keywords" th:value="${keywords}">
+
+                <div class="form-group">
+                    <label for="jobName" class="col-sm-2 control-label">任务名称</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="jobName" name="jobName" th:value="${scheduleJobVo.jobName}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobGroup" class="col-sm-2 control-label">任务分组</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="jobGroup" name="jobGroup" th:value="${scheduleJobVo.jobGroup}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="aliasName" class="col-sm-2 control-label">任务别名</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="aliasName" name="aliasName" th:value="${scheduleJobVo.aliasName}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cronExpression" class="col-sm-2 control-label">时间表达式</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="cronExpression" name="cronExpression" th:value="${scheduleJobVo.cronExpression}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否异步</label>
+                    <div class="col-sm-1">
+                        <input type="radio" name="isSync" value="false" th:checked="${!scheduleJobVo.isSync}"/>同步
+                        <input type="radio" name="isSync" value="true" th:checked="${scheduleJobVo.isSync}"/>异步
+                    </div>
+                    <div class="col-sm-5">
+                        （优先使用同步——同一任务上次启动未结束前，不会启动下一次运行）
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobType" class="col-sm-2 control-label">任务类型</label>
+                    <div class="col-sm-8">
+                        <select id="jobType" name="jobType" class="form-control">
+                            <option value="http" th:selected="${scheduleJobVo.jobType == 'http'}">
+                                请求式（需配置任务执行url，通过定时发送请求来执行任务）
+                            </option>
+                            <option value="class" th:selected="${scheduleJobVo.jobType == 'class'}">
+                                类方式（需配置任务执行类或beanId和方法名，通过定位到具体的方法来执行任务）
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="url" class="col-sm-2 control-label">任务执行url</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="url" name="url" th:value="${scheduleJobVo.url}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="beanClass" class="col-sm-2 control-label">任务执行类（含包名）</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="beanClass" name="beanClass" th:value="${scheduleJobVo.beanClass}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="springId" class="col-sm-2 control-label">任务执行beanId</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="springId" name="springId" th:value="${scheduleJobVo.springId}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="methodName" class="col-sm-2 control-label">任务执行方法名</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="methodName" name="methodName" th:value="${scheduleJobVo.methodName}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label">任务描述</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="description" name="description" th:value="${scheduleJobVo.description}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a th:href="@{list-schedule-job}" class="btn btn-default" role="button">返回</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>

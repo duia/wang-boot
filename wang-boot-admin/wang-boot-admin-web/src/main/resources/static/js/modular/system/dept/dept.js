@@ -27,7 +27,7 @@ Dept.initColumn = function () {
 Dept.check = function () {
     var selected = $('#' + this.id).bootstrapTreeTable('getSelections');
     if(selected.length == 0){
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     }else{
         Dept.seItem = selected[0];
@@ -45,7 +45,7 @@ Dept.openAddDept = function () {
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/dept/dept_add'
+        content: WPC.ctxPath + '/dept/dept_add'
     });
     this.layerIndex = index;
 };
@@ -61,7 +61,7 @@ Dept.openDeptDetail = function () {
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/dept/dept_update/' + Dept.seItem.id
+            content: WPC.ctxPath + '/dept/dept_update/' + Dept.seItem.id
         });
         this.layerIndex = index;
     }
@@ -74,17 +74,17 @@ Dept.delete = function () {
     if (this.check()) {
 
         var operation = function(){
-            var ajax = new $ax(Feng.ctxPath + "/dept/delete", function () {
-                Feng.success("删除成功!");
+            var ajax = new $ax(WPC.ctxPath + "/dept/delete", function () {
+                WPC.success("删除成功!");
                 Dept.table.refresh();
             }, function (data) {
-                Feng.error("删除失败!" + data.responseJSON.message + "!");
+                WPC.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("deptId",Dept.seItem.id);
             ajax.start();
         };
 
-        Feng.confirm("是否刪除该部门?", operation);
+        WPC.confirm("是否刪除该部门?", operation);
     }
 };
 

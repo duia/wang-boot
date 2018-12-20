@@ -206,17 +206,17 @@ UserInfoDlg.addSubmit = function () {
     }
 
     if (!this.validatePwd()) {
-        Feng.error("两次密码输入不一致");
+        WPC.error("两次密码输入不一致");
         return;
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/mgr/add", function (data) {
-        Feng.success("添加成功!");
+    var ajax = new $ax(WPC.ctxPath + "/mgr/add", function (data) {
+        WPC.success("添加成功!");
         window.parent.MgrUser.table.refresh();
         UserInfoDlg.close();
     }, function (data) {
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        WPC.error("添加失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.userInfoData);
     ajax.start();
@@ -235,14 +235,14 @@ UserInfoDlg.editSubmit = function () {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/mgr/edit", function (data) {
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/mgr/edit", function (data) {
+        WPC.success("修改成功!");
         if (window.parent.MgrUser != undefined) {
             window.parent.MgrUser.table.refresh();
             UserInfoDlg.close();
         }
     }, function (data) {
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.userInfoData);
     ajax.start();
@@ -252,10 +252,10 @@ UserInfoDlg.editSubmit = function () {
  * 修改密码
  */
 UserInfoDlg.chPwd = function () {
-    var ajax = new $ax(Feng.ctxPath + "/mgr/changePwd", function (data) {
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/mgr/changePwd", function (data) {
+        WPC.success("修改成功!");
     }, function (data) {
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set("oldPwd");
     ajax.set("newPwd");
@@ -272,7 +272,7 @@ function onBodyDown(event) {
 }
 
 $(function () {
-    Feng.initValidator("userInfoForm", UserInfoDlg.validateFields);
+    WPC.initValidator("userInfoForm", UserInfoDlg.validateFields);
 
     //初始化性别选项
     $("#sex").val($("#sexValue").val());

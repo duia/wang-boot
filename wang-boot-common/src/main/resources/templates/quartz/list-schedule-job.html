@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/common/_container::head"></div>
+
+<style>
+    td {
+        white-space: normal;
+        word-break: break-all;
+    }
+</style>
+<body class="gray-bg">
+
+<div class="row">
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <h4 class="panel-title">定时任务</h4>
+        </div>
+        <div class="panel-body">
+            <div class="jumbotron p-5">
+                <h1>Spring Quartz分布式定时任务</h1>
+                <p>Spring整合Quartz基于数据库的分布式定时任务，可动态添加、删除、修改定时任务。</p>
+            </div>
+            <a href="input-schedule-job" class="btn btn-success" role="button">添加任务</a>
+            <table class="table table-bordered table-margin-top">
+                <tr>
+                    <td>任务名称</td>
+                    <td>任务别名</td>
+                    <td>任务分组</td>
+                    <td>触发器</td>
+                    <td>任务状态</td>
+                    <td>时间表达式</td>
+                    <td>是否异步</td>
+                    <td>任务类型</td>
+                    <td>任务执行</td>
+                    <td>任务描述</td>
+                    <td>操作</td>
+                </tr>
+                <tr th:each="item : ${scheduleJobVoList}">
+                    <td th:text="${item.jobName}"></td>
+                    <td th:text="${item.aliasName}"></td>
+                    <td th:text="${item.jobGroup}"></td>
+                    <td th:text="${item.jobTrigger}"></td>
+                    <td th:class="${item.status=='PAUSED'}? 'status-color' : ''" th:text="${item.status}"></td>
+                    <td th:text="${item.cronExpression}"></td>
+                    <td th:text="${item.isSync==true}?'异步':'同步'"></td>
+                    <td th:if="${item.jobType=='http'}">请求式</td>
+                    <td th:if="${item.jobType=='class'}">类方式</td>
+                    <td th:if="${item.jobType=='http'}" th:text="${item.url}"></td>
+                    <td th:if="${item.jobType=='class'}" th:text="|${item.beanClass} ${item.methodName}|"></td>
+                    <td th:text="${item.description}"></td>
+                    <td>
+                        <!--<a href="input-schedule-job?scheduleJobId=$!{item.scheduleJobId}">修改</a>-->
+                        <a class="btn btn-danger" role="button"
+                           th:href="@{|pause-schedule-job?scheduleJobId=${item.scheduleJobId}|}"><i class="fa fa-pause-circle-o" aria-hidden="true"></i>暂停</a>
+                        <a class="btn btn-danger" role="button"
+                           th:href="@{|resume-schedule-job?scheduleJobId=${item.scheduleJobId}|}"><i class="fa fa-reply" aria-hidden="true"></i>恢复</a>
+                        <a class="btn btn-danger" role="button"
+                           th:href="@{|run-once-schedule-job?scheduleJobId=${item.scheduleJobId}|}"><i class="fa fa-play" aria-hidden="true"></i>运行一次</a>
+                        <a class="btn btn-danger" role="button"
+                           th:href="@{|input-schedule-job?scheduleJobId=${item.scheduleJobId}&keywords=delUpdate|}"><i class="fa fa-pencil" aria-hidden="true"></i>修改</a>
+                        <a class="btn btn-danger" role="button"
+                           th:href="@{|delete-schedule-job?scheduleJobId=${item.scheduleJobId}|}"><i class="fa fa-trash" aria-hidden="true"></i>删除</a>
+                    </td>
+                </tr>
+            </table>
+            <p class="lead">运行中的任务</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td>任务名称</td>
+                    <td>任务别名</td>
+                    <td>任务分组</td>
+                    <td>触发器</td>
+                    <td>任务状态</td>
+                    <td>时间表达式</td>
+                    <td>是否异步</td>
+                    <td>任务执行url</td>
+                    <td>任务描述</td>
+                </tr>
+                <tr th:each="item : ${executingJobList}">
+                    <td th:text="${item.jobName}"></td>
+                    <td th:text="${item.aliasName}"></td>
+                    <td th:text="${item.jobGroup}"></td>
+                    <td th:text="${item.jobTrigger}"></td>
+                    <td th:text="${item.status}"></td>
+                    <td th:text="${item.cronExpression}"></td>
+                    <td th:text="${item.isSync==true}?'异步':'同步'"></td>
+                    <td th:text="${item.url}"></td>
+                    <td th:text="${item.description}"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/static/js/content.js}"></script>
+</body>
+</html>

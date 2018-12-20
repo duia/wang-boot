@@ -80,12 +80,12 @@ NoticeInfoDlg.addSubmit = function () {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/notice/add", function (data) {
-        Feng.success("添加成功!");
+    var ajax = new $ax(WPC.ctxPath + "/notice/add", function (data) {
+        WPC.success("添加成功!");
         window.parent.Notice.table.refresh();
         NoticeInfoDlg.close();
     }, function (data) {
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        WPC.error("添加失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.noticeInfoData);
     ajax.start();
@@ -104,19 +104,19 @@ NoticeInfoDlg.editSubmit = function () {
     }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/notice/update", function (data) {
-        Feng.success("修改成功!");
+    var ajax = new $ax(WPC.ctxPath + "/notice/update", function (data) {
+        WPC.success("修改成功!");
         window.parent.Notice.table.refresh();
         NoticeInfoDlg.close();
     }, function (data) {
-        Feng.error("修改失败!" + data.responseJSON.message + "!");
+        WPC.error("修改失败!" + data.responseJSON.message + "!");
     });
     ajax.set(this.noticeInfoData);
     ajax.start();
 }
 
 $(function () {
-    Feng.initValidator("noticeInfoForm", NoticeInfoDlg.validateFields);
+    WPC.initValidator("noticeInfoForm", NoticeInfoDlg.validateFields);
 
     //初始化编辑器
     var E = window.wangEditor;

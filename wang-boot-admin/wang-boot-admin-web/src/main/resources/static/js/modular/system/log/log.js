@@ -31,7 +31,7 @@ OptLog.initColumn = function () {
 OptLog.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
     if(selected.length == 0){
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     }else{
         OptLog.seItem = selected[0];
@@ -44,10 +44,10 @@ OptLog.check = function () {
  */
 OptLog.detail = function () {
     if (this.check()) {
-        var ajax = new $ax(Feng.ctxPath + "/log/detail/" + this.seItem.id, function (data) {
-            Feng.infoDetail("日志详情", JSON.stringify(data));
+        var ajax = new $ax(WPC.ctxPath + "/log/detail/" + this.seItem.id, function (data) {
+            WPC.infoDetail("日志详情", JSON.stringify(data));
         }, function (data) {
-            Feng.error("获取详情失败!");
+            WPC.error("获取详情失败!");
         });
         ajax.start();
     }
@@ -58,8 +58,8 @@ OptLog.detail = function () {
  * 清空日志
  */
 OptLog.delLog = function () {
-    Feng.confirm("是否清空所有日志?",function(){
-        var ajax = Feng.baseAjax("/log/delLog","清空日志");
+    WPC.confirm("是否清空所有日志?",function(){
+        var ajax = WPC.baseAjax("/log/delLog","清空日志");
         ajax.start();
         OptLog.table.refresh();
     });

@@ -26,7 +26,7 @@ Dict.initColumn = function () {
 Dict.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
     if (selected.length == 0) {
-        Feng.info("请先选中表格中的某一记录！");
+        WPC.info("请先选中表格中的某一记录！");
         return false;
     } else {
         Dict.seItem = selected[0];
@@ -44,7 +44,7 @@ Dict.openAddDict = function () {
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/dict/dict_add'
+        content: WPC.ctxPath + '/dict/dict_add'
     });
     this.layerIndex = index;
 };
@@ -60,7 +60,7 @@ Dict.openDictDetail = function () {
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/dict/dict_edit/' + Dict.seItem.id
+            content: WPC.ctxPath + '/dict/dict_edit/' + Dict.seItem.id
         });
         this.layerIndex = index;
     }
@@ -73,17 +73,17 @@ Dict.delete = function () {
     if (this.check()) {
 
         var operation = function(){
-            var ajax = new $ax(Feng.ctxPath + "/dict/delete", function (data) {
-                Feng.success("删除成功!");
+            var ajax = new $ax(WPC.ctxPath + "/dict/delete", function (data) {
+                WPC.success("删除成功!");
                 Dict.table.refresh();
             }, function (data) {
-                Feng.error("删除失败!" + data.responseJSON.message + "!");
+                WPC.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("dictId", Dict.seItem.id);
             ajax.start();
         };
 
-        Feng.confirm("是否刪除字典 " + Dict.seItem.name + "?", operation);
+        WPC.confirm("是否刪除字典 " + Dict.seItem.name + "?", operation);
     }
 };
 

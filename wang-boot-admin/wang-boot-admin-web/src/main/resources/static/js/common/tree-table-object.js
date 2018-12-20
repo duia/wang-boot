@@ -7,7 +7,7 @@
     var BSTreeTable = function (bstableId, url, columns) {
         this.btInstance = null;					//jquery和bootstrapTreeTable绑定的对象
         this.bstableId = bstableId;
-        this.url = Feng.ctxPath + url;
+        this.url = WPC.ctxPath + url;
         this.method = "post";
         this.columns = columns;
         this.data = {};// ajax的参数
