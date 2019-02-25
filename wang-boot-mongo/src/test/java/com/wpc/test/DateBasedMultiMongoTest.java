@@ -30,7 +30,7 @@ public class DateBasedMultiMongoTest extends MongoTestBase {
             e.printStackTrace();
         }
         user.setCreateTime(date);
-        user.setName("gaofei");
+        user.setName("wpc");
         userDao.insertUserWhitDate(date, user);
         Assert.assertNotNull(user.getId());
     }

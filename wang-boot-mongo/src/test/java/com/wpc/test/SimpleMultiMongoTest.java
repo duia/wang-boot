@@ -25,7 +25,7 @@ public class SimpleMultiMongoTest extends MongoTestBase {
     public void insertUserTest() {
         User user = new User();
         user.setCreateTime(new Date());
-        user.setName("gaofei");
+        user.setName("wpc");
         userDao.insertUser(user);
         Assert.assertNotNull(user.getId());
     }

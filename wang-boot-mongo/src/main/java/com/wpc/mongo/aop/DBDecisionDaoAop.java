@@ -32,7 +32,6 @@ public class DBDecisionDaoAop implements ApplicationContextAware {
     private List<DecisionHandler> handlerList;
 
     /**
-     * 切面配置：@annotation(info.gaofei.infomongo.aop.annotation.MultiMongo)
      *
      * @param joinPoint
      * @return
