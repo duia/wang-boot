@@ -1,6 +1,6 @@
 package com.wpc.common.limit.lock;
 
-import com.wpc.redis.utils.JedisUtils;
+import com.wpc.common.redis.utils.JedisUtils;
 import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;

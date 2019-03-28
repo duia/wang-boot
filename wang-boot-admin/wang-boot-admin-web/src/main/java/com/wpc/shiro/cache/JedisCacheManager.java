@@ -4,7 +4,7 @@
 package com.wpc.shiro.cache;
 
 import com.wpc.common.utils.Servlets;
-import com.wpc.redis.utils.JedisUtils;
+import com.wpc.common.redis.utils.JedisUtils;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;

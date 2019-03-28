@@ -2,7 +2,7 @@ package com.wpc;
 
 import com.wpc.common.Global;
 import com.wpc.common.SpringContextHolder;
-import com.wpc.redis.utils.JedisUtils;
+import com.wpc.common.redis.utils.JedisUtils;
 import com.wpc.shiro.ShiroRealm.Principal;
 import com.wpc.system.dao.UserMapper;
 import com.wpc.system.factory.ConstantFactory;
@@ -16,7 +16,6 @@ import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
-import java.util.Date;
 import java.util.List;
 
 public class SessionUtil {

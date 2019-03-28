@@ -51,11 +51,12 @@ public class DemoController {
 
     @RequestMapping("/save")
     public void save() {
-        for (long i = 0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             Demo demo = new Demo();
             demo.setId(i+"");
+            demo.setIndex(i);
             demo.setName("demo" + i);
-            demoDao.save(demo, i);
+            demoDao.insert(demo);
         }
     }
 

@@ -1,9 +1,9 @@
 package com.wpc.test.dao;
 
-import com.wpc.base.dao.mongo.impl.BaseMongoSubmeterDAOImpl;
+import com.wpc.common.mongo.dao.shardcollection.AbstractShardEntityDao;
 import com.wpc.test.entity.Demo;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DemoDao extends BaseMongoSubmeterDAOImpl<Demo> {
+public class DemoDao extends AbstractShardEntityDao<Demo> {
 }

@@ -6,7 +6,7 @@ package com.wpc.shiro.session;
 import com.wpc.common.Global;
 import com.wpc.common.utils.Servlets;
 import com.wpc.common.utils.date.DateUtils;
-import com.wpc.redis.utils.JedisUtils;
+import com.wpc.common.redis.utils.JedisUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;

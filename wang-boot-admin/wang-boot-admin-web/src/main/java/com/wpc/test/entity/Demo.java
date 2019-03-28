@@ -1,10 +1,15 @@
 package com.wpc.test.entity;
 
-import com.wpc.base.entity.mongo.AbstractBaseMongoEntity;
+import com.wpc.common.mongo.bean.Entity;
+import com.wpc.common.mongo.dao.shardcollection.ShardingKey;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Demo extends AbstractBaseMongoEntity {
+@Document(collection = "demo")
+public class Demo extends Entity {
 
     private String name;
+    @ShardingKey(shardingCount = 8, value = "index", shardingColumn = "index")
+    private int index;
 
     public String getName() {
         return name;
@@ -14,13 +19,11 @@ public class Demo extends AbstractBaseMongoEntity {
         this.name = name;
     }
 
-    @Override
-    public String getTableName() {
-        return "wpc_demo";
+    public int getIndex() {
+        return index;
     }
 
-    @Override
-    public int setSubmeterNum() {
-        return 10;
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
