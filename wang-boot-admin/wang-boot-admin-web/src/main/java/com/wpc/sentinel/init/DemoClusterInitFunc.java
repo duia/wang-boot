@@ -24,7 +24,6 @@ import com.alibaba.csp.sentinel.cluster.flow.rule.ClusterParamFlowRuleManager;
 import com.alibaba.csp.sentinel.cluster.server.config.ClusterServerConfigManager;
 import com.alibaba.csp.sentinel.cluster.server.config.ServerTransportConfig;
 import com.alibaba.csp.sentinel.datasource.ReadableDataSource;
-import com.alibaba.csp.sentinel.datasource.nacos.NacosDataSource;
 import com.alibaba.csp.sentinel.datasource.zookeeper.ZookeeperDataSource;
 import com.alibaba.csp.sentinel.init.InitFunc;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
