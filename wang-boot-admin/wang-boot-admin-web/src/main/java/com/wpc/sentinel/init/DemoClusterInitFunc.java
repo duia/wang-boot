@@ -60,22 +60,22 @@ public class DemoClusterInitFunc implements InitFunc {
     @Override
     public void init() throws Exception {
         // Register client dynamic rule data source.
-        initDynamicRuleProperty();
+//        initDynamicRuleProperty();
 
         // Register token client related data source.
         // Token client common config:
-        initClientConfigProperty();
+//        initClientConfigProperty();
         // Token client assign config (e.g. target token server) retrieved from assign map:
-        initClientServerAssignProperty();
+//        initClientServerAssignProperty();
 
         // Register token server related data source.
         // Register dynamic rule data source supplier for token server:
-        registerClusterRuleSupplier();
+//        registerClusterRuleSupplier();
         // Token server transport config extracted from assign map:
-        initServerTransportConfigProperty();
+//        initServerTransportConfigProperty();
 
         // Init cluster state property for extracting mode from cluster map data source.
-        initStateProperty();
+//        initStateProperty();
     }
 
     private void initDynamicRuleProperty() {
