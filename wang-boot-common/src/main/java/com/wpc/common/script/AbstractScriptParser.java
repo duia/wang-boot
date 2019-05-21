@@ -3,8 +3,11 @@ package com.wpc.common.script;
 import java.lang.reflect.Method;
 
 /**
- * 表达式处理
- * @author jiayu.qiu
+ * 功能描述: 表达式处理
+ * @Author: 王鹏程
+ * @E-mail: duia.online@qq.com @QQ: 376205421
+ * @Blog: https://duia.github.io
+ * @Date: 2019-05-14 11:47:36
  */
 public abstract class AbstractScriptParser {
 

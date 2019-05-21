@@ -9,8 +9,11 @@ import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 解析JavaScript表达式
- * @author jiayu.qiu
+ * 功能描述: 解析JavaScript表达式
+ * @Author: 王鹏程
+ * @E-mail: duia.online@qq.com @QQ: 376205421
+ * @Blog: https://duia.github.io
+ * @Date: 2019-05-14 11:51:36
  */
 public class JavaScriptParser extends AbstractScriptParser {
 

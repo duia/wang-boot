@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 
     @Autowired

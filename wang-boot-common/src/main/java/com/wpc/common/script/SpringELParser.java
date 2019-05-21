@@ -12,8 +12,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Spring EL表达式解析处理
- * @author jiayu.qiu
+ * 功能描述: Spring EL表达式解析处理
+ * @Author: 王鹏程
+ * @E-mail: duia.online@qq.com @QQ: 376205421
+ * @Blog: https://duia.github.io
+ * @Date: 2019-05-14 11:52:00
  */
 public class SpringELParser extends AbstractScriptParser {
 

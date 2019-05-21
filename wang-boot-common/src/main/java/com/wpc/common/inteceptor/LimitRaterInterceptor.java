@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
-@Component
+//@Component
 public class LimitRaterInterceptor extends HandlerInterceptorAdapter {
 
     @Value("${wpc.rateLimit.enable}")
