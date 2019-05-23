@@ -108,6 +108,12 @@
 			<version>2.7.3</version>
 		</dependency>
 
+        <!-- rabbitmq依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
 		<!--jsp支持-->
 		<!-- servlet 依赖. -->
 		<dependency>
