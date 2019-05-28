@@ -30,7 +30,7 @@ public class QuartzConfig {
 //        <!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
         schedulerFactory.setStartupDelay(30);
 //        <property name="startupDelay" value="30" />
-        schedulerFactory.setApplicationContextSchedulerContextKey("");
+        schedulerFactory.setApplicationContextSchedulerContextKey("applicationContextKey");
 //        <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
 //        <!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
         schedulerFactory.setOverwriteExistingJobs(true);
