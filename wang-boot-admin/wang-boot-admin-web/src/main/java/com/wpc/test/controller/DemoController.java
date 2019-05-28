@@ -150,7 +150,7 @@ public class DemoController {
     )
     @RabbitHandler
     public void onMessage(Message message, Channel channel) throws Exception {
-        logger.info("--------------------------------------");
+        logger.info("-------------------------------------");
         logger.info("消费端Payload: " + message.getPayload());
         Long deliveryTag = (Long)message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
         //手工ACK
