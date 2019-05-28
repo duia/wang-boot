@@ -15,7 +15,7 @@ public class TestController {
     @GetMapping("/ueditor")
     public String ueditor() {
 
-        return "ueditor/index";
+        return "test/ueditor/index";
     }
 
 }
